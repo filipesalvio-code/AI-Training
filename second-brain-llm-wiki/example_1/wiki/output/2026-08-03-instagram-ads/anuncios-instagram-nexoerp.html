@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Variações de anúncios Instagram — NexoERP</title>
+  <style>
+    :root {
+      --navy: #102a43;
+      --blue: #1769e0;
+      --aqua: #16a6a1;
+      --cloud: #f5f8fc;
+      --ink: #17202a;
+      --slate: #5d6b7a;
+      --white: #fff;
+      --line: #dce5ef;
+      --shadow: 0 18px 50px rgba(16, 42, 67, .14);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: #e9f0f8; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #e9f0f8;
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .page-header {
+      padding: 56px clamp(24px, 6vw, 96px) 42px;
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .eyebrow,
+    .format-label,
+    .variant-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow { color: #93d9d3; }
+
+    .page-header h1 {
+      max-width: 860px;
+      margin: 12px 0 10px;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -.04em;
+    }
+
+    .page-header p {
+      max-width: 740px;
+      margin: 0;
+      color: #d7e6f5;
+      font-size: 17px;
+    }
+
+    .page-note {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 22px 24px;
+      color: var(--navy);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 0 0 var(--radius) var(--radius);
+      box-shadow: 0 8px 24px rgba(16, 42, 67, .06);
+    }
+
+    .page-note strong { color: var(--blue); }
+
+    main {
+      width: min(1450px, calc(100% - 48px));
+      margin: 42px auto 80px;
+    }
+
+    .variant {
+      margin: 0 0 64px;
+      padding: 28px;
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(220, 229, 239, .9);
+      border-radius: 24px;
+    }
+
+    .variant-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 22px;
+    }
+
+    .variant-number { color: var(--blue); }
+
+    .variant h2 {
+      margin: 4px 0 5px;
+      color: var(--navy);
+      font-size: clamp(24px, 3vw, 38px);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+    }
+
+    .variant-purpose {
+      max-width: 700px;
+      margin: 0;
+      color: var(--slate);
+    }
+
+    .audience {
+      flex: 0 0 auto;
+      max-width: 310px;
+      padding: 12px 15px;
+      color: var(--navy);
+      background: var(--cloud);
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    .audience strong { color: var(--blue); }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+      gap: 28px;
+    }
+
+    .preview { min-width: 0; }
+
+    .format-label {
+      margin: 0 0 10px 4px;
+      color: var(--slate);
+    }
+
+    .artboard {
+      position: relative;
+      display: flex;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: space-between;
+      aspect-ratio: 1 / 1;
+      padding: 7.5%;
+      color: var(--white);
+      background: var(--navy);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .artboard.story {
+      aspect-ratio: 9 / 16;
+      min-height: 590px;
+    }
+
+    .artboard.post { max-width: 720px; }
+
+    .artboard::before,
+    .artboard::after {
+      position: absolute;
+      z-index: -1;
+      display: block;
+      content: "";
+      border-radius: 50%;
+      opacity: .34;
+      filter: blur(1px);
+    }
+
+    .artboard::before {
+      width: 48%;
+      height: 35%;
+      top: -10%;
+      right: -12%;
+      background: var(--aqua);
+    }
+
+    .artboard::after {
+      width: 65%;
+      height: 48%;
+      bottom: -20%;
+      left: -25%;
+      background: var(--blue);
+    }
+
+    .artboard.light {
+      color: var(--ink);
+      background: var(--cloud);
+    }
+
+    .artboard.blue { background: var(--blue); }
+
+    .artboard.aqua { background: #087f7c; }
+
+    .safe-zone {
+      position: absolute;
+      inset: 7.5%;
+      z-index: 5;
+      pointer-events: none;
+      border: 1px dashed rgba(255, 255, 255, .14);
+      border-radius: 8px;
+    }
+
+    .light .safe-zone { border-color: rgba(16, 42, 67, .12); }
+
+    .ad-top,
+    .ad-bottom,
+    .content { position: relative; z-index: 2; }
+
+    .ad-top,
+    .ad-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: clamp(12px, 1.6vw, 18px);
+      font-weight: 700;
+      letter-spacing: -.03em;
+    }
+
+    .brand-mark {
+      display: inline-grid;
+      width: 1.25em;
+      height: 1.25em;
+      margin-right: .25em;
+      place-items: center;
+      color: var(--navy);
+      background: var(--white);
+      border-radius: 5px;
+      font-size: .8em;
+    }
+
+    .light .brand-mark { color: var(--white); background: var(--navy); }
+
+    .series {
+      padding: 5px 8px;
+      color: currentColor;
+      border: 1px solid currentColor;
+      border-radius: 100px;
+      font-size: clamp(8px, 1vw, 11px);
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      opacity: .8;
+    }
+
+    .content { margin: auto 0; }
+
+    .kicker {
+      margin: 0 0 10px;
+      color: #8fe4dc;
+      font-size: clamp(10px, 1.4vw, 15px);
+      font-weight: 700;
+      letter-spacing: .1em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .light .kicker { color: var(--blue); }
+
+    .artboard h3 {
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(27px, 4.5vw, 68px);
+      line-height: .99;
+      letter-spacing: -.055em;
+    }
+
+    .post h3 { font-size: clamp(28px, 4vw, 58px); }
+
+    .subcopy {
+      max-width: 570px;
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, .82);
+      font-size: clamp(12px, 1.55vw, 19px);
+      line-height: 1.32;
+    }
+
+    .light .subcopy { color: var(--slate); }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 22px;
+      padding: 11px 15px;
+      color: var(--white);
+      background: var(--blue);
+      border-radius: 8px;
+      font-size: clamp(10px, 1.2vw, 15px);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .blue .cta,
+    .aqua .cta { color: var(--navy); background: var(--white); }
+
+    .ad-bottom { align-items: flex-end; }
+
+    .tagline {
+      max-width: 190px;
+      color: rgba(255, 255, 255, .7);
+      font-size: clamp(9px, 1.1vw, 13px);
+      line-height: 1.2;
+      text-align: right;
+    }
+
+    .light .tagline { color: var(--slate); }
+
+    .visual {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 540px);
+      margin: 22px 0 0 auto;
+    }
+
+    .post .visual { margin-top: 30px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      transform: rotate(-3deg);
+    }
+
+    .mini-card,
+    .metric-card,
+    .approval-card,
+    .screen {
+      padding: 11px;
+      color: var(--navy);
+      background: rgba(255, 255, 255, .95);
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(4, 26, 48, .16);
+    }
+
+    .mini-card:nth-child(2) { transform: translateY(14px); }
+    .mini-card:nth-child(3) { transform: translateY(28px); }
+
+    .mini-label,
+    .metric-label,
+    .screen-label {
+      display: block;
+      color: var(--slate);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .mini-line {
+      height: 5px;
+      margin-top: 11px;
+      background: #dce8f5;
+      border-radius: 10px;
+    }
+
+    .mini-line.short { width: 62%; }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 8px;
+      padding: 11px;
+      background: rgba(255, 255, 255, .95);
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(4, 26, 48, .16);
+    }
+
+    .metric-card strong {
+      display: block;
+      margin-top: 5px;
+      color: var(--navy);
+      font-size: clamp(15px, 2vw, 24px);
+      line-height: 1;
+    }
+
+    .chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      height: 82px;
+      margin-top: 12px;
+      padding: 8px 6px 0;
+      border-bottom: 1px solid #dce5ef;
+    }
+
+    .bar {
+      flex: 1;
+      min-height: 14px;
+      background: var(--aqua);
+      border-radius: 4px 4px 0 0;
+    }
+
+    .bar:nth-child(2) { height: 48%; }
+    .bar:nth-child(3) { height: 74%; }
+    .bar:nth-child(4) { height: 57%; }
+    .bar:nth-child(5) { height: 91%; }
+    .bar:nth-child(6) { height: 67%; }
+
+    .trend {
+      position: relative;
+      height: 100%;
+      min-height: 100px;
+      overflow: hidden;
+      background: #edf5fb;
+      border-radius: 8px;
+    }
+
+    .trend::before,
+    .trend::after {
+      position: absolute;
+      left: 8%;
+      width: 85%;
+      height: 45%;
+      content: "";
+      border-top: 3px solid var(--blue);
+      border-radius: 50%;
+      transform: rotate(-12deg);
+    }
+
+    .trend::before { top: 42%; }
+    .trend::after {
+      top: 52%;
+      border-color: var(--aqua);
+      transform: rotate(9deg);
+    }
+
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .flow-node {
+      flex: 1;
+      padding: 11px 7px;
+      color: var(--navy);
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 10px 24px rgba(4, 26, 48, .16);
+      font-size: clamp(8px, 1.1vw, 12px);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .flow-arrow {
+      color: #a7f0e9;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .approval-card {
+      max-width: 370px;
+      margin-left: auto;
+      transform: rotate(2deg);
+    }
+
+    .approval-head,
+    .approval-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .approval-head {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #e1e8f0;
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .approval-row {
+      padding-top: 10px;
+      color: var(--slate);
+      font-size: 9px;
+    }
+
+    .status {
+      padding: 3px 6px;
+      color: #087f7c;
+      background: #d9f5ef;
+      border-radius: 100px;
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .screen {
+      position: relative;
+      min-height: 112px;
+      overflow: hidden;
+      background: #f7fbff;
+    }
+
+    .screen::before {
+      display: block;
+      width: 35%;
+      height: 7px;
+      margin-bottom: 10px;
+      content: "";
+      background: var(--navy);
+      border-radius: 5px;
+    }
+
+    .screen-body {
+      display: grid;
+      grid-template-columns: 32% 1fr;
+      gap: 9px;
+    }
+
+    .screen-sidebar,
+    .screen-main {
+      min-height: 70px;
+      padding: 7px;
+      background: #e5effa;
+      border-radius: 6px;
+    }
+
+    .screen-main { background: #fff; }
+
+    .screen-line {
+      height: 5px;
+      margin-bottom: 7px;
+      background: #b8d3ef;
+      border-radius: 5px;
+    }
+
+    .screen-line.active { width: 82%; background: var(--aqua); }
+
+    .screen-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 47px;
+      margin-top: 10px;
+    }
+
+    .screen-chart i {
+      flex: 1;
+      background: var(--blue);
+      border-radius: 3px 3px 0 0;
+    }
+
+    .screen-chart i:nth-child(1) { height: 38%; }
+    .screen-chart i:nth-child(2) { height: 68%; }
+    .screen-chart i:nth-child(3) { height: 52%; }
+    .screen-chart i:nth-child(4) { height: 88%; }
+
+    .caption {
+      display: grid;
+      gap: 11px;
+      margin-top: 15px;
+      padding: 17px 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .caption h4 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    .caption p {
+      margin: 0;
+      color: var(--slate);
+      font-size: 13px;
+      white-space: pre-line;
+    }
+
+    .hashtags {
+      color: var(--blue) !important;
+      font-weight: 600;
+    }
+
+    .footer {
+      width: min(1450px, calc(100% - 48px));
+      margin: 0 auto 60px;
+      padding-top: 24px;
+      color: var(--slate);
+      border-top: 1px solid #cbd8e6;
+      font-size: 13px;
+    }
+
+    @media (max-width: 820px) {
+      .variant-heading { display: block; }
+      .audience { max-width: none; margin-top: 16px; }
+      .preview-grid { grid-template-columns: 1fr; }
+      .artboard.post { max-width: none; }
+      .artboard.story { min-height: 0; }
+    }
+
+    @media print {
+      html, body { background: #fff; }
+      .page-header, .page-note, .footer, .variant-heading, .caption { display: none; }
+      main { width: 100%; margin: 0; }
+      .variant { padding: 0; border: 0; break-after: page; }
+      .preview-grid { gap: 12mm; }
+      .artboard { box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div class="eyebrow">Kit de criação · Instagram · agosto de 2026</div>
+    <h1>5 variações de anúncio para pequenas empresas</h1>
+    <p>Layouts conceituais da NexoERP em formato Story e Post, com arte editável em HTML/CSS, copy, CTA e hashtags para refinamento da agência.</p>
+  </header>
+
+  <div class="page-note">
+    <strong>Como usar:</strong> cada quadro mantém a área segura de 80 px em proporção, usa dados fictícios e pode ser capturado no navegador em 1080×1920 ou 1080×1080. O contorno pontilhado é apenas uma referência de margem e pode ser removido antes da exportação.
+  </div>
+
+  <main>
+    <section class="variant">
+      <div class="variant-heading">
+        <div>
+          <div class="variant-number">Variação 01 · descoberta</div>
+          <h2>A planilha ajudou. Agora o processo precisa acompanhar.</h2>
+          <p class="variant-purpose">Reconhece o estágio de crescimento sem atacar a ferramenta que funcionou no começo.</p>
+        </div>
+        <div class="audience"><strong>Foco:</strong> proprietários e gerentes financeiros de empresas em crescimento.</div>
+      </div>
+      <div class="preview-grid">
+        <article class="preview">
+          <div class="format-label">Story · 1080 × 1920</div>
+          <div class="artboard story">
+            <div class="safe-zone"></div>
+            <div class="ad-top"><div class="brand"><span class="brand-mark">N</span>NexoERP</div><div class="series">gestão financeira</div></div>
+            <div class="content">
+              <div class="kicker">Sua empresa cresceu</div>
+              <h3>A planilha ajudou. Agora o processo precisa acompanhar.</h3>
+              <p class="subcopy">Reúna contas, bancos e projeções em uma rotina compartilhada.</p>
+              <div class="visual cards"><div class="mini-card"><span class="mini-label">Banco</span><div class="mini-line"></div><div class="mini-line short"></div></div><div class="mini-card"><span class="mini-label">Planilha</span><div class="mini-line"></div><div class="mini-line short"></div></div><div class="mini-card"><span class="mini-label">NexoERP</span><div class="mini-line"></div><div class="mini-line short"></div></div></div>
+              <div class="cta">Faça o diagnóstico financeiro</div>
+            </div>
+            <div class="ad-bottom"><div class="brand">NexoERP</div><div class="tagline">Clareza financeira para decidir antes.</div></div>
+          </div>
+          <div class="caption"><h4>Texto da publicação</h4><p>A planilha pode ter sido essencial no começo. Quando a empresa cresce, o processo financeiro também precisa evoluir.
+
+Organize contas, bancos e projeções no NexoERP.
+
+Faça o diagnóstico financeiro.</p><p class="hashtags">#GestãoFinanceira #PequenasEmpresas #NexoERP #FluxoDeCaixa</p></div>
+        </article>
+        <article class="preview">
+          <div class="format-label">Post · 1080 × 1080</div>
+          <div class="artboard post">
+            <div class="safe-zone"></div>
+            <div class="ad-top"><div class="brand"><span class="brand-mark">N</span>NexoERP</div><div class="series">01 / 05</div></div>
+            <div class="content"><div class="kicker">Quando o negócio muda</div><h3>A planilha ajudou. Agora o processo precisa acompanhar.</h3><p class="subcopy">Menos arquivos espalhados. Mais clareza sobre o financeiro.</p><div class="visual flow"><div class="flow-node">contas</div><div class="flow-arrow">→</div><div class="flow-node">bancos</div><div class="flow-arrow">→</div><div class="flow-node">visão</div></div></div>
+            <div class="ad-bottom"><div class="cta">Conheça a plataforma</div><div class="tagline">Financeiro organizado para a empresa crescer.</div></div>
+          </div>
+          <div class="caption"><h4>Título e descrição</h4><p><strong>Título:</strong> A planilha ajudou. Agora o processo precisa acompanhar.
+<strong>Descrição:</strong> Organize contas, bancos e projeções no NexoERP.</p><p class="hashtags">#PequenasEmpresas #GestãoFinanceira #NexoERP</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="variant">
+      <div class="variant-heading"><div><div class="variant-number">Variação 02 · visão de caixa</div><h2>Saldo de hoje não mostra tudo o que vem pela frente.</h2><p class="variant-purpose">Fala com quem toma decisão e precisa enxergar compromissos e recebimentos futuros.</p></div><div class="audience"><strong>Foco:</strong> proprietários e sócios de pequenas empresas.</div></div>
+      <div class="preview-grid">
+        <article class="preview"><div class="format-label">Story · 1080 × 1920</div><div class="artboard story blue"><div class="safe-zone"></div><div class="ad-top"><div class="brand"><span class="brand-mark">N</span>NexoERP</div><div class="series">visão de caixa</div></div><div class="content"><div class="kicker">Decisões mais tranquilas</div><h3>Saldo de hoje não mostra tudo o que vem pela frente.</h3><p class="subcopy">Acompanhe compromissos, recebimentos e projeções em um só fluxo.</p><div class="visual dashboard"><div class="metric-card"><span class="metric-label">previsto</span><strong>R$ 48,2k</strong><div class="chart"><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i></div></div><div class="trend"><span class="screen-label">realizado</span></div></div><div class="cta">Veja como funciona</div></div><div class="ad-bottom"><div class="brand">NexoERP</div><div class="tagline">Veja o que aconteceu e o que vem pela frente.</div></div></div><div class="caption"><h4>Texto da publicação</h4><p>Saldo bancário mostra o presente. Uma visão de caixa organizada ajuda sua empresa a acompanhar compromissos e recebimentos futuros.
+
+Veja como o NexoERP funciona.</p><p class="hashtags">#FluxoDeCaixa #PequenasEmpresas #GestãoFinanceira #NexoERP</p></div></article>
+        <article class="preview"><div class="format-label">Post · 1080 × 1080</div><div class="artboard post blue"><div class="safe-zone"></div><div class="ad-top"><div class="brand"><span class="brand-mark">N</span>NexoERP</div><div class="series">02 / 05</div></div><div class="content"><div class="kicker">Para decidir antes</div><h3>Saldo de hoje não mostra tudo o que vem pela frente.</h3><div class="visual dashboard"><div class="metric-card"><span class="metric-label">caixa previsto</span><strong>+ 18%</strong><div class="chart"><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i></div></div><div class="trend"><span class="screen-label">próximos dias</span></div></div></div><div class="ad-bottom"><div class="cta">Conhecer plataforma</div><div class="tagline">Clareza financeira para decidir antes.</div></div></div><div class="caption"><h4>Título e descrição</h4><p><strong>Título:</strong> Saldo de hoje não mostra tudo o que vem pela frente.
+<strong>Descrição:</strong> Acompanhe compromissos e recebimentos no NexoERP.</p><p class="hashtags">#FluxoDeCaixa #GestãoFinanceira #NexoERP</p></div></article>
+      </div>
+    </section>
+
+    <section class="variant">
+      <div class="variant-heading"><div><div class="variant-number">Variação 03 · fechamento</div><h2>Fechar o mês não precisa começar com uma caça aos dados.</h2><p class="variant-purpose">Apresenta conciliação e histórico como apoio à rotina, sem prometer automação total.</p></div><div class="audience"><strong>Foco:</strong> gerentes e analistas financeiros.</div></div>
+      <div class="preview-grid">
+        <article class="preview"><div class="format-label">Story · 1080 × 1920</div><div class="artboard story aqua"><div class="safe-zone"></div><div class="ad-top"><div class="brand"><span class="brand-mark">N</span>NexoERP</div><div class="series">fechamento</div></div><div class="content"><div class="kicker">Menos conferência manual</div><h3>Fechar o mês não precisa começar com uma caça aos dados.</h3><p class="subcopy">Importe extratos, encontre pendências e acompanhe o histórico da rotina.</p><div class="visual approval-card"><div class="approval-head"><span>Conciliação bancária</span><span class="status">em dia</span></div><div class="approval-row"><span>Extrato de agosto</span><span>✓</span></div><div class="approval-row"><span>12 lançamentos pendentes</span><span class="status">revisar</span></div><div class="approval-row"><span>Histórico de alterações</span><span>→</span></div></div><div class="cta">Assista à demonstração</div></div><div class="ad-bottom"><div class="brand">NexoERP</div><div class="tagline">Conecte a rotina financeira.</div></div></div><div class="caption"><h4>Texto da publicação</h4><p>Quando o fechamento depende de conferências em vários lugares, encontrar pendências fica mais difícil.
+
+Veja uma demonstração de conciliação e auditoria no NexoERP.</p><p class="hashtags">#ConciliaçãoBancária #Financeiro #PequenasEmpresas #NexoERP</p></div></article>
+        <article class="preview"><div class="format-label">Post · 1080 × 1080</div><div class="artboard post aqua"><div class="safe-zone"></div><div class="ad-top"><div class="brand"><span class="brand-mark">N</span>NexoERP</div><div class="series">03 / 05</div></div><div class="content"><div class="kicker">Uma rotina mais conectada</div><h3>Fechar o mês não precisa começar com uma caça aos dados.</h3><div class="visual approval-card"><div class="approval-head"><span>Conciliação</span><span class="status">organizada</span></div><div class="approval-row"><span>Extratos</span><span>✓</span></div><div class="approval-row"><span>Pendências</span><span>12</span></div><div class="approval-row"><span>Histórico</span><span>→</span></div></div></div><div class="ad-bottom"><div class="cta">Ver demonstração</div><div class="tagline">Menos retrabalho. Mais contexto.</div></div></div><div class="caption"><h4>Título e descrição</h4><p><strong>Título:</strong> Fechar o mês sem caça aos dados.
+<strong>Descrição:</strong> Importe extratos, encontre lançamentos e acompanhe pendências.</p><p class="hashtags">#Financeiro #ConciliaçãoBancária #NexoERP</p></div></article>
+      </div>
+    </section>
+
+    <section class="variant">
+      <div class="variant-heading"><div><div class="variant-number">Variação 04 · aprovação</div><h2>Mais pessoas no financeiro? Mais clareza para aprovar.</h2><p class="variant-purpose">Conecta crescimento da equipe a permissões, histórico e regras de aprovação.</p></div><div class="audience"><strong>Foco:</strong> empresas com equipe financeira de duas a oito pessoas.</div></div>
+      <div class="preview-grid">
+        <article class="preview"><div class="format-label">Story · 1080 × 1920</div><div class="artboard story light"><div class="safe-zone"></div><div class="ad-top"><div class="brand"><span class="brand-mark">N</span>NexoERP</div><div class="series">processo compartilhado</div></div><div class="content"><div class="kicker">Crescer também é organizar</div><h3>Mais pessoas no financeiro? Mais clareza para aprovar.</h3><p class="subcopy">Defina responsabilidades, acompanhe o histórico e mantenha a rotina em movimento.</p><div class="visual approval-card"><div class="approval-head"><span>Pagamentos desta semana</span><span class="status">3 aprovados</span></div><div class="approval-row"><span>Fornecedor A</span><span>aprovado</span></div><div class="approval-row"><span>Fornecedor B</span><span>em revisão</span></div><div class="approval-row"><span>Fornecedor C</span><span>aprovado</span></div></div><div class="cta">Conheça a plataforma</div></div><div class="ad-bottom"><div class="brand">NexoERP</div><div class="tagline">Organização para sua equipe decidir junto.</div></div></div><div class="caption"><h4>Texto da publicação</h4><p>Com mais pessoas participando do financeiro, regras claras ajudam a equipe a trabalhar com contexto e segurança.
+
+Conheça as aprovações, permissões e histórico do NexoERP.</p><p class="hashtags">#GestãoFinanceira #Processos #PequenasEmpresas #NexoERP</p></div></article>
+        <article class="preview"><div class="format-label">Post · 1080 × 1080</div><div class="artboard post light"><div class="safe-zone"></div><div class="ad-top"><div class="brand"><span class="brand-mark">N</span>NexoERP</div><div class="series">04 / 05</div></div><div class="content"><div class="kicker">Do esforço individual ao processo</div><h3>Mais pessoas no financeiro? Mais clareza para aprovar.</h3><div class="visual flow"><div class="flow-node">solicitar</div><div class="flow-arrow">→</div><div class="flow-node">revisar</div><div class="flow-arrow">→</div><div class="flow-node">aprovar</div></div></div><div class="ad-bottom"><div class="cta">Conhecer plataforma</div><div class="tagline">Histórico e permissões no mesmo fluxo.</div></div></div><div class="caption"><h4>Título e descrição</h4><p><strong>Título:</strong> Mais pessoas no financeiro? Mais clareza para aprovar.
+<strong>Descrição:</strong> Organize responsabilidades, aprovações e histórico no NexoERP.</p><p class="hashtags">#Processos #GestãoFinanceira #NexoERP</p></div></article>
+      </div>
+    </section>
+
+    <section class="variant">
+      <div class="variant-heading"><div><div class="variant-number">Variação 05 · visão integrada</div><h2>Contas, bancos e relatórios no mesmo fluxo.</h2><p class="variant-purpose">Mensagem direta de consideração para quem já percebeu que usa ferramentas demais.</p></div><div class="audience"><strong>Foco:</strong> empresas com contas, boletos e relatórios em sistemas separados.</div></div>
+      <div class="preview-grid">
+        <article class="preview"><div class="format-label">Story · 1080 × 1920</div><div class="artboard story"><div class="safe-zone"></div><div class="ad-top"><div class="brand"><span class="brand-mark">N</span>NexoERP</div><div class="series">rotina conectada</div></div><div class="content"><div class="kicker">Um só lugar para acompanhar</div><h3>Contas, bancos e relatórios no mesmo fluxo.</h3><p class="subcopy">Reduza a troca de arquivos e acompanhe o que aconteceu e o que vem pela frente.</p><div class="visual dashboard"><div class="screen"><span class="screen-label">visão financeira</span><div class="screen-body"><div class="screen-sidebar"><div class="screen-line active"></div><div class="screen-line"></div><div class="screen-line"></div></div><div class="screen-main"><div class="screen-line"></div><div class="screen-chart"><i></i><i></i><i></i><i></i></div></div></div></div></div><div class="cta">Fale com um especialista</div></div><div class="ad-bottom"><div class="brand">NexoERP</div><div class="tagline">Financeiro organizado para a empresa crescer.</div></div></div><div class="caption"><h4>Texto da publicação</h4><p>Contas em um lugar, bancos em outro e relatórios em mais uma planilha?
+
+O NexoERP conecta a rotina financeira à visão de caixa. Fale com um especialista.</p><p class="hashtags">#GestãoFinanceira #FluxoDeCaixa #PequenasEmpresas #NexoERP</p></div></article>
+        <article class="preview"><div class="format-label">Post · 1080 × 1080</div><div class="artboard post"><div class="safe-zone"></div><div class="ad-top"><div class="brand"><span class="brand-mark">N</span>NexoERP</div><div class="series">05 / 05</div></div><div class="content"><div class="kicker">Menos troca de arquivos</div><h3>Contas, bancos e relatórios no mesmo fluxo.</h3><div class="visual flow"><div class="flow-node">contas</div><div class="flow-arrow">+</div><div class="flow-node">bancos</div><div class="flow-arrow">+</div><div class="flow-node">relatórios</div></div><p class="subcopy">Uma rotina financeira conectada para sua empresa crescer.</p></div><div class="ad-bottom"><div class="cta">Fale com um especialista</div><div class="tagline">Clareza financeira para decidir antes.</div></div></div><div class="caption"><h4>Título e descrição</h4><p><strong>Título:</strong> Contas, bancos e relatórios no mesmo fluxo.
+<strong>Descrição:</strong> Conheça o NexoERP e organize a rotina financeira da sua empresa.</p><p class="hashtags">#PequenasEmpresas #GestãoFinanceira #NexoERP</p></div></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Arquivo conceitual para refinamento. Antes da publicação, validar oferta, landing page, CTA, legibilidade em dispositivo móvel, alegações, consentimentos e parâmetros de campanha.</footer>
+</body>
+</html>

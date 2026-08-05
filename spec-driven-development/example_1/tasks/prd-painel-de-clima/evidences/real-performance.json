@@ -1,0 +1,90 @@
+{
+  "executedAt": "2026-08-02T14:29:13.055Z",
+  "baseUrl": "http://127.0.0.1:5102",
+  "sampleSize": 20,
+  "p95Ms": 812,
+  "passed": true,
+  "network": "QA network, direct Open-Meteo production endpoints",
+  "samples": [
+    {
+      "city": "São Paulo",
+      "durationMs": 1884
+    },
+    {
+      "city": "Rio de Janeiro",
+      "durationMs": 810
+    },
+    {
+      "city": "Curitiba",
+      "durationMs": 807
+    },
+    {
+      "city": "Salvador",
+      "durationMs": 810
+    },
+    {
+      "city": "Recife",
+      "durationMs": 808
+    },
+    {
+      "city": "Lisboa",
+      "durationMs": 810
+    },
+    {
+      "city": "Porto",
+      "durationMs": 805
+    },
+    {
+      "city": "Madrid",
+      "durationMs": 811
+    },
+    {
+      "city": "Paris",
+      "durationMs": 806
+    },
+    {
+      "city": "London",
+      "durationMs": 812
+    },
+    {
+      "city": "New York",
+      "durationMs": 803
+    },
+    {
+      "city": "Toronto",
+      "durationMs": 801
+    },
+    {
+      "city": "Mexico City",
+      "durationMs": 809
+    },
+    {
+      "city": "Buenos Aires",
+      "durationMs": 801
+    },
+    {
+      "city": "Santiago",
+      "durationMs": 808
+    },
+    {
+      "city": "Tokyo",
+      "durationMs": 808
+    },
+    {
+      "city": "Seoul",
+      "durationMs": 807
+    },
+    {
+      "city": "Sydney",
+      "durationMs": 811
+    },
+    {
+      "city": "Cape Town",
+      "durationMs": 807
+    },
+    {
+      "city": "Cairo",
+      "durationMs": 799
+    }
+  ]
+}

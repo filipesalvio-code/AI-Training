@@ -1,0 +1,124 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for components/WeatherResult.tsx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">components</a> WeatherResult.tsx</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>3/3</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>2/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>2/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>3/3</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type { WeatherResponse } from '../types/weather-response';
+import { SourceAttribution } from './SourceAttribution';
+&nbsp;
+type WeatherResultProps = { weather: WeatherResponse };
+&nbsp;
+export function WeatherResult({ weather }: WeatherResultProps) {
+  const { location, current, units, source } = weather;
+  return &lt;article className="border-t border-slate-700 pt-8" aria-labelledby="weather-result-title"&gt;&lt;div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"&gt;&lt;div&gt;&lt;p className="text-sm uppercase tracking-[0.18em] text-amber-300"&gt;Localidade resolvida&lt;/p&gt;&lt;h2 id="weather-result-title" className="mt-3 text-3xl font-semibold tracking-tight text-white"&gt;{location.city}&lt;/h2&gt;&lt;p className="mt-2 text-slate-300"&gt;{location.administrativeArea ? `${location.administrativeArea} · ` : ''}{location.country}&lt;/p&gt;&lt;/div&gt;&lt;div className="lg:text-right"&gt;&lt;p className="text-6xl font-semibold tracking-[-0.04em] text-white"&gt;{current.temperature}{units.temperature}&lt;/p&gt;&lt;p className="mt-2 text-lg text-amber-200"&gt;{current.condition}&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;dl className="mt-10 grid grid-cols-2 border-y border-slate-700 sm:grid-cols-4"&gt;&lt;WeatherMetric label="Sensação térmica" value={`${current.apparentTemperature}${units.apparentTemperature}`} /&gt;&lt;WeatherMetric label="Umidade relativa" value={`${current.relativeHumidity}${units.relativeHumidity}`} /&gt;&lt;WeatherMetric label="Velocidade do vento" value={`${current.windSpeed}${units.windSpeed}`} /&gt;&lt;WeatherMetric label="Condição atual" value={current.condition} /&gt;&lt;/dl&gt;&lt;div className="mt-8"&gt;&lt;SourceAttribution source={source} /&gt;&lt;/div&gt;&lt;/article&gt;;
+}
+&nbsp;
+function WeatherMetric({ label, value }: { label: string; value: string }) {
+  return &lt;div className="border-b border-slate-700 px-0 py-5 first:pr-4 sm:border-b-0 sm:border-r sm:px-5 sm:first:pl-0 sm:last:border-r-0"&gt;&lt;dt className="text-sm text-slate-400"&gt;{label}&lt;/dt&gt;&lt;dd className="mt-2 text-base font-medium text-slate-100"&gt;{value}&lt;/dd&gt;&lt;/div&gt;;
+}
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-08-02T18:08:35.323Z
+            </div>
+        <script src="../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
+    </body>
+</html>
+    

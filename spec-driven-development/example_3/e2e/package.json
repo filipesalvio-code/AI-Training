@@ -1,0 +1,13 @@
+{
+  "name": "weather-panel-e2e",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:real-performance": "QA_REAL=1 playwright test real-performance.spec.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2"
+  }
+}

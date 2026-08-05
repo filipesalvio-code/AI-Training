@@ -1,0 +1,45 @@
+{
+  "title": "Defina a nova direção visual",
+  "question": "O redesenho preserva a consulta rápida, mas troca o radar luminoso por uma superfície de decisão mais sóbria. Escolha uma direção ou peça outra rodada.",
+  "options": [
+    {
+      "id": "assigned-operations-desk",
+      "label": "Mesa de operações climáticas",
+      "kicker": "DIREÇÃO PROPOSTA",
+      "lineage": "centros de comando e instrumentos de precisão",
+      "thesis": "Uma leitura meteorológica apresentada como uma decisão operacional clara e confiável.",
+      "palette": ["#F4F3EF", "#1A252D", "#E75F2B", "#476A78"],
+      "materials": ["papel mineral", "tinta de engenharia", "sinalização de segurança"],
+      "viewport": "Uma barra operacional compacta conduz a uma leitura central, com a temperatura como o único dado monumental e as métricas em uma régua lateral.",
+      "risk": "Exige rigor no espaçamento para manter a presença sem parecer uma tela administrativa comum.",
+      "sketch": ".impeccable/sketches/operations-desk.webp"
+    },
+    {
+      "id": "challenger-hardware-bench",
+      "label": "Instrumento de bancada",
+      "lineage": "hardware criativo de precisão",
+      "thesis": "A consulta vira um instrumento físico: controles táteis, leitura âmbar e uma única ação inequívoca.",
+      "case": "Boa fusão: reforça a confiabilidade operacional, mas pode tornar a busca menos direta em telas pequenas.",
+      "sketch": ".impeccable/sketches/hardware-bench.webp",
+      "hero": "https://impeccable.style/worlds/cards/design-canon-creator-hardware-bench-hero.webp"
+    },
+    {
+      "id": "challenger-iridescent-edge",
+      "label": "Borda de nuvem iridescente",
+      "lineage": "fenômenos ópticos atmosféricos",
+      "thesis": "Uma superfície quase monocromática em que o clima aparece numa fina faixa espectral de alta precisão.",
+      "case": "Funde bem com o tema e preserva sobriedade; comunica menos claramente o caráter enterprise.",
+      "sketch": ".impeccable/sketches/iridescent-edge.webp",
+      "hero": "https://impeccable.style/worlds/cards/clouds-storms-auroras-iridescent-cloud-edge-hero.webp"
+    }
+  ],
+  "reroll": true,
+  "steer": true,
+  "canon": true,
+  "canonCard": {
+    "label": "Padrão de categoria",
+    "thesis": "Um dashboard meteorológico convencional, executado com alto rigor.",
+    "viewport": "Cabeçalho, campo de busca e cartões de métricas na composição esperada.",
+    "sketch": ".impeccable/sketches/category-standard.webp"
+  }
+}

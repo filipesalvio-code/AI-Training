@@ -1,0 +1,45 @@
+{
+  "title": "Escolha a linguagem visual",
+  "question": "Para a consulta do clima, a direção de estação de radar foi escolhida pelo processo criativo. Você pode mantê-la, optar por uma alternativa ou pedir outra rodada.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Estação de radar atmosférico",
+      "kicker": "DIREÇÃO SELECIONADA",
+      "lineage": "mapas meteorológicos de alta altitude e centros de observação",
+      "thesis": "A cidade vira um campo atmosférico vivo, onde a cor descreve a condição real.",
+      "palette": ["#061221", "#F5F7FF", "#3ABEFF", "#FF6B2C"],
+      "materials": ["isolinhas de pressão", "mapa de frentes luminosas"],
+      "viewport": "Busca em primeiro plano sobre um campo de pressão; o resultado expande como uma leitura de radar da cidade.",
+      "risk": "A energia visual exige disciplina para manter métricas e controles imediatos.",
+      "sketch": ".impeccable/sketches/weather-radar.webp"
+    },
+    {
+      "id": "challenger-oscilloscope",
+      "label": "Bancada de osciloscópio",
+      "lineage": "instrumentos científicos de medição",
+      "thesis": "Uma leitura de clima como sinal observado em uma bancada de precisão.",
+      "case": "Funde bem para dados, mas identifica menos rapidamente o contexto climático do que o radar.",
+      "sketch": ".impeccable/sketches/weather-oscilloscope.webp",
+      "hero": "https://impeccable.style/worlds/cards/scientific-notation-oscilloscope-signal-bench-hero.webp"
+    },
+    {
+      "id": "challenger-starship",
+      "label": "Painel de navegação orbital",
+      "lineage": "consoles de ficção científica retrô-futurista",
+      "thesis": "Blocos cromáticos conduzem cada leitura como uma rota espacial.",
+      "case": "Tem alto reconhecimento futurista, mas a codificação por cor ficaria menos vinculada à condição real.",
+      "sketch": ".impeccable/sketches/weather-starship.webp",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-elbow-panel-console-hero.webp"
+    }
+  ],
+  "reroll": true,
+  "canon": true,
+  "canonCard": {
+    "label": "O padrão da categoria",
+    "thesis": "Cartão de previsão convencional, bem executado.",
+    "viewport": "Uma busca simples sobre um painel claro de clima.",
+    "sketch": ".impeccable/sketches/weather-canon.webp"
+  },
+  "steer": true
+}
