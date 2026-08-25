@@ -1,14 +1,14 @@
-# Log de atualizações
+# Update Log
 
 ## 2026-08-03
 
-- **Lint**: Reorganizado `wiki/output/` em pastas de operação com prefixo de data ISO 8601: anúncios Instagram, landing page e artigos de blog; links e inventário foram atualizados.
-- **Lint**: Movido o artefato [anuncios-instagram-nexoerp.html](/output/2026-08-03-instagram-ads/anuncios-instagram-nexoerp.html) para uma pasta datada em `wiki/output/` e corrigidas suas referências.
-- **Consulta**: Criada a [abordagem de geração de leads para a diretoria](/conceitos/abordagem-geracao-leads-diretoria.md), com três frentes de aquisição, plano de piloto, métricas e guardrails.
-- **Ingestão**: Adicionados o resumo da fonte [Empresa, produto e posicionamento da NexoERP](/fontes/01-empresa-produto-e-posicionamento.md), a entidade [NexoERP](/entidades/nexoerp.md) e o conceito [Posicionamento da NexoERP](/conceitos/posicionamento-nexoerp.md).
-- **Ingestão**: Adicionados o resumo da fonte [Perfil de cliente ideal da NexoERP](/fontes/02-perfil-de-cliente-ideal.md) e o conceito [Perfil de cliente ideal da NexoERP](/conceitos/perfil-de-cliente-ideal.md); a entidade [NexoERP](/entidades/nexoerp.md) foi atualizada com essa relação.
-- **Ingestão**: Processadas as fontes 03 a 10; adicionados seus resumos e conceitos de personas, concorrência, marca, redação, design, anúncios, campanhas, métricas e publicação; a entidade [NexoERP](/entidades/nexoerp.md) foi conectada à documentação relacionada.
-- **Consulta**: Adicionada a [estrutura de anúncio para pequenas empresas](/conceitos/estrutura-anuncio-pequenas-empresas.md), com modelo preenchível, exemplo para a NexoERP, adaptação por canal e checklist de revisão.
-- **Consulta**: Criado o ativo [variações de anúncios Instagram para pequenas empresas](/conceitos/variacoes-anuncios-instagram-pequenas-empresas.md), com cinco conceitos em Story e Post e implementação HTML/CSS em [anuncios-instagram-nexoerp.html](/output/2026-08-03-instagram-ads/anuncios-instagram-nexoerp.html).
-- **Consulta**: Criada a [landing page da NexoERP](/output/2026-08-03-landing-page-nexoerp/landing-page-nexoerp.html) para médias e grandes empresas, com estilos separados em [landing-page-nexoerp.css](/output/2026-08-03-landing-page-nexoerp/landing-page-nexoerp.css) e inventário em [output/index.md](/output/index.md).
-- **Consulta**: Gerados três artigos de blog em [output/](/output/index.md), focados nas dores de dependência de planilhas, baixa visibilidade do fluxo de caixa e retrabalho na conciliação bancária.
+- **Lint**: Reorganized `wiki/output/` into operation folders with an ISO 8601 date prefix: Instagram ads, landing page, and blog articles; links and inventory were updated.
+- **Lint**: Moved the artifact [anuncios-instagram-nexoerp.html](/output/2026-08-03-instagram-ads/anuncios-instagram-nexoerp.html) to a dated folder in `wiki/output/` and corrected its references.
+- **Consultation**: Created the [lead generation approach for leadership](/concepts/abordagem-geracao-leads-diretoria.md), with three acquisition fronts, a pilot plan, metrics, and guardrails.
+- **Ingestion**: Added the summary of the source [Company, product, and positioning of NexoERP](/sources/01-empresa-produto-e-posicionamento.md), the entity [NexoERP](/entidades/nexoerp.md), and the concept [Positioning of NexoERP](/concepts/posicionamento-nexoerp.md).
+- **Ingestion**: Added the summary of the source [Ideal customer profile of NexoERP](/sources/02-perfil-de-cliente-ideal.md) and the concept [Ideal customer profile of NexoERP](/concepts/perfil-de-cliente-ideal.md); the entity [NexoERP](/entidades/nexoerp.md) was updated with this relationship.
+- **Ingestion**: Processed sources 03 to 10; added their summaries and concepts covering personas, competition, brand, copywriting, design, ads, campaigns, metrics, and publishing; the entity [NexoERP](/entidades/nexoerp.md) was connected to the related documentation.
+- **Consultation**: Added the [ad structure for small businesses](/concepts/estrutura-anuncio-pequenas-empresas.md), with a fillable template, a NexoERP example, channel adaptations, and a review checklist.
+- **Consultation**: Created the asset [Instagram ad variations for small businesses](/concepts/variacoes-anuncios-instagram-pequenas-empresas.md), with five concepts in Stories and Posts and HTML/CSS implementation in [anuncios-instagram-nexoerp.html](/output/2026-08-03-instagram-ads/anuncios-instagram-nexoerp.html).
+- **Consultation**: Created the [NexoERP landing page](/output/2026-08-03-landing-page-nexoerp/landing-page-nexoerp.html) for medium and large businesses, with styles separated in [landing-page-nexoerp.css](/output/2026-08-03-landing-page-nexoerp/landing-page-nexoerp.css) and inventory in [output/index.md](/output/index.md).
+- **Consultation**: Generated three blog articles in [output/](/output/index.md), focused on the pain points of spreadsheet dependency, low cash flow visibility, and rework in bank reconciliation.

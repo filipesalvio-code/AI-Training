@@ -25,7 +25,7 @@ describe('WeatherResult', () => {
   it('keeps humidity and wind measurements metric in Fahrenheit', () => {
     renderResult('fahrenheit');
     expect(screen.getByText('72%')).toBeVisible();
-    expect(screen.getByText('12,4km/h')).toBeVisible();
+    expect(screen.getByText('12.4km/h')).toBeVisible();
   });
 
   it('presents the rounded Celsius reading and functional attribution links', () => {
@@ -34,7 +34,7 @@ describe('WeatherResult', () => {
     expect(screen.getByText('24°C')).toBeVisible();
     expect(screen.getByText('25°C')).toBeVisible();
     expect(screen.getByText('72%')).toBeVisible();
-    expect(screen.getByText('12,4km/h')).toBeVisible();
+    expect(screen.getByText('12.4km/h')).toBeVisible();
     expect(screen.getByRole('link', { name: 'Open-Meteo' })).toHaveAttribute('href', weather.source.url);
     expect(screen.getByRole('link', { name: 'CC BY 4.0' })).toHaveAttribute('href', weather.source.licenseUrl);
   });

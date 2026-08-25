@@ -1,12 +1,12 @@
-# Exemplos de acessibilidade
+# Accessibility examples
 
-## Mensagem de carregamento
+## Loading message
 
 ```tsx
 function LoadingMessage() {
   return (
     <p role="status" aria-live="polite" aria-busy="true">
-      Consultando a API...
+      Querying the API...
     </p>
   )
 }

@@ -12,10 +12,10 @@ describe('WeatherView temperature unit', () => {
   it('hides the unit toggle before a location is selected', async () => {
     vi.spyOn(globalThis, 'fetch').mockImplementation(() => new Promise<Response>(() => undefined));
     renderView();
-    expect(screen.queryByRole('group', { name: 'Unidade de temperatura' })).not.toBeInTheDocument();
-    fireEvent.change(screen.getByRole('combobox', { name: 'Nome da cidade' }), { target: { value: 'Lisboa' } });
-    await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent('Buscando localidades'));
-    expect(screen.queryByRole('group', { name: 'Unidade de temperatura' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('group', { name: 'Temperature unit' })).not.toBeInTheDocument();
+    fireEvent.change(screen.getByRole('combobox', { name: 'City name' }), { target: { value: 'Lisboa' } });
+    await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent('Searching locations'));
+    expect(screen.queryByRole('group', { name: 'Temperature unit' })).not.toBeInTheDocument();
   });
 
   it('changes units without a second weather request and keeps the result', async () => {
@@ -23,7 +23,7 @@ describe('WeatherView temperature unit', () => {
       .mockResolvedValueOnce(new Response(JSON.stringify({ suggestions: [location] }), { status: 200 }))
       .mockResolvedValueOnce(new Response(JSON.stringify(weather), { status: 200 }));
     renderView();
-    fireEvent.change(screen.getByRole('combobox', { name: 'Nome da cidade' }), { target: { value: 'Lisboa' } });
+    fireEvent.change(screen.getByRole('combobox', { name: 'City name' }), { target: { value: 'Lisboa' } });
     await waitFor(() => expect(screen.getByRole('option')).toBeVisible());
     fireEvent.pointerDown(screen.getByRole('option'));
     await waitFor(() => expect(screen.getByRole('heading', { name: 'Lisboa' })).toBeVisible());

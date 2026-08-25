@@ -10,7 +10,7 @@ export function useWeather() {
   async function search(city: string): Promise<void> {
     setLoading(true);
     setError('');
-    try { setWeather(await fetchWeather(city)); } catch (caught) { setError(caught instanceof Error ? caught.message : 'Não foi possível consultar o clima'); } finally { setLoading(false); }
+    try { setWeather(await fetchWeather(city)); } catch (caught) { setError(caught instanceof Error ? caught.message : 'Could not fetch weather'); } finally { setLoading(false); }
   }
 
   return { weather, loading, error, search };

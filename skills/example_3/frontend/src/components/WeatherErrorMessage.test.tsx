@@ -4,9 +4,9 @@ import { describe, expect, it } from 'vitest';
 import { WeatherErrorMessage } from './WeatherErrorMessage';
 
 describe('WeatherErrorMessage', () => {
-  it('exibe a mensagem de cidade não localizada como alerta', () => {
-    render(<WeatherErrorMessage message="Cidade não encontrada" />);
+  it('shows the city-not-found message as an alert', () => {
+    render(<WeatherErrorMessage message="City not found" />);
 
-    expect(screen.getByRole('alert')).toHaveTextContent('Cidade não encontrada');
+    expect(screen.getByRole('alert')).toHaveTextContent('City not found');
   });
 });

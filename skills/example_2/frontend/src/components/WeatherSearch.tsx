@@ -6,10 +6,10 @@ type WeatherSearchProps = { isLoading: boolean; onSubmit: (event: FormEvent<HTML
 export function WeatherSearch({ isLoading, onSubmit }: WeatherSearchProps) {
   return (
     <form className="weather-search" onSubmit={onSubmit}>
-      <label className="sr-only" htmlFor="city">Cidade</label>
+      <label className="sr-only" htmlFor="city">City</label>
       <Search className="search-icon" size={20} aria-hidden="true" />
-      <input id="city" name="city" placeholder="Busque uma cidade" autoComplete="address-level2" />
-      <button type="submit" disabled={isLoading}>{isLoading ? 'Lendo dados…' : 'Ver clima'}</button>
+      <input id="city" name="city" placeholder="Search for a city" autoComplete="address-level2" />
+      <button type="submit" disabled={isLoading}>{isLoading ? 'Reading…' : 'Check weather'}</button>
     </form>
   );
 }

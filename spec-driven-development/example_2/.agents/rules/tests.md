@@ -1,26 +1,26 @@
-# Regras de testes
+# Test rules
 
-Estas regras se aplicam ao frontend, ao backend e aos testes E2E do projeto.
+These rules apply to frontend, backend, and E2E tests in the project.
 
-## Cobertura obrigatória
+## Required coverage
 
-<critical>**Todo código deve ser coberto por testes automatizados. Esta é uma regra crítica e não deve ser ignorada.**</critical>
+<critical>**All code must be covered by automated tests. This is a critical rule and must not be ignored.**</critical>
 
-A cobertura mínima exigida é de 80%. O percentual, entretanto, não é o único critério de qualidade: os testes devem validar comportamentos, requisitos e cenários relevantes por meio de boas assertions ou expects.
+The minimum required coverage is 80%. The percentage alone is not enough: tests must validate behaviors, requirements, and relevant scenarios with strong assertions or expects.
 
-A prioridade deve ser dada ao código de maior risco para o negócio. Por exemplo, o fluxo de checkout é mais crítico do que o cadastro de uma categoria de produto e deve receber maior profundidade de testes, incluindo cenários de sucesso, falha, limites e recuperação.
+Prioritize code with higher business risk. For example, a checkout flow is more critical than registering a product category and should get deeper tests, including success, failure, limits, and recovery.
 
-Não aumente a cobertura apenas para atingir o percentual mínimo. Código sem comportamento relevante não deve receber testes artificiais, e código crítico não deve ficar sem testes porque o percentual geral já foi alcançado.
+Do not inflate coverage only to hit the minimum percentage. Code without relevant behavior should not get artificial tests, and critical code must not go untested because overall coverage already passed.
 
-## Princípio FIRST
+## FIRST principle
 
-Os testes devem seguir o princípio FIRST. O aspecto Timely pode ser ignorado neste projeto.
+Tests must follow the FIRST principle. The Timely aspect can be ignored in this project.
 
 ### Fast
 
-Os testes devem executar rapidamente. Priorize testes unitários e evite dependências externas lentas, como rede, banco de dados real, filas e serviços de terceiros.
+Tests must run quickly. Prefer unit tests and avoid slow external dependencies such as network, real databases, queues, and third-party services.
 
-Use stubs para substituir dependências cuja execução não seja relevante para o comportamento testado.
+Use stubs to replace dependencies whose execution is not relevant to the behavior under test.
 
 ```ts
 const paymentGateway = {
@@ -34,12 +34,12 @@ expect(result.status).toBe('approved');
 
 ### Independent
 
-Cada teste deve ser independente dos demais. Um teste não pode depender da ordem de execução, do estado criado por outro teste ou de dados compartilhados que possam ser alterados.
+Each test must be independent of the others. A test must not depend on execution order, state created by another test, or shared mutable data.
 
-Prepare os dados necessários dentro do próprio teste ou em uma configuração isolada. Se um teste falhar, os demais devem continuar capazes de informar seus próprios resultados.
+Prepare required data inside the test itself or in an isolated setup. If one test fails, the others must still be able to report their own results.
 
 ```ts
-it('calcula o frete para um pedido válido', () => {
+it('calculates shipping for a valid order', () => {
   const order = makeOrder({ total: 100 });
 
   expect(calculateShipping(order)).toBe(10);
@@ -48,9 +48,9 @@ it('calcula o frete para um pedido válido', () => {
 
 ### Repeatable
 
-Ao serem executados repetidamente, os testes devem produzir os mesmos resultados. Não dependa do horário atual, de números aleatórios, de chamadas externas ou de dados mutáveis.
+When run repeatedly, tests must produce the same results. Do not depend on the current time, random numbers, external calls, or mutable data.
 
-Use mocks para controlar o relógio, geradores aleatórios e respostas de APIs externas.
+Use mocks to control the clock, random generators, and external API responses.
 
 ```ts
 vi.setSystemTime(new Date('2026-01-15T12:00:00.000Z'));
@@ -58,16 +58,16 @@ vi.setSystemTime(new Date('2026-01-15T12:00:00.000Z'));
 expect(createExpirationDate()).toEqual(new Date('2026-01-16T12:00:00.000Z'));
 ```
 
-Restaure mocks e spies após cada teste para impedir vazamento de estado entre casos.
+Restore mocks and spies after each test to prevent state leaking between cases.
 
 ### Self-validated
 
-O próprio teste deve detectar uma falha de comportamento. Testes que apenas executam código, verificam cobertura ou não possuem assertions significativas não são suficientes.
+The test itself must detect a behavior failure. Tests that only execute code, check coverage, or lack meaningful assertions are not enough.
 
-Valide o retorno, o estado final, os efeitos colaterais e as interações relevantes com dependências. Uma assertion deve representar um requisito do comportamento testado.
+Validate the return value, final state, side effects, and relevant interactions with dependencies. An assertion should represent a requirement of the behavior under test.
 
 ```ts
-it('recusa um checkout sem itens', async () => {
+it('rejects checkout with no items', async () => {
   const result = await checkoutService.checkout({ items: [] });
 
   expect(result).toEqual({
@@ -77,18 +77,18 @@ it('recusa um checkout sem itens', async () => {
 });
 ```
 
-## Estrutura dos testes
+## Test structure
 
-Use uma destas estruturas, mantendo cada teste claro e focado:
+Use one of these structures, keeping each test clear and focused:
 
-- Given/When/Then: contexto, ação e resultado esperado.
-- AAA (Arrange/Act/Assert): preparação, execução e verificação.
+- Given/When/Then: context, action, and expected result.
+- AAA (Arrange/Act/Assert): preparation, execution, and verification.
 
-Cada teste deve verificar um único conceito ou comportamento. Não misture requisitos diferentes no mesmo caso. Prefira vários testes pequenos e expressivos a um teste com muitas razões possíveis para falhar.
+Each test must verify a single concept or behavior. Do not mix different requirements in the same case. Prefer several small, expressive tests over one test with many possible failure reasons.
 
 ```ts
-it('retorna erro quando o e-mail é inválido', () => {
-  const input = { email: 'invalido' };
+it('returns an error when the email is invalid', () => {
+  const input = { email: 'invalid' };
 
   const result = validateUser(input);
 
@@ -96,36 +96,36 @@ it('retorna erro quando o e-mail é inválido', () => {
 });
 ```
 
-Os nomes dos testes devem descrever o requisito observado, incluindo a condição e o resultado esperado. Evite nomes genéricos como `deve funcionar` ou `teste do serviço`.
+Test names must describe the observed requirement, including the condition and expected result. Avoid generic names such as `should work` or `service test`.
 
-## Ordem de criação dos testes
+## Order of creating tests
 
-Para obter o melhor resultado com eficiência, crie os testes nesta ordem:
+For the best result with efficiency, create tests in this order:
 
-1. Identifique os requisitos e classifique os fluxos por risco e impacto no negócio.
-2. Comece pelas regras de negócio críticas no backend e no frontend, cobrindo primeiro os testes unitários.
-3. Adicione testes unitários para validações, estados de erro, limites e transformações de dados.
-4. Crie testes de integração para contratos HTTP, persistência e colaboração entre módulos.
-5. Finalize com poucos testes E2E para os fluxos críticos completos, como login, checkout e confirmação de pedido.
-6. Execute a suíte, analise falhas e lacunas de cobertura e só então complemente cenários menos críticos.
+1. Identify requirements and rank flows by business risk and impact.
+2. Start with critical business rules in the backend and frontend, covering unit tests first.
+3. Add unit tests for validations, error states, limits, and data transformations.
+4. Create integration tests for HTTP contracts, persistence, and module collaboration.
+5. Finish with a few E2E tests for complete critical flows, such as login, checkout, and order confirmation.
+6. Run the suite, analyze failures and coverage gaps, then complement less critical scenarios.
 
-Essa ordem reduz o feedback inicial, favorece testes rápidos e evita usar E2E para descobrir problemas que poderiam ser identificados em testes unitários.
+That order reduces initial feedback time, favors fast tests, and avoids using E2E to discover problems that unit tests could catch.
 
-## Pirâmide de testes
+## Test pyramid
 
-Distribua os testes conforme a pirâmide de testes:
+Distribute tests according to the test pyramid:
 
-1. Uma base ampla de testes unitários, rápidos e isolados, para regras de negócio, componentes e funções.
-2. Uma quantidade menor de testes de integração, verificando a colaboração entre módulos, adaptadores, rotas e persistência.
-3. Uma quantidade reduzida de testes E2E, cobrindo os fluxos críticos completos pela perspectiva do usuário.
+1. A wide base of fast, isolated unit tests for business rules, components, and functions.
+2. Fewer integration tests verifying collaboration among modules, adapters, routes, and persistence.
+3. A small number of E2E tests covering complete critical flows from the user perspective.
 
-Não use testes E2E para substituir testes unitários ou de integração. O checkout, por exemplo, deve ter regras de cálculo e validação testadas unitariamente, integração com pagamento testada em integração e o fluxo essencial coberto por E2E.
+Do not use E2E tests to replace unit or integration tests. Checkout, for example, should have calculation and validation rules tested at unit level, payment collaboration tested at integration level, and the essential flow covered by E2E.
 
-## Ferramentas e organização
+## Tools and organization
 
-Use Vitest para testes unitários e de integração no frontend e no backend. Configure cobertura pelo Vitest e garanta que a execução falhe quando a cobertura mínima de 80% não for atingida.
+Use Vitest for unit and integration tests on the frontend. Use pytest for the Python backend. Configure coverage so execution fails when the minimum 80% coverage is not met.
 
-Use Playwright preferencialmente para testes E2E. Os testes E2E devem ficar na pasta `e2e/`, fora de `frontend/` e `backend/`.
+Use Playwright preferably for E2E tests. E2E tests should live in the `e2e/` folder, outside `frontend/` and `backend/`.
 
 ```text
 .
@@ -134,26 +134,26 @@ Use Playwright preferencialmente para testes E2E. Os testes E2E devem ficar na p
 │       └── **/*.test.tsx
 ├── backend/
 │   └── src/
-│       └── **/*.test.ts
+│       └── **/test_*.py
 └── e2e/
     └── checkout.spec.ts
 ```
 
-Os testes do frontend devem validar comportamento visível e interações relevantes, sem acoplamento desnecessário à implementação interna ou à estrutura de estilos. Os testes do backend devem validar regras de negócio, contratos HTTP, códigos de status, payloads, erros e efeitos relevantes.
+Frontend tests should validate visible behavior and relevant interactions, without unnecessary coupling to internal implementation or style structure. Backend tests should validate business rules, HTTP contracts, status codes, payloads, errors, and relevant effects.
 
-Mocks, stubs e fakes devem ser usados com intenção: substitua dependências externas ou lentas, mas não esconda a integração que o teste pretende verificar. Em testes de integração, prefira dependências controladas e ambientes isolados.
+Mocks, stubs, and fakes must be used intentionally: replace external or slow dependencies, but do not hide the integration the test intends to verify. In integration tests, prefer controlled dependencies and isolated environments.
 
-Exemplo de teste E2E com Playwright:
+Example E2E test with Playwright:
 
 ```ts
 import { expect, test } from '@playwright/test';
 
-test('cliente finaliza checkout com pagamento aprovado', async ({ page }) => {
+test('customer completes checkout with approved payment', async ({ page }) => {
   await page.goto('/checkout');
-  await page.getByRole('button', { name: 'Finalizar compra' }).click();
+  await page.getByRole('button', { name: 'Complete purchase' }).click();
 
-  await expect(page.getByText('Pedido confirmado')).toBeVisible();
+  await expect(page.getByText('Order confirmed')).toBeVisible();
 });
 ```
 
-Antes de concluir uma alteração, execute os testes e a verificação de cobertura dos aplicativos afetados. Uma alteração só deve ser considerada concluída quando os testes passarem, a cobertura mínima for respeitada e os cenários críticos estiverem protegidos.
+Before finishing a change, run tests and coverage checks for the affected apps. A change is complete only when tests pass, minimum coverage is respected, and critical scenarios are protected.

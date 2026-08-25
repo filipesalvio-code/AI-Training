@@ -1,15 +1,28 @@
-# mcp
+# mcp/example_1
 
-To install dependencies:
+Random number MCP servers in Python using the official [`mcp`](https://pypi.org/project/mcp/) SDK.
 
-```bash
-bun install
-```
-
-To run:
+## Prerequisites
 
 ```bash
-bun run index.ts
+pip install "mcp[cli]"
 ```
 
-This project was created using `bun init` in bun v1.3.14. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+## Stdio transport
+
+```bash
+/opt/homebrew/bin/python3.11 random_number_stdio.py
+```
+
+## Streamable HTTP transport
+
+Listens on `http://0.0.0.0:3000/mcp`:
+
+```bash
+/opt/homebrew/bin/python3.11 random_number_http.py
+```
+
+## Tools
+
+- `get_random_number` — random integer in `[0, 100000)`
+- `get_random_number_limit` — random integer in `[0, limit)` (default limit `100`)

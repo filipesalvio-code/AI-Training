@@ -1,15 +1,20 @@
-# 08-construcao-de-agentes
+# harness
 
-To install dependencies:
+Minimal OpenRouter harness example in Python.
+
+## Prerequisites
+
+- Python 3.11+
+- `httpx`
+- `OPENROUTER_KEY` set in the environment
 
 ```bash
-bun install
+pip install httpx
+export OPENROUTER_KEY=your_key
 ```
 
-To run:
+## Run
 
 ```bash
-bun run index.ts
+/opt/homebrew/bin/python3.11 index.py
 ```
-
-This project was created using `bun init` in bun v1.3.14. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.

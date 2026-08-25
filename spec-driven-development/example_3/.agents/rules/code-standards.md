@@ -1,12 +1,12 @@
-# Padrões de codificação
+# Coding standards
 
-Estas regras se aplicam ao frontend e ao backend, salvo quando houver uma restrição técnica específica documentada no próprio projeto.
+These rules apply to the frontend and the backend, unless a project-specific technical constraint says otherwise.
 
-## Não inserir comentários
+## Do not insert comments
 
-Não insira comentários no código. O código deve ser escrito de forma clara, com nomes que expressem a intenção e funções pequenas que expliquem o fluxo por si mesmas.
+Do not insert comments in code. Write clear code with names that express intent and small functions that explain the flow by themselves.
 
-Comentários só são permitidos quando forem absolutamente necessários, por exemplo, para explicar uma expressão regular complexa ou uma decisão técnica que não possa ser expressa no código.
+Comments are allowed only when absolutely necessary, for example to explain a complex regular expression or a technical decision that cannot be expressed in code.
 
 ```ts
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -16,7 +16,7 @@ function isValidEmail(email: string): boolean {
 }
 ```
 
-Prefira nomes expressivos e extração de funções:
+Prefer expressive names and function extraction:
 
 ```ts
 function canPublishArticle(article: Article): boolean {
@@ -24,9 +24,9 @@ function canPublishArticle(article: Article): boolean {
 }
 ```
 
-## Limitar classes e arquivos a 100 linhas
+## Limit classes and files to 100 lines
 
-Classes e arquivos `.ts` devem ter, no máximo, 100 linhas. Quando esse limite for atingido, extraia responsabilidades para outras classes, funções ou arquivos coesos.
+Classes and `.ts` / `.py` files must have at most 100 lines. When that limit is reached, extract responsibilities into other cohesive classes, functions, or files.
 
 ```ts
 class OrderService {
@@ -47,11 +47,11 @@ class OrderService {
 }
 ```
 
-Se a classe ou o arquivo crescer, separe, por exemplo, a validação, a persistência e as regras de negócio em módulos próprios.
+If the class or file grows, separate validation, persistence, and business rules into their own modules.
 
-## Limitar métodos e funções a 30 linhas
+## Limit methods and functions to 30 lines
 
-Métodos e funções devem ter, no máximo, 30 linhas. Se o comportamento for maior, divida-o em métodos privados ou funções auxiliares com responsabilidades claras.
+Methods and functions must have at most 30 lines. If the behavior is larger, split it into private methods or helper functions with clear responsibilities.
 
 ```ts
 function registerUser(input: RegisterUserInput): User {
@@ -67,13 +67,13 @@ function registerUser(input: RegisterUserInput): User {
 }
 ```
 
-Cada função extraída deve continuar tendo uma única responsabilidade e permanecer dentro do limite de 30 linhas.
+Each extracted function must keep a single responsibility and stay within the 30-line limit.
 
-## Preferir cláusulas de guarda
+## Prefer guard clauses
 
-Não aninhe mais de três níveis de `if`/`else`. Dê preferência a cláusulas de guarda e `early return` para encerrar casos inválidos ou excepcionais antes do fluxo principal.
+Do not nest more than three levels of `if`/`else`. Prefer guard clauses and early returns to end invalid or exceptional cases before the main flow.
 
-Evite:
+Avoid:
 
 ```ts
 function processPayment(order?: Order): PaymentResult {
@@ -89,7 +89,7 @@ function processPayment(order?: Order): PaymentResult {
 }
 ```
 
-Prefira:
+Prefer:
 
 ```ts
 function processPayment(order?: Order): PaymentResult {
@@ -101,13 +101,13 @@ function processPayment(order?: Order): PaymentResult {
 }
 ```
 
-Quando houver vários casos independentes, retorne cedo em cada um e mantenha o caminho de sucesso no menor nível possível de indentação.
+When there are several independent cases, return early in each one and keep the success path at the lowest indentation level possible.
 
-## Limitar parâmetros a três
+## Limit parameters to three
 
-Evite métodos e funções com mais de três parâmetros. Quando vários dados pertencem ao mesmo contexto, agrupe-os em um objeto parâmetro nomeado.
+Avoid methods and functions with more than three parameters. When several values belong to the same context, group them in a named parameter object.
 
-Evite:
+Avoid:
 
 ```ts
 function createUser(
@@ -120,7 +120,7 @@ function createUser(
 }
 ```
 
-Prefira:
+Prefer:
 
 ```ts
 type CreateUserInput = {
@@ -135,13 +135,13 @@ function createUser(input: CreateUserInput): User {
 }
 ```
 
-O objeto parâmetro deve representar um conceito do domínio, e não ser apenas uma forma de esconder parâmetros sem relação entre si.
+The parameter object must represent a domain concept, not merely hide unrelated parameters.
 
-## Evitar linhas em branco dentro de métodos e funções
+## Avoid blank lines inside methods and functions
 
-Evite linhas em branco dentro de métodos e funções. A organização visual deve ser feita pela extração de funções e por nomes claros. Linhas em branco são permitidas entre membros de uma classe e entre funções de um arquivo.
+Avoid blank lines inside methods and functions. Visual organization should come from function extraction and clear names. Blank lines are allowed between class members and between functions in a file.
 
-Evite:
+Avoid:
 
 ```ts
 function calculateTotal(items: Item[]): number {
@@ -153,7 +153,7 @@ function calculateTotal(items: Item[]): number {
 }
 ```
 
-Prefira:
+Prefer:
 
 ```ts
 function calculateTotal(items: Item[]): number {
@@ -163,11 +163,11 @@ function calculateTotal(items: Item[]): number {
 }
 ```
 
-## Extrair números e strings mágicos
+## Extract magic numbers and strings
 
-Extraia números e strings usados como regras de negócio, limites, códigos ou chaves para constantes com nomes que esclareçam seus conceitos.
+Extract numbers and strings used as business rules, limits, codes, or keys into constants with names that clarify their meaning.
 
-Evite:
+Avoid:
 
 ```ts
 if (user.loginAttempts >= 5) {
@@ -179,7 +179,7 @@ if (response.status === 404) {
 }
 ```
 
-Prefira:
+Prefer:
 
 ```ts
 const MAX_LOGIN_ATTEMPTS = 5;
@@ -194,13 +194,13 @@ if (response.status === NOT_FOUND_STATUS) {
 }
 ```
 
-Constantes devem ser declaradas em um escopo adequado e ter nomes que expressem o significado do valor, não apenas o seu tipo.
+Constants must be declared in an appropriate scope and named for the meaning of the value, not only its type.
 
-## Declarar variáveis perto do uso
+## Declare variables close to use
 
-Declare variáveis o mais próximo possível do local onde são utilizadas. Evite declarar valores no início do método quando eles só serão necessários muito depois.
+Declare variables as close as possible to where they are used. Avoid declaring values at the start of a method when they are only needed much later.
 
-Evite:
+Avoid:
 
 ```ts
 function sendInvoice(order: Order): void {
@@ -214,7 +214,7 @@ function sendInvoice(order: Order): void {
 }
 ```
 
-Prefira:
+Prefer:
 
 ```ts
 function sendInvoice(order: Order): void {
@@ -227,30 +227,30 @@ function sendInvoice(order: Order): void {
 }
 ```
 
-Essa proximidade reduz o escopo das variáveis e facilita a leitura do fluxo.
+That proximity reduces variable scope and makes the flow easier to read.
 
-## Manter dados sensíveis fora do código
+## Keep sensitive data out of code
 
-Nunca coloque dados sensíveis, como chaves de API, tokens, senhas ou credenciais, diretamente no código ou no repositório. Armazene-os em um arquivo `.env` externo, mantenha o `.env` fora do controle de versão e disponibilize um `.env.example` sem valores reais quando necessário.
+Never put sensitive data such as API keys, tokens, passwords, or credentials directly in code or in the repository. Store them in an external `.env` file, keep `.env` out of version control, and provide a `.env.example` without real values when needed.
 
-Evite:
+Avoid:
 
 ```ts
 const paymentApiKey = 'sk_live_123456789';
 ```
 
-Prefira:
+Prefer:
 
 ```env
-PAYMENT_API_KEY=chave-real-fora-do-repositorio
+PAYMENT_API_KEY=real-key-outside-the-repository
 ```
 
 ```ts
 const paymentApiKey = process.env.PAYMENT_API_KEY;
 
 if (!paymentApiKey) {
-  throw new Error('PAYMENT_API_KEY não configurada');
+  throw new Error('PAYMENT_API_KEY is not configured');
 }
 ```
 
-Não registre valores sensíveis em logs, não os inclua em mensagens de erro e nunca confirme chaves reais em exemplos ou documentação.
+Do not log sensitive values, do not include them in error messages, and never put real keys in examples or documentation.

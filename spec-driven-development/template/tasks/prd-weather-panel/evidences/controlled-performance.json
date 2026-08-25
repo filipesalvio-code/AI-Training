@@ -1,0 +1,5 @@
+{
+  "samples": 20,
+  "p95Ms": 48,
+  "environment": "mock Open-Meteo 3050, backend 3001, frontend 5101"
+}

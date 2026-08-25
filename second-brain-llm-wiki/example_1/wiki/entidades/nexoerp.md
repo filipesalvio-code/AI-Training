@@ -1,59 +1,45 @@
 ---
 type: Entity
 title: NexoERP
-description: Empresa brasileira fictícia de software de gestão financeira em nuvem para pequenas e médias empresas em crescimento.
-tags: [nexoerp, empresa, software, gestão-financeira]
+description: Fictional Brazilian company providing cloud-based financial management software for growing small and medium-sized businesses.
+tags: [nexoerp, company, software, financial-management]
 generated:
   by: codex/1.0
   at: 2026-08-03T00:00:00-03:00
 sources:
   - id: fonte-01
     resource: ../../raw/01-empresa-produto-e-posicionamento.md
-    title: NexoERP — empresa, produto e posicionamento
+    title: NexoERP — company, product, and positioning
   - id: fonte-02
     resource: ../../raw/02-perfil-de-cliente-ideal.md
-    title: Perfil de cliente ideal — ICP
+    title: Ideal customer profile — ICP
 ---
 
-# Visão geral
+# Overview
 
-A NexoERP é uma empresa brasileira fictícia de software de gestão financeira
-em nuvem. Seu produto atende pequenas e médias empresas que já superaram o
-controle financeiro feito apenas em planilhas, mas ainda não precisam de um ERP
-corporativo complexo.[^fonte-01]
+NexoERP is a fictional Brazilian company that offers cloud-based financial management software. Its product serves small and medium-sized businesses that have outgrown managing finances solely with spreadsheets but do not yet need a complex enterprise ERP.[^fonte-01]
 
-## Problema que resolve
+## Problem it Solves
 
-Equipes financeiras perdem tempo copiando dados entre bancos, planilhas,
-e-mails e sistemas separados. A NexoERP centraliza essa rotina para reduzir
-retrabalho, desatualização e incerteza sobre os números.[^fonte-01]
+Finance teams waste time copying data across banks, spreadsheets, emails, and disconnected systems. NexoERP centralizes this routine to reduce rework, outdated information, and uncertainty around the numbers.[^fonte-01]
 
-## Produto
+## Product
 
-O sistema reúne contas a pagar, contas a receber, conciliação bancária, fluxo
-de caixa, boletos, relatórios, centros de custo e integrações contábeis. A
-proposta é conectar rotina, bancos e visão de caixa em um só lugar, com
-implantação adequada a equipes pequenas e expansão por módulos.[^fonte-01]
+The system consolidates accounts payable, accounts receivable, bank reconciliation, cash flow, invoices, reports, cost centers, and accounting integrations. The goal is to bring routines, banking data, and cash visibility together in one place, with implementation suited to small teams and expansion through modules.[^fonte-01]
 
-## Limites da entidade
+## Entity Limits
 
-A NexoERP não é banco ou instituição de pagamento, escritório contábil, sistema
-exclusivo para grandes corporações, aplicativo de finanças pessoais, ferramenta
-gratuita de emissão de boletos ou solução fiscal universal sem configuração.[^fonte-01]
+NexoERP is not a bank or payment institution, an accounting firm, a system built exclusively for large corporations, a personal finance app, a free invoice issuance tool, or a universal tax solution without configuration.[^fonte-01]
 
-O [perfil de cliente ideal da NexoERP](/conceitos/perfil-de-cliente-ideal.md)
-refina quais empresas em crescimento têm maior probabilidade de se beneficiar
-da solução e como qualificá-las.[^fonte-02]
+The [ideal customer profile of NexoERP](/concepts/perfil-de-cliente-ideal.md) clarifies which growing companies are most likely to benefit from the solution and how to qualify them.[^fonte-02]
 
-## Documentação relacionada
+## Related Documentation
 
-- [Personas e jornada de compra](/conceitos/personas-e-jornada-de-compra.md)
-  detalha os participantes da avaliação e adoção.
-- [Identidade da marca](/conceitos/identidade-da-marca-nexoerp.md), [tom de voz](/conceitos/tom-de-voz-e-guia-de-redacao.md) e [design system](/conceitos/design-system-campanhas.md) orientam a comunicação.
-- [Briefings de campanhas](/conceitos/briefings-campanhas-e-canais.md), [anúncios aprovados](/conceitos/anuncios-aprovados-nexoerp.md) e [regras de publicação](/conceitos/aprendizados-metricas-publicacao.md) orientam a operação de marketing.
+- [Personas and buying journey](/concepts/personas-e-jornada-de-compra.md) details the participants in evaluation and adoption.
+- [Brand identity](/concepts/identidade-da-marca-nexoerp.md), [tone of voice](/concepts/tom-de-voz-e-guia-de-redacao.md), and [design system](/concepts/design-system-campanhas.md) guide communication.
+- [Campaign briefings](/concepts/briefings-campanhas-e-canais.md), [approved ads](/concepts/anuncios-aprovados-nexoerp.md), and [publication rules](/concepts/aprendizados-metricas-publicacao.md) guide marketing operations.
 
-O [posicionamento da NexoERP](/conceitos/posicionamento-nexoerp.md) detalha a
-promessa, os diferenciais e as mensagens aprovadas para comunicar essa entidade.
+The [positioning of NexoERP](/concepts/posicionamento-nexoerp.md) details the promise, differentiators, and approved messaging for communicating this entity.
 
-[^fonte-01]: [NexoERP — empresa, produto e posicionamento](../../raw/01-empresa-produto-e-posicionamento.md)
-[^fonte-02]: [Perfil de cliente ideal — ICP](../../raw/02-perfil-de-cliente-ideal.md)
+[^fonte-01]: [NexoERP — company, product, and positioning](../../raw/01-empresa-produto-e-posicionamento.md)
+[^fonte-02]: [Ideal customer profile — ICP](../../raw/02-perfil-de-cliente-ideal.md)

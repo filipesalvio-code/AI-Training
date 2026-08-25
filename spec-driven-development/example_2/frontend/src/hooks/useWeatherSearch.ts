@@ -4,7 +4,7 @@ import type { ApiError } from '../types/api-error';
 import type { WeatherSearchState } from '../types/weather-search-state';
 
 const USEFUL_CHARACTERS = /[\p{L}\p{N}]/gu;
-const INVALID_CITY: ApiError = { code: 'INVALID_CITY', message: 'Informe uma cidade com pelo menos dois caracteres.' };
+const INVALID_CITY: ApiError = { code: 'INVALID_CITY', message: 'Enter a city with at least two characters.' };
 
 function normalizeCity(city: string): string | null {
   const normalized = city.trim().replace(/\s+/gu, ' ');
@@ -13,7 +13,7 @@ function normalizeCity(city: string): string | null {
 
 function getError(error: unknown): ApiError {
   if (error instanceof WeatherServiceError) return error.apiError;
-  return { code: 'WEATHER_SERVICE_UNAVAILABLE', message: 'Não foi possível consultar o clima agora. Tente novamente em instantes.' };
+  return { code: 'WEATHER_SERVICE_UNAVAILABLE', message: 'We could not check the weather right now. Try again shortly.' };
 }
 
 export function useWeatherSearch(): { state: WeatherSearchState; search: (city: string) => void } {

@@ -4,7 +4,7 @@ import { useWeatherSearch } from './useWeatherSearch';
 
 const result = {
   location: { city: 'Lisboa', administrativeArea: 'Lisboa', country: 'Portugal' },
-  current: { temperature: 20, apparentTemperature: 19, condition: 'Céu limpo', relativeHumidity: 50, windSpeed: 5 },
+  current: { temperature: 20, apparentTemperature: 19, condition: 'Clear sky', relativeHumidity: 50, windSpeed: 5 },
   units: { temperature: '°C', apparentTemperature: '°C', relativeHumidity: '%', windSpeed: 'km/h' },
   source: { name: 'Open-Meteo', url: 'https://open-meteo.com/', license: 'CC BY 4.0', licenseUrl: 'https://creativecommons.org/licenses/by/4.0/' },
 };
@@ -17,7 +17,7 @@ describe('useWeatherSearch', () => {
     vi.stubGlobal('fetch', fetchMock);
     const { result: hook } = renderHook(() => useWeatherSearch());
     act(() => hook.current.search(' a '));
-    expect(hook.current.state).toEqual({ status: 'error', error: { code: 'INVALID_CITY', message: 'Informe uma cidade com pelo menos dois caracteres.' } });
+    expect(hook.current.state).toEqual({ status: 'error', error: { code: 'INVALID_CITY', message: 'Enter a city with at least two characters.' } });
     expect(fetchMock).not.toHaveBeenCalled();
   });
 

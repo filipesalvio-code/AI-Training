@@ -29,12 +29,12 @@ describe('weatherService', () => {
 
   it('keeps the backend error envelope for a not found city', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(makeResponse({
-      error: { code: 'CITY_NOT_FOUND', message: 'Cidade não encontrada.' },
+      error: { code: 'CITY_NOT_FOUND', message: 'City not found.' },
     }, 404)))
 
     await expect(weatherService.search('Atlantis', new AbortController().signal)).rejects.toMatchObject({
       code: 'CITY_NOT_FOUND',
-      message: 'Cidade não encontrada.',
+      message: 'City not found.',
     })
   })
 

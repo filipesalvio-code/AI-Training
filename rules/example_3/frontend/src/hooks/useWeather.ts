@@ -11,11 +11,11 @@ export function useWeather() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const city = String(formData.get('city') ?? '').trim();
-    if (!city) return setError('Digite o nome de uma cidade');
+    if (!city) return setError('Enter a city name');
     setIsLoading(true);
     setError(null);
     try { setWeather(await fetchWeather(city)); } catch (requestError: unknown) {
-      setError(requestError instanceof Error ? requestError.message : 'Não foi possível consultar o clima');
+      setError(requestError instanceof Error ? requestError.message : 'Could not fetch weather');
     } finally { setIsLoading(false); }
   }
 

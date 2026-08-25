@@ -8,7 +8,7 @@ afterEach(() => { cleanup(); });
 describe('TemperatureUnitToggle', () => {
   it('exposes the active temperature unit through accessible names and state', () => {
     render(<TemperatureUnitToggle unit="celsius" onUnitChange={vi.fn()} />);
-    expect(screen.getByRole('group', { name: 'Unidade de temperatura' })).toBeVisible();
+    expect(screen.getByRole('group', { name: 'Temperature unit' })).toBeVisible();
     expect(screen.getByRole('button', { name: 'Celsius (°C)' })).toHaveAttribute('aria-pressed', 'true');
     expect(screen.getByRole('button', { name: 'Fahrenheit (°F)' })).toHaveAttribute('aria-pressed', 'false');
   });

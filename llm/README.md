@@ -1,15 +1,19 @@
-# 08-construcao-de-agentes
+# llm
 
-To install dependencies:
+Minimal Ollama chat script in Python.
+
+## Prerequisites
+
+- Python 3.11+
+- [httpx](https://www.python-httpx.org/)
+- Ollama running locally with the `qwen3-vl:2b` model
 
 ```bash
-bun install
+pip install httpx
 ```
 
-To run:
+## Run
 
 ```bash
-bun run index.ts
+/opt/homebrew/bin/python3.11 index.py
 ```
-
-This project was created using `bun init` in bun v1.3.14. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.

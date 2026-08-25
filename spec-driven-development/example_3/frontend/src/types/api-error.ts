@@ -6,11 +6,11 @@ export type ApiError = {
 };
 
 export const API_ERROR_MESSAGES: Record<ApiErrorCode, string> = {
-  INVALID_LOCATION_QUERY: 'Informe ao menos dois caracteres para buscar uma localidade.',
-  LOCATION_SERVICE_UNAVAILABLE: 'Não foi possível buscar localidades agora. Tente novamente.',
-  INVALID_LOCATION: 'Selecione uma localidade válida.',
-  WEATHER_SERVICE_UNAVAILABLE: 'Não foi possível consultar o clima agora. Tente novamente em instantes.',
-  INTERNAL_ERROR: 'Ocorreu um erro inesperado. Tente novamente.',
+  INVALID_LOCATION_QUERY: 'Enter at least two characters to search for a location.',
+  LOCATION_SERVICE_UNAVAILABLE: 'We could not search locations right now. Try again.',
+  INVALID_LOCATION: 'Select a valid location.',
+  WEATHER_SERVICE_UNAVAILABLE: 'We could not check the weather right now. Try again shortly.',
+  INTERNAL_ERROR: 'An unexpected error occurred. Try again.',
 };
 
 export function isApiErrorCode(value: unknown): value is ApiErrorCode {

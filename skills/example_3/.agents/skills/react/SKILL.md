@@ -1,82 +1,82 @@
 ---
 name: react
-description: Padrões para implementar, revisar e refatorar código React 19 com TypeScript neste projeto, incluindo componentes, props, hooks, efeitos, memoização, integração com backend, acessibilidade e Tailwind CSS. Use ao trabalhar em arquivos React do frontend, criar ou alterar componentes e hooks, revisar estado e efeitos, ou avaliar a qualidade de uma interface React.
+description: Patterns for implementing, reviewing, and refactoring React 19 with TypeScript in this project, including components, props, hooks, effects, memoization, backend integration, accessibility, and Tailwind CSS. Use when working on frontend React files, creating or changing components and hooks, reviewing state and effects, or assessing React UI quality.
 ---
 
-# Regras para React
+# React rules
 
-Estas regras se aplicam ao código do frontend React deste projeto.
+These rules apply to this project's React frontend code.
 
-## Como usar esta skill
+## How to use this skill
 
-Aplicar estas regras ao criar, alterar ou revisar código React. Carregar os exemplos somente quando forem necessários:
+Apply these rules when creating, changing, or reviewing React code. Load the examples only when needed:
 
-- [Componentes pequenos e props explícitas](references/examples/components.md)
-- [Hooks, efeitos e memoização](references/examples/hooks-effects.md)
-- [Acesso ao backend](references/examples/backend.md)
-- [Acessibilidade](references/examples/accessibility.md)
-- [Estilização](references/examples/styling.md)
-- [10 boas práticas adicionais de React](references/react-best-practices.md)
+- [Small components and explicit props](references/examples/components.md)
+- [Hooks, effects, and memoization](references/examples/hooks-effects.md)
+- [Backend access](references/examples/backend.md)
+- [Accessibility](references/examples/accessibility.md)
+- [Styling](references/examples/styling.md)
+- [10 additional React best practices](references/react-best-practices.md)
 
-## Componentes pequenos e reutilizáveis
+## Small, reusable components
 
-- Crie componentes com uma única responsabilidade.
-- Não crie componentes com mais de 30 linhas. Extraia partes da interface, regras de negócio ou estados para componentes e hooks menores.
-- Prefira nomes que expressem o papel do componente, como `StatusCard`, `HealthMessage` e `LoadingIndicator`.
-- Reutilize componentes para comportamentos e estruturas visuais comuns, evitando duplicação.
+- Create components with a single responsibility.
+- Do not create components longer than 30 lines. Extract UI parts, business rules, or state into smaller components and hooks.
+- Prefer names that express the component's role, such as `StatusCard`, `HealthMessage`, and `LoadingIndicator`.
+- Reuse components for common behaviors and visual structures to avoid duplication.
 
-Consulte os [exemplos de componentes pequenos e props explícitas](references/examples/components.md).
+See the [small components and explicit props examples](references/examples/components.md).
 
-## Props explícitas
+## Explicit props
 
-Evite encaminhar props com o spread operator, pois isso esconde a API do componente e pode repassar atributos inesperados.
+Avoid forwarding props with the spread operator, because that hides the component API and can pass unexpected attributes.
 
-Declare e utilize as propriedades explicitamente.
+Declare and use properties explicitly.
 
-Consulte os [exemplos de props explícitas](references/examples/components.md).
+See the [explicit props examples](references/examples/components.md).
 
-## Hooks e efeitos
+## Hooks and effects
 
-- Prefira componentes funcionais.
-- Crie hooks customizados com o prefixo `use`, como `useApiHealth` ou `useUsers`.
-- Use `useEffect` somente para sincronizar o React com sistemas externos, como requisições, assinaturas, timers ou APIs do navegador.
-- Não use `useEffect` para calcular valores derivados, responder a eventos de clique ou manter estados que podem ser obtidos diretamente de props e estado existente.
+- Prefer function components.
+- Create custom hooks with the `use` prefix, such as `useApiHealth` or `useUsers`.
+- Use `useEffect` only to synchronize React with external systems, such as requests, subscriptions, timers, or browser APIs.
+- Do not use `useEffect` to compute derived values, respond to click events, or keep state that can be obtained directly from props and existing state.
 
-Consulte os [exemplos de hooks, efeitos e memoização](references/examples/hooks-effects.md).
+See the [hooks, effects, and memoization examples](references/examples/hooks-effects.md).
 
-## Memoização
+## Memoization
 
-Use `useMemo` para evitar cálculos realmente pesados entre re-renders. As dependências devem representar todos os valores usados no cálculo. Não use `useMemo` para operações simples, pois isso aumenta a complexidade sem benefício relevante.
+Use `useMemo` to avoid truly expensive calculations across re-renders. Dependencies must represent every value used in the calculation. Do not use `useMemo` for simple operations, because that adds complexity without a meaningful benefit.
 
-Consulte os [exemplos de memoização](references/examples/hooks-effects.md).
+See the [memoization examples](references/examples/hooks-effects.md).
 
-## Acesso ao backend
+## Backend access
 
-- Separe o acesso ao backend do código visual do componente.
-- Coloque chamadas HTTP e transformação de respostas em módulos próprios, como `src/lib/api/health.ts`.
-- Encapsule carregamento, sucesso e erro em hooks customizados.
-- O componente deve consumir o estado do hook e cuidar apenas da apresentação e das interações.
+- Keep backend access out of the component's visual code.
+- Put HTTP calls and response transformation in dedicated modules, such as `src/lib/api/health.ts`.
+- Encapsulate loading, success, and error in custom hooks.
+- The component should consume the hook state and handle only presentation and interactions.
 
-Consulte os [exemplos de acesso ao backend](references/examples/backend.md).
+See the [backend access examples](references/examples/backend.md).
 
-## Acessibilidade
+## Accessibility
 
-- Sempre forneça propriedades de acessibilidade `aria-*` adequadas ao elemento e ao estado apresentado.
-- Prefira elementos semânticos (`button`, `nav`, `main`, `section`, `form`) e complemente-os com `aria-label`, `aria-live`, `aria-busy`, `aria-expanded` ou `aria-pressed` quando aplicável.
-- Controles interativos devem indicar seu estado e ter um nome acessível.
-- Mensagens assíncronas, de carregamento ou erro devem ser anunciadas quando necessário.
+- Always provide `aria-*` accessibility properties appropriate to the element and the presented state.
+- Prefer semantic elements (`button`, `nav`, `main`, `section`, `form`) and complement them with `aria-label`, `aria-live`, `aria-busy`, `aria-expanded`, or `aria-pressed` when applicable.
+- Interactive controls must indicate their state and have an accessible name.
+- Asynchronous, loading, or error messages must be announced when needed.
 
-Consulte os [exemplos de acessibilidade](references/examples/accessibility.md).
+See the [accessibility examples](references/examples/accessibility.md).
 
-## Estilização
+## Styling
 
-- Utilize Tailwind CSS para estilizar os componentes.
-- Prefira classes utilitárias diretamente no JSX e variantes condicionais claras.
-- Evite CSS inline e folhas de estilo específicas quando as classes Tailwind atenderem ao caso.
-- Mantenha classes relacionadas ao componente próximas de sua estrutura e garanta estados de foco, hover, disabled e responsividade.
+- Use Tailwind CSS to style components.
+- Prefer utility classes directly in JSX and clear conditional variants.
+- Avoid inline CSS and component-specific stylesheets when Tailwind classes cover the case.
+- Keep component-related classes close to its structure and ensure focus, hover, disabled, and responsive states.
 
-Consulte os [exemplos de estilização](references/examples/styling.md).
+See the [styling examples](references/examples/styling.md).
 
-## Boas práticas adicionais
+## Additional best practices
 
-Aplicar também as [10 boas práticas adicionais de React](references/react-best-practices.md), especialmente pureza de componentes, regras dos Hooks, imutabilidade, chaves estáveis, modelagem de estado, compartilhamento de estado, atualizadores funcionais, limpeza de efeitos, controle de preservação de estado e uso criterioso de reducers.
+Also apply the [10 additional React best practices](references/react-best-practices.md), especially component purity, Rules of Hooks, immutability, stable keys, state modeling, state sharing, functional updaters, effect cleanup, conscious state preservation, and careful use of reducers.

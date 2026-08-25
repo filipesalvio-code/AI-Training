@@ -8,38 +8,38 @@ web
 
 ## Users
 
-Pessoas que precisam consultar rapidamente as condições climáticas atuais de uma cidade. A situação de uso inferida é uma consulta curta, em desktop ou celular, para decidir atividades e deslocamentos.
+People who need a quick look at the current weather for a city. The inferred use case is a short query on desktop or mobile to decide activities and travel.
 
 ## Product Purpose
 
-Uma aplicação de previsão do tempo que permite pesquisar uma cidade e visualizar as condições atuais, incluindo temperatura, sensação térmica, umidade e vento. O sucesso é tornar o estado do clima imediatamente compreensível.
+A weather app that lets users search a city and see current conditions, including temperature, feels-like, humidity, and wind. Success means the weather state is immediately understandable.
 
 ## Positioning
 
-A interface transforma os dados reais retornados para cada cidade em uma atmosfera visual condizente com a temperatura e a condição climática, sem esconder as informações essenciais.
+The interface turns the real data returned for each city into a visual atmosphere that matches temperature and conditions, without hiding essential information.
 
 ## Operating Context
 
-O fluxo confirmado é pesquisar o nome de uma cidade, aguardar a consulta e ler a condição atual. A aplicação usa uma API local de clima.
+The confirmed flow is: search a city name, wait for the query, read the current condition. The app uses a local weather API.
 
 ## Capabilities and Constraints
 
-- Pesquisa por cidade via `http://localhost:3000/weather`.
-- Exibe temperatura, sensação térmica, umidade, vento, condição, local e país.
-- Permite alternar entre Celsius e Fahrenheit.
-- Deve preservar estados de carregamento, erro e validação.
+- City search via `http://localhost:3000/weather`.
+- Shows temperature, feels-like, humidity, wind, condition, place, and country.
+- Allows toggling Celsius and Fahrenheit.
+- Must preserve loading, error, and validation states.
 
 ## Brand Commitments
 
-Direção solicitada: futurista, chamativa e inovadora, com alto contraste e cores que reflitam a temperatura e as condições de cada cidade.
+Requested direction: futuristic, bold, and innovative, with high contrast and colors that reflect each city's temperature and conditions.
 
 ## Evidence on Hand
 
-Os únicos dados climáticos confirmados são os retornados pela API e definidos em `frontend/src/types/weather.ts`. Não há imagens, marca ou alegações externas para incorporar.
+The only confirmed weather data is returned by the API and defined in `frontend/src/types/weather.ts`. There are no external images, brand assets, or claims to incorporate.
 
 ## Product Principles
 
-- A condição atual deve ser entendida em um relance.
-- A atmosfera visual acompanha os dados, nunca os substitui.
-- Alto contraste deve manter a interface legível em todas as condições.
-- Consultar uma cidade deve continuar rápido e direto.
+- Current conditions should be clear at a glance.
+- Visual atmosphere follows the data; it never replaces it.
+- High contrast must keep the UI readable in all conditions.
+- Searching a city must stay fast and direct.

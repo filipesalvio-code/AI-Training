@@ -7,7 +7,7 @@ import type { Language } from '../types/language';
 type LanguageProviderProps = { children: ReactNode };
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [language, setLanguage] = useState<Language>('pt-BR');
+  const [language, setLanguage] = useState<Language>('en');
   const t = (key: Parameters<typeof translate>[1]): string => translate(language, key);
   const toggleLanguage = (): void => setLanguage((current) => current === 'pt-BR' ? 'en' : 'pt-BR');
   useDocumentLanguage(language, t('document.title'));

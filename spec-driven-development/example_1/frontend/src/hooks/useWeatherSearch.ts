@@ -3,8 +3,8 @@ import { WeatherApiError, type ApiErrorDetails } from '../types/api-error'
 import { weatherService, type WeatherService } from '../services/weather-service'
 import type { WeatherSearchResult, WeatherSearchState } from '../types/weather-search-state'
 
-const INVALID_CITY_MESSAGE = 'Informe uma cidade com pelo menos dois caracteres.'
-const UNAVAILABLE_MESSAGE = 'Não foi possível consultar o clima agora. Tente novamente em instantes.'
+const INVALID_CITY_MESSAGE = 'Enter a city with at least two characters.'
+const UNAVAILABLE_MESSAGE = 'We could not check the weather right now. Try again shortly.'
 const ALPHANUMERIC_PATTERN = /[\p{L}\p{N}]/u
 
 function normalizeCity(city: string): string {

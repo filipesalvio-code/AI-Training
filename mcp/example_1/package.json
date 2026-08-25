@@ -1,18 +1,9 @@
 {
-  "name": "mcp",
-  "module": "index.ts",
-  "type": "module",
+  "name": "mcp-example-1",
   "private": true,
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "@types/express": "^5.0.6",
-    "express": "^5.2.1",
-    "zod": "^4.4.3"
+  "description": "Python MCP examples. See README.md and pyproject.toml.",
+  "scripts": {
+    "stdio": "/opt/homebrew/bin/python3.11 random_number_stdio.py",
+    "http": "/opt/homebrew/bin/python3.11 random_number_http.py"
   }
 }

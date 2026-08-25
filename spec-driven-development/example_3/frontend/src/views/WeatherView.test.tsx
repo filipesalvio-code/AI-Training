@@ -19,13 +19,13 @@ describe('WeatherView', () => {
       .mockResolvedValueOnce(new Response(JSON.stringify({ suggestions }), { status: 200 }))
       .mockResolvedValueOnce(new Response(JSON.stringify(weather), { status: 200 }));
     render(<LanguageProvider><WeatherView /></LanguageProvider>);
-    const input = screen.getByRole('combobox', { name: 'Nome da cidade' });
+    const input = screen.getByRole('combobox', { name: 'City name' });
     fireEvent.change(input, { target: { value: 'Lisboa' } });
     await waitFor(() => expect(screen.getByRole('option')).toBeVisible());
     fireEvent.pointerDown(screen.getByRole('option'));
     await waitFor(() => expect(screen.getByRole('heading', { name: 'Lisboa' })).toBeVisible());
     expect(fetchMock.mock.calls[1][1]).toEqual(expect.objectContaining({ method: 'POST', body: JSON.stringify({ location: suggestions[0] }) }));
-    expect(screen.getByRole('group', { name: 'Unidade de temperatura' })).toBeVisible();
+    expect(screen.getByRole('group', { name: 'Temperature unit' })).toBeVisible();
   });
 
   it('switches interface language without another weather request', async () => {
@@ -33,13 +33,13 @@ describe('WeatherView', () => {
       .mockResolvedValueOnce(new Response(JSON.stringify({ suggestions }), { status: 200 }))
       .mockResolvedValueOnce(new Response(JSON.stringify(weather), { status: 200 }));
     render(<LanguageProvider><WeatherView /></LanguageProvider>);
-    fireEvent.change(screen.getByRole('combobox', { name: 'Nome da cidade' }), { target: { value: 'Lisboa' } });
+    fireEvent.change(screen.getByRole('combobox', { name: 'City name' }), { target: { value: 'Lisboa' } });
     await waitFor(() => expect(screen.getByRole('option')).toBeVisible());
     fireEvent.pointerDown(screen.getByRole('option'));
     await waitFor(() => expect(screen.getByRole('heading', { name: 'Lisboa' })).toBeVisible());
-    fireEvent.click(screen.getByRole('button', { name: 'Idioma atual: português. Trocar para inglês.' }));
-    expect(screen.getByRole('heading', { name: 'Weather right now' })).toBeVisible();
-    expect(screen.getAllByText('Clear sky')[0]).toBeVisible();
+    fireEvent.click(screen.getByRole('button', { name: 'Current language: English. Switch to Portuguese.' }));
+    expect(screen.getByRole('heading', { name: 'Clima de agora' })).toBeVisible();
+    expect(screen.getAllByText('Céu limpo')[0]).toBeVisible();
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 });

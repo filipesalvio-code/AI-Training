@@ -38,7 +38,7 @@ const report = {
   samples,
 }
 
-await mkdir('../tasks/prd-painel-de-clima/evidences', { recursive: true })
-await writeFile('../tasks/prd-painel-de-clima/evidences/real-performance.json', `${JSON.stringify(report, null, 2)}\n`)
+await mkdir('../tasks/prd-weather-panel/evidences', { recursive: true })
+await writeFile('../tasks/prd-weather-panel/evidences/real-performance.json', `${JSON.stringify(report, null, 2)}\n`)
 console.log(JSON.stringify(report, null, 2))
 if (!report.passed) process.exitCode = 1

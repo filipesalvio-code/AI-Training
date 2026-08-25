@@ -6,7 +6,7 @@ export async function fetchWeather(city: string): Promise<Weather> {
   const response = await fetch(`${API_URL}?city=${encodeURIComponent(city)}`);
   if (!response.ok) {
     const body = await response.json() as { error?: string };
-    throw new Error(body.error ?? 'Não foi possível consultar o clima');
+    throw new Error(body.error ?? 'Could not fetch weather');
   }
   return response.json() as Promise<Weather>;
 }

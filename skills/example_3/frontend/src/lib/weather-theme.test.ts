@@ -3,7 +3,7 @@ import { Weather } from '../types/weather';
 import { getWeatherTheme } from './weather-theme';
 
 const createWeather = (weatherCode: number, temperatureCelsius = 20, isDay = true): Weather => ({
-  location: { name: 'São Paulo', country: 'Brasil' },
+  location: { name: 'São Paulo', country: 'Brazil' },
   current: { temperatureCelsius, apparentTemperatureCelsius: temperatureCelsius, relativeHumidity: 60, windSpeedKmh: 12, weatherCode, isDay, observedAt: '2026-08-01T12:00:00Z' },
 });
 

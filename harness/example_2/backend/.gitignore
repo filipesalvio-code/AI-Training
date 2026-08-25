@@ -10,3 +10,7 @@ npm-debug.log*
 coverage/
 .vscode/
 .idea/
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/

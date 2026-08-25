@@ -9,20 +9,20 @@ related_targets: ["frontend/src/index.css","frontend/src/components/WeatherCard.
 
 Mode: Operate.
 
-Público e tarefa: pessoas que precisam consultar rapidamente as condições atuais de uma cidade para tomar decisões de deslocamento e atividades.
+Audience and task: people who need to quickly check current conditions for a city to decide on travel and activities.
 
-Direção aprovada: Instrumento de bancada. A busca é uma tecla de ação em uma superfície clara; o resultado se torna um chassis de grafite com display âmbar, uma ação de unidade compacta e métricas em régua vertical.
+Approved direction: Bench instrument. The search is an action key on a clear surface; the result becomes a graphite chassis with an amber display, a compact unit action, and metrics on a vertical rule.
 
-Composição aprovada: marca e promessa ocupam a faixa superior; busca em largura integral logo abaixo; estado da consulta sob a busca; resultado em dois campos, display à esquerda e métricas à direita, linearizado em celular.
+Approved composition: brand and promise occupy the top band; full-width search just below; query state under the search; result in two fields, display on the left and metrics on the right, linearized on mobile.
 
-Inventário de fidelidade:
+Fidelity inventory:
 
-| Ingrediente | Meio | Compromisso |
+| Ingredient | Medium | Commitment |
 | --- | --- | --- |
-| Superfície e malha de trabalho | CSS | Fundo mineral claro e malha discreta. |
-| Chassis e display | HTML/CSS | Painel grafite, moldura interna e display marfim. |
-| Ícones meteorológicos e métricas | lucide-react | Traço consistente e sem imagens decorativas. |
-| Temperatura e leituras | HTML/CSS | IBM Plex Mono, reservado a medições. |
-| Movimento de resolução | CSS | Entrada única do instrumento, com redução de movimento. |
+| Work surface and grid | CSS | Light mineral background and discreet grid. |
+| Chassis and display | HTML/CSS | Graphite panel, inner frame, and ivory display. |
+| Weather icons and metrics | lucide-react | Consistent stroke and no decorative images. |
+| Temperature and readings | HTML/CSS | IBM Plex Mono, reserved for measurements. |
+| Resolution motion | CSS | Single instrument entrance, with reduced motion. |
 
-Decisões em aberto: nenhuma.
+Open decisions: none.

@@ -2,6 +2,6 @@
 okf_version: "0.2"
 ---
 
-# Conceitos
+# Concepts
 
-Nenhum conceito catalogado ainda.
+- Add concept pages here as the wiki grows.

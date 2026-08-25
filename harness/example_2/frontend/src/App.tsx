@@ -31,7 +31,7 @@ function App() {
     try {
       const response = await fetch(`${API_URL}?city=${encodeURIComponent(cityToSearch.trim())}`)
       const data = await response.json()
-      if (!response.ok) throw new Error(data.error || 'Não foi possível carregar o clima.')
+      if (!response.ok) throw new Error(data.error || 'Could not load weather.')
       setWeather(data)
     } catch (err) {
       setWeather(null)
@@ -46,31 +46,31 @@ function App() {
       <section className="mx-auto max-w-xl">
         <div className="mb-8 flex items-center gap-3">
           <div className="rounded-2xl bg-sky-400 p-3 text-slate-950"><Cloud size={28} /></div>
-          <div><p className="text-sm font-medium uppercase tracking-[0.2em] text-sky-300">Previsão agora</p><h1 className="text-3xl font-bold">Painel de clima</h1></div>
+          <div><p className="text-sm font-medium uppercase tracking-[0.2em] text-sky-300">Forecast now</p><h1 className="text-3xl font-bold">Weather panel</h1></div>
         </div>
 
         <form onSubmit={searchWeather} className="mb-6 flex gap-2">
-          <label className="sr-only" htmlFor="city">Cidade</label>
-          <input id="city" value={city} onChange={(event) => setCity(event.target.value)} placeholder="Digite uma cidade" className="min-w-0 flex-1 rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 outline-none transition focus:border-sky-400" />
+          <label className="sr-only" htmlFor="city">City</label>
+          <input id="city" value={city} onChange={(event) => setCity(event.target.value)} placeholder="Enter a city" className="min-w-0 flex-1 rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 outline-none transition focus:border-sky-400" />
           <button type="submit" disabled={isLoading} className="inline-flex items-center gap-2 rounded-xl bg-sky-400 px-4 py-3 font-semibold text-slate-950 transition hover:bg-sky-300 disabled:opacity-60">
-            {isLoading ? <LoaderCircle className="animate-spin" size={20} /> : <Search size={20} />} Buscar
+            {isLoading ? <LoaderCircle className="animate-spin" size={20} /> : <Search size={20} />} Search
           </button>
         </form>
 
         {error && <p role="alert" className="rounded-xl border border-rose-500/40 bg-rose-500/10 p-4 text-rose-200">{error}</p>}
 
-        {!weather && !error && !isLoading && <div className="rounded-3xl border border-dashed border-slate-700 p-12 text-center text-slate-400">Busque uma cidade para ver o clima atual.</div>}
+        {!weather && !error && !isLoading && <div className="rounded-3xl border border-dashed border-slate-700 p-12 text-center text-slate-400">Search for a city to see the current weather.</div>}
 
         {weather && <article className="overflow-hidden rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-900 to-sky-950 shadow-2xl shadow-sky-950/40">
           <div className="p-7 sm:p-9">
             <p className="text-lg font-semibold">{weather.location.name}{weather.location.region ? `, ${weather.location.region}` : ''}</p>
-            <p className="text-sm text-slate-400">{weather.location.country} · Atualizado às {new Date(weather.current.time).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}</p>
+            <p className="text-sm text-slate-400">{weather.location.country} · Updated at {new Date(weather.current.time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</p>
             <div className="mt-8 flex items-center gap-5"><div className="text-sky-300"><WeatherIcon code={weather.current.weather_code} /></div><span className="text-7xl font-bold tracking-tighter">{Math.round(weather.current.temperature_2m)}°</span><span className="self-end pb-2 text-lg text-slate-300">{weather.current.description}</span></div>
           </div>
           <div className="grid grid-cols-3 border-t border-slate-700 bg-slate-950/30">
-            <Metric icon={<Sun />} label="Sensação" value={`${Math.round(weather.current.apparent_temperature)}°`} />
-            <Metric icon={<Droplets />} label="Umidade" value={`${weather.current.relative_humidity_2m}%`} />
-            <Metric icon={<Wind />} label="Vento" value={`${Math.round(weather.current.wind_speed_10m)} km/h`} />
+            <Metric icon={<Sun />} label="Feels like" value={`${Math.round(weather.current.apparent_temperature)}°`} />
+            <Metric icon={<Droplets />} label="Humidity" value={`${weather.current.relative_humidity_2m}%`} />
+            <Metric icon={<Wind />} label="Wind" value={`${Math.round(weather.current.wind_speed_10m)} km/h`} />
           </div>
         </article>}
       </section>

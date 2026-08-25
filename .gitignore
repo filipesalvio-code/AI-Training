@@ -3,3 +3,9 @@ node_modules
 *.yml
 *.log
 .env
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.codex/

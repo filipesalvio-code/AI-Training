@@ -22,7 +22,7 @@ describe('LocationAutocomplete', () => {
   it('exposes combobox semantics, labels and active option state', async () => {
     const user = userEvent.setup();
     renderAutocomplete();
-    const input = screen.getByRole('combobox', { name: 'Nome da cidade' });
+    const input = screen.getByRole('combobox', { name: 'City name' });
     expect(input).toHaveAttribute('aria-expanded', 'true');
     expect(screen.getAllByRole('option')).toHaveLength(2);
     await user.click(input);
@@ -37,7 +37,7 @@ describe('LocationAutocomplete', () => {
     const onSelect = vi.fn();
     const onDismiss = vi.fn();
     render(<LanguageProvider><LocationAutocomplete value="Springfield" state={successState} onValueChange={vi.fn()} onSelect={onSelect} onDismiss={onDismiss} /></LanguageProvider>);
-    const input = screen.getByRole('combobox', { name: 'Nome da cidade' });
+    const input = screen.getByRole('combobox', { name: 'City name' });
     await user.click(input);
     await user.keyboard('{ArrowDown}{Enter}');
     expect(onSelect).toHaveBeenCalledWith(suggestions[0]);
@@ -53,22 +53,22 @@ describe('LocationAutocomplete', () => {
     expect(onSelect).toHaveBeenCalledWith(suggestions[1]);
     cleanup();
     renderAutocomplete({ status: 'success', query: 'zz', suggestions: [] });
-    expect(screen.getByRole('status')).toHaveTextContent('Nenhuma localidade encontrada');
+    expect(screen.getByRole('status')).toHaveTextContent('No locations found');
     cleanup();
-    renderAutocomplete({ status: 'error', query: 'zz', error: { code: 'LOCATION_SERVICE_UNAVAILABLE', message: 'Serviço indisponível' } });
-    expect(screen.getByRole('alert')).toHaveTextContent('Não foi possível buscar localidades');
+    renderAutocomplete({ status: 'error', query: 'zz', error: { code: 'LOCATION_SERVICE_UNAVAILABLE', message: 'Service unavailable' } });
+    expect(screen.getByRole('alert')).toHaveTextContent('We could not search locations');
   });
 
   it('closes after focus leaves the interaction and handles an empty list', async () => {
     const user = userEvent.setup();
     const onDismiss = vi.fn();
     render(<LanguageProvider><LocationAutocomplete value="Springfield" state={successState} onValueChange={vi.fn()} onSelect={vi.fn()} onDismiss={onDismiss} /></LanguageProvider>);
-    const input = screen.getByRole('combobox', { name: 'Nome da cidade' });
+    const input = screen.getByRole('combobox', { name: 'City name' });
     fireEvent.blur(input, { relatedTarget: document.body });
     expect(onDismiss).toHaveBeenCalled();
     cleanup();
     renderAutocomplete({ status: 'success', query: 'zz', suggestions: [] });
     await user.keyboard('{ArrowDown}');
-    expect(screen.getByRole('status')).toHaveTextContent('Nenhuma localidade encontrada');
+    expect(screen.getByRole('status')).toHaveTextContent('No locations found');
   });
 });
