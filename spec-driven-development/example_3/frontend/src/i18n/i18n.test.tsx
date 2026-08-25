@@ -38,17 +38,18 @@ describe('i18n', () => {
   it('switches language in one action with an accessible label', async () => {
     const user = userEvent.setup();
     render(<LanguageProvider><LanguageToggle /><TranslationProbe /></LanguageProvider>);
-    const toggle = screen.getByRole('button', { name: 'Idioma atual: português. Trocar para inglês.' });
-    await user.click(toggle);
-    expect(screen.getByRole('button', { name: 'Current language: English. Switch to Portuguese.' })).toHaveTextContent('EN → PT');
+    const toggle = screen.getByRole('button', { name: 'Current language: English. Switch to Portuguese.' });
     expect(screen.getByText('Weather right now')).toBeVisible();
+    await user.click(toggle);
+    expect(screen.getByRole('button', { name: 'Idioma atual: português. Trocar para inglês.' })).toHaveTextContent('PT → EN');
+    expect(screen.getByText('Clima de agora')).toBeVisible();
   });
 
   it('synchronizes document metadata and rejects use outside a provider', () => {
     render(<LanguageProvider><TranslationProbe /></LanguageProvider>);
-    expect(document.documentElement.lang).toBe('pt-BR');
-    expect(document.title).toBe('Clima de agora');
-    expect(() => render(<TranslationProbe />)).toThrow('useTranslation deve ser usado dentro de LanguageProvider');
+    expect(document.documentElement.lang).toBe('en');
+    expect(document.title).toBe('Weather right now');
+    expect(() => render(<TranslationProbe />)).toThrow('useTranslation must be used within LanguageProvider');
   });
 });
 

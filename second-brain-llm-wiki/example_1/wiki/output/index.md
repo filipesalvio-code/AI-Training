@@ -1,8 +1,8 @@
-# Saídas
+# Outputs
 
-- [Variações de anúncios Instagram da NexoERP](2026-08-03-instagram-ads/anuncios-instagram-nexoerp.html) - Implementação HTML das variações de anúncios para os formatos Story e Post.
-- [Landing page da NexoERP para médias e grandes empresas](2026-08-03-landing-page-nexoerp/landing-page-nexoerp.html) - Página institucional responsiva com foco em clareza financeira, controles operacionais e implantação guiada.
-- [Estilos da landing page da NexoERP](2026-08-03-landing-page-nexoerp/landing-page-nexoerp.css) - Folha de estilos da página, baseada no design system de campanhas da NexoERP.
-- [Quando a planilha deixa de dar conta do financeiro](2026-08-03-artigos-blog/artigo-blog-planilha-processo-financeiro.md) - Artigo sobre sinais de crescimento da operação e transição para um processo financeiro compartilhado.
-- [Saldo no banco não é visão de caixa](2026-08-03-artigos-blog/artigo-blog-fluxo-de-caixa-previsto-realizado.md) - Artigo que explica a diferença entre saldo, fluxo previsto e valores realizados para apoiar decisões.
-- [Conciliação bancária sem retrabalho](2026-08-03-artigos-blog/artigo-blog-conciliacao-bancaria-sem-retrabalho.md) - Artigo sobre pendências, classificação, histórico e organização da rotina de conciliação.
+- [Instagram ad variations from NexoERP](2026-08-03-instagram-ads/anuncios-instagram-nexoerp.html) - HTML implementation of ad variations for Story and Post formats.
+- [NexoERP landing page for medium and large companies](2026-08-03-landing-page-nexoerp/landing-page-nexoerp.html) - Responsive institutional page focused on financial clarity, operational controls, and guided implementation.
+- [Styles of the NexoERP landing page](2026-08-03-landing-page-nexoerp/landing-page-nexoerp.css) - Stylesheet for the page, based on the NexoERP campaign design system.
+- [When the spreadsheet can no longer handle finances](2026-08-03-artigos-blog/artigo-blog-planilha-processo-financeiro.md) - Article about signs of operational growth and transitioning to a shared financial process.
+- [Bank balance is not cash flow](2026-08-03-artigos-blog/artigo-blog-fluxo-de-caixa-previsto-realizado.md) - Article explaining the difference between balance, projected cash flow, and realized amounts to support decision-making.
+- [Bank reconciliation without rework](2026-08-03-artigos-blog/artigo-blog-conciliacao-bancaria-sem-retrabalho.md) - Article on pending items, classification, history, and organization of the reconciliation routine.

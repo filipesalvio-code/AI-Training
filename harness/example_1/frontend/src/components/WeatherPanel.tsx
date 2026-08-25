@@ -45,7 +45,7 @@ export function WeatherPanel() {
       setWeather(data)
     } catch (err) {
       setWeather(null)
-      setError(err instanceof WeatherApiError ? err.message : 'Não foi possível obter o clima')
+      setError(err instanceof WeatherApiError ? err.message : 'Could not get weather')
     } finally {
       setLoading(false)
     }
@@ -65,18 +65,18 @@ export function WeatherPanel() {
 
   return (
     <div className="w-full max-w-md rounded-xl border border-border bg-card p-6 shadow-sm">
-      <h2 className="mb-4 text-2xl font-semibold text-card-foreground">Painel de Clima</h2>
+      <h2 className="mb-4 text-2xl font-semibold text-card-foreground">Weather Panel</h2>
 
       <form onSubmit={handleSubmit} className="flex gap-2">
         <input
           type="text"
           value={city}
           onChange={(e) => setCity(e.target.value)}
-          placeholder="Digite uma cidade..."
+          placeholder="Enter a city..."
           className="h-10 flex-1 rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         />
         <Button type="submit" disabled={loading}>
-          {loading ? 'Buscando...' : 'Buscar'}
+          {loading ? 'Searching...' : 'Search'}
         </Button>
       </form>
 
@@ -85,7 +85,7 @@ export function WeatherPanel() {
           onClick={useSuggestedLocation}
           className="mt-2 text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
         >
-          Usar minha localização atual ({Math.round(suggestedLocation.temperature)}°C)
+          Use my current location ({Math.round(suggestedLocation.temperature)}°C)
         </button>
       )}
 
@@ -105,17 +105,17 @@ export function WeatherPanel() {
           <p className="text-muted-foreground">{describeWeatherCode(weather.weatherCode)}</p>
           <div className="grid grid-cols-3 gap-4 pt-2 text-sm">
             <div>
-              <p className="text-muted-foreground">Sensação</p>
+              <p className="text-muted-foreground">Feels like</p>
               <p className="font-medium text-card-foreground">
                 {Math.round(weather.apparentTemperature)}°C
               </p>
             </div>
             <div>
-              <p className="text-muted-foreground">Umidade</p>
+              <p className="text-muted-foreground">Humidity</p>
               <p className="font-medium text-card-foreground">{weather.humidity}%</p>
             </div>
             <div>
-              <p className="text-muted-foreground">Vento</p>
+              <p className="text-muted-foreground">Wind</p>
               <p className="font-medium text-card-foreground">{weather.windSpeed} km/h</p>
             </div>
           </div>

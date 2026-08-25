@@ -8,9 +8,9 @@ type WeatherMetricsProps = { current: Weather['current']; unit: TemperatureUnit 
 
 export function WeatherMetrics({ current, unit }: WeatherMetricsProps) {
   return <div className="weather-metrics">
-    <Metric icon={<ThermometerSun size={19} />} label="Sensação" value={formatTemperature(current.apparentTemperatureCelsius, unit)} />
-    <Metric icon={<Droplets size={19} />} label="Umidade" value={`${current.relativeHumidity}%`} />
-    <Metric icon={<Wind size={19} />} label="Vento" value={`${Math.round(current.windSpeedKmh)} km/h`} />
+    <Metric icon={<ThermometerSun size={19} />} label="Feels like" value={formatTemperature(current.apparentTemperatureCelsius, unit)} />
+    <Metric icon={<Droplets size={19} />} label="Humidity" value={`${current.relativeHumidity}%`} />
+    <Metric icon={<Wind size={19} />} label="Wind" value={`${Math.round(current.windSpeedKmh)} km/h`} />
   </div>;
 }
 

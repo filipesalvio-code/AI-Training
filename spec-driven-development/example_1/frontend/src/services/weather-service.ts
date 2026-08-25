@@ -3,10 +3,10 @@ import { WeatherApiError } from '../types/api-error'
 import type { WeatherResponse } from '../types/weather-response'
 
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/$/u, '')
-const INVALID_CITY_MESSAGE = 'Informe uma cidade com pelo menos dois caracteres.'
-const NOT_FOUND_MESSAGE = 'Cidade não encontrada. Verifique o nome e tente novamente.'
-const UNAVAILABLE_MESSAGE = 'Não foi possível consultar o clima agora. Tente novamente em instantes.'
-const INTERNAL_ERROR_MESSAGE = 'Ocorreu um erro inesperado. Tente novamente em instantes.'
+const INVALID_CITY_MESSAGE = 'Enter a city with at least two characters.'
+const NOT_FOUND_MESSAGE = 'City not found. Check the name and try again.'
+const UNAVAILABLE_MESSAGE = 'We could not check the weather right now. Try again shortly.'
+const INTERNAL_ERROR_MESSAGE = 'An unexpected error occurred. Try again shortly.'
 type WeatherService = {
   search: (city: string, signal: AbortSignal) => Promise<WeatherResponse>
 }

@@ -8,12 +8,12 @@ import { WeatherMetrics } from './WeatherMetrics';
 type WeatherCardProps = { weather: Weather; temperatureUnit: TemperatureUnit; onTemperatureUnitToggle: () => void };
 
 function describeWeather(code: number): string {
-  if (code === 0) return 'Céu limpo';
-  if (code <= 3) return 'Parcialmente nublado';
-  if (code >= 51 && code <= 67) return 'Chuva';
-  if (code >= 71 && code <= 86) return 'Neve';
-  if (code >= 95) return 'Trovoada';
-  return 'Condições variáveis';
+  if (code === 0) return 'Clear sky';
+  if (code <= 3) return 'Partly cloudy';
+  if (code >= 51 && code <= 67) return 'Rain';
+  if (code >= 71 && code <= 86) return 'Snow';
+  if (code >= 95) return 'Thunderstorm';
+  return 'Variable conditions';
 }
 
 function WeatherSymbol({ weatherCode, isDay }: Pick<Weather['current'], 'weatherCode' | 'isDay'>) {
@@ -23,8 +23,8 @@ function WeatherSymbol({ weatherCode, isDay }: Pick<Weather['current'], 'weather
 
 export function WeatherCard({ weather, temperatureUnit, onTemperatureUnitToggle }: WeatherCardProps) {
   const { current, location } = weather;
-  return <section aria-label={`Clima em ${location.name}`} className="weather-card">
-    <div className="weather-card-top"><div><p className="location-label">Leitura local</p><h2>{location.name}</h2><p className="location-country">{location.country}</p></div><TemperatureUnitToggle unit={temperatureUnit} onToggle={onTemperatureUnitToggle} /></div>
+  return <section aria-label={`Weather in ${location.name}`} className="weather-card">
+    <div className="weather-card-top"><div><p className="location-label">Local reading</p><h2>{location.name}</h2><p className="location-country">{location.country}</p></div><TemperatureUnitToggle unit={temperatureUnit} onToggle={onTemperatureUnitToggle} /></div>
     <div className="weather-reading"><div className="condition-symbol"><WeatherSymbol weatherCode={current.weatherCode} isDay={current.isDay} /></div><div><p className="condition-name">{describeWeather(current.weatherCode)}</p><strong>{formatTemperature(current.temperatureCelsius, temperatureUnit)}</strong></div></div>
     <WeatherMetrics current={current} unit={temperatureUnit} />
   </section>;

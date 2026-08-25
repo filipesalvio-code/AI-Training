@@ -1,83 +1,83 @@
-# Saldo no banco não é visão de caixa: entenda o previsto e o realizado
+# Bank balance is not cash flow: understand the forecasted and the realized
 
-**Meta description:** Saldo bancário mostra o presente. Veja como acompanhar receitas e compromissos futuros para tomar decisões financeiras com mais clareza.
+**Meta description:** Bank balance shows the present. See how to track future revenues and commitments to make clearer financial decisions.
 
-**Público principal:** proprietários, sócios e diretorias de empresas em crescimento.
+**Main audience:** owners, partners, and executives of growing companies.
 
-## O saldo de hoje não responde às perguntas de amanhã
+## Today's balance does not answer tomorrow's questions
 
-Abrir o aplicativo do banco e consultar o saldo é uma rotina importante. Mas o saldo é apenas uma fotografia do presente. Ele não mostra sozinho os boletos que vencem na próxima semana, os recebimentos ainda não realizados, a folha, os impostos ou os compromissos assumidos em outras contas.
+Opening the bank app and checking the balance is an important routine. But the balance is just a snapshot of the present. It does not alone show the bills due next week, the receivables yet to be realized, payroll, taxes, or commitments made in other accounts.
 
-Por isso, uma empresa pode ter dinheiro disponível hoje e, ainda assim, precisar adiar um investimento. Também pode parecer cautelosa demais quando, na verdade, tem recebimentos contratados suficientes para sustentar o próximo passo.
+Therefore, a company may have available cash today and still need to postpone an investment. It may also seem overly cautious when, in fact, it has enough contracted receivables to support the next step.
 
-A diferença está em conectar o saldo bancário ao fluxo de caixa previsto e ao que de fato foi realizado.
+The difference lies in connecting the bank balance to the forecasted cash flow and what has actually been realized.
 
-## A diferença entre previsto, realizado e saldo
+## The difference between forecasted, realized, and balance
 
-O **previsto** reúne os recebimentos e pagamentos esperados para um período. É a visão do que deve acontecer conforme títulos, contratos e compromissos cadastrados.
+The **forecasted** includes the expected receipts and payments for a period. It is the view of what should happen according to registered titles, contracts, and commitments.
 
-O **realizado** registra o que efetivamente entrou ou saiu. Ele depende das baixas, dos extratos e da conferência da operação.
+The **realized** records what has actually come in or gone out. It depends on the write-offs, statements, and operation checks.
 
-O **saldo** é o resultado momentâneo das movimentações de uma conta ou conjunto de contas. Ele é indispensável, mas não substitui a visão dos próximos dias e semanas.
+The **balance** is the current result of the movements of an account or set of accounts. It is essential, but it does not replace the view of the upcoming days and weeks.
 
-Uma gestão financeira útil precisa observar as três perspectivas. Quando elas ficam separadas em arquivos ou ferramentas diferentes, a diretoria recebe números atrasados e a equipe precisa explicar as diferenças manualmente.
+Useful financial management needs to observe all three perspectives. When they are separated into different files or tools, the board receives outdated numbers, and the team has to manually explain the differences.
 
-## Quatro situações em que essa confusão aparece
+## Four situations where this confusion appears
 
-### “Temos dinheiro, então podemos investir”
+### "We have money, so we can invest"
 
-O saldo pode não considerar pagamentos já assumidos, impostos, folha ou uma concentração de vencimentos. Decidir apenas pelo valor disponível hoje reduz a visibilidade sobre o que vem pela frente.
+The balance may not consider already assumed payments, taxes, payroll, or a concentration of due dates. Deciding solely based on the available amount today reduces visibility about what lies ahead.
 
-### “O faturamento cresceu, mas o caixa apertou”
+### "Revenue has grown, but cash is tight"
 
-Vendas e recebimentos não acontecem necessariamente na mesma data. Se a empresa vende a prazo, precisa acompanhar quando o dinheiro deve entrar e o que precisa ser pago antes disso.
+Sales and receipts do not necessarily happen on the same date. If the company sells on credit, it needs to track when the money is expected to come in and what needs to be paid before that.
 
-### “O relatório mostra um número diferente do banco”
+### "The report shows a different number from the bank"
 
-Diferenças podem surgir de lançamentos pendentes, tarifas, transferências, baixas não realizadas ou classificações inconsistentes. Sem conciliação, a equipe não sabe rapidamente se está diante de um atraso ou de um erro de registro.
+Differences can arise from pending entries, fees, transfers, unrecorded write-offs, or inconsistent classifications. Without reconciliation, the team does not quickly know if they are facing a delay or a recording error.
 
-### “A diretoria só descobre o problema no fechamento”
+### "The board only discovers the problem at closing"
 
-Quando a análise depende de uma consolidação no fim do mês, a oportunidade de ajustar o plano já pode ter passado. A visão de caixa precisa apoiar decisões durante a rotina, não somente explicar o que aconteceu depois.
+When analysis depends on a consolidation at the end of the month, the opportunity to adjust the plan may have already passed. The cash view needs to support decisions during the routine, not just explain what happened afterward.
 
-## Como construir uma visão de caixa mais útil
+## How to build a more useful cash view
 
-Não é necessário começar com um modelo financeiro complexo. Um caminho prático é organizar a análise em quatro perguntas:
+It is not necessary to start with a complex financial model. A practical approach is to organize the analysis around four questions:
 
-1. Quanto temos disponível hoje em cada conta?
-2. Quais recebimentos estão previstos e para quando?
-3. Quais pagamentos e compromissos vencem no período?
-4. O que já foi realizado e o que ainda precisa ser confirmado?
+1. How much do we have available today in each account?
+2. What receipts are forecasted and when?
+3. What payments and commitments are due in the period?
+4. What has already been realized and what still needs to be confirmed?
 
-Depois, vale observar os desvios: um recebimento atrasou? Uma despesa foi maior do que a esperada? Uma transferência ainda não foi conciliada? O objetivo não é prever o futuro com certeza, mas tornar os sinais mais claros para decidir antes.
+Then, it is worth observing the deviations: has a receipt been delayed? Was an expense higher than expected? Has a transfer not yet been reconciled? The goal is not to predict the future with certainty but to make the signals clearer for earlier decision-making.
 
-Também é importante separar resultado econômico de saldo bancário. Uma empresa pode apresentar vendas e resultado positivos enquanto enfrenta uma diferença temporária de caixa. Da mesma forma, um saldo alto em uma data específica não significa que todos os compromissos do período estejam cobertos.
+It is also important to separate economic results from bank balance. A company can show positive sales and results while facing a temporary cash difference. Similarly, a high balance on a specific date does not mean that all commitments for the period are covered.
 
-## O papel de uma rotina conectada
+## The role of a connected routine
 
-Para acompanhar previsto e realizado, a equipe precisa de uma informação comum. Contas a pagar, contas a receber, bancos, baixas e relatórios não podem depender de atualizações isoladas em horários diferentes.
+To track forecasted and realized, the team needs common information. Accounts payable, accounts receivable, banks, write-offs, and reports cannot rely on isolated updates at different times.
 
-Uma rotina conectada facilita a identificação de pendências, melhora a conversa entre a equipe financeira e a diretoria e reduz a necessidade de pedir uma nova planilha para cada decisão.
+A connected routine facilitates the identification of pending items, improves communication between the finance team and the board, and reduces the need to request a new spreadsheet for each decision.
 
-O NexoERP reúne a operação financeira e a visão de caixa em um só lugar. A proposta não é substituir o julgamento do gestor, mas oferecer um mapa mais claro: o que entrou, o que saiu, o que está previsto e onde existe uma pendência para investigar.
+NexoERP brings together financial operations and cash view in one place. The proposal is not to replace the manager's judgment but to offer a clearer map: what has come in, what has gone out, what is forecasted, and where there is a pending item to investigate.
 
-## Um exercício para a próxima reunião
+## An exercise for the next meeting
 
-Na próxima reunião financeira, coloque lado a lado:
+In the next financial meeting, place side by side:
 
-- saldo atual por conta;
-- recebimentos previstos para os próximos 30 dias;
-- pagamentos e compromissos do mesmo período;
-- valores já realizados;
-- pendências que podem alterar o cenário.
+- current balance by account;
+- forecasted receipts for the next 30 days;
+- payments and commitments for the same period;
+- amounts already realized;
+- pending items that may alter the scenario.
 
-Se esses dados exigirem várias versões de planilha, mensagens e conferências manuais, esse é um sinal de que a empresa pode se beneficiar de um processo mais conectado.
+If this data requires multiple versions of spreadsheets, messages, and manual checks, that is a sign that the company could benefit from a more connected process.
 
-**CTA:** Veja como funciona o NexoERP e acompanhe o previsto e o realizado no mesmo fluxo.
+**CTA:** See how NexoERP works and track the forecasted and realized in the same flow.
 
-### Base editorial
+### Editorial base
 
-- [Personas e jornada de compra](../../conceitos/personas-e-jornada-de-compra.md)
-- [Posicionamento da NexoERP](../../conceitos/posicionamento-nexoerp.md)
-- [Briefings de campanhas e canais](../../conceitos/briefings-campanhas-e-canais.md)
-- [Identidade da marca NexoERP](../../conceitos/identidade-da-marca-nexoerp.md)
+- [Personas and buying journey](../../concepts/personas-e-jornada-de-compra.md)
+- [NexoERP positioning](../../concepts/posicionamento-nexoerp.md)
+- [Campaign briefings and channels](../../concepts/briefings-campanhas-e-canais.md)
+- [NexoERP brand identity](../../concepts/identidade-da-marca-nexoerp.md)

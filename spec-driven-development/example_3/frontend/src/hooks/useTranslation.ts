@@ -4,6 +4,6 @@ import type { LanguageContextValue } from '../types/language-context-value';
 
 export function useTranslation(): LanguageContextValue {
   const value = useContext(LanguageContext);
-  if (!value) throw new Error('useTranslation deve ser usado dentro de LanguageProvider');
+  if (!value) throw new Error('useTranslation must be used within LanguageProvider');
   return value;
 }

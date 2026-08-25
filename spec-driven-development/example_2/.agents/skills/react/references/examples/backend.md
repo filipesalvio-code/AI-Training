@@ -1,18 +1,18 @@
-# Exemplos de acesso ao backend
+# Backend access examples
 
-## Exemplo de módulo de acesso à API:
+## API access module example:
 
 ```ts
 export type Health = { status: string }
 
 export async function fetchHealth(): Promise<Health> {
   const response = await fetch('http://localhost:3000/health')
-  if (!response.ok) throw new Error('Não foi possível consultar a API')
+  if (!response.ok) throw new Error('Unable to query the API')
   return response.json() as Promise<Health>
 }
 ```
 
-## Exemplo de hook que contém a lógica de integração:
+## Hook example that contains the integration logic:
 
 ```tsx
 export function useApiHealth() {

@@ -10,10 +10,10 @@ function App() {
   const [temperatureUnit, setTemperatureUnit] = useState<TemperatureUnit>('celsius');
   const weatherTheme = getWeatherTheme(weather);
   const statusMessage = isLoading
-    ? 'Sintonizando os sensores da cidade…'
+    ? 'Tuning the city sensors…'
     : weather
-      ? `Leitura atmosférica atualizada para ${weather.location.name}.`
-      : 'Pesquise uma cidade para iniciar a leitura atmosférica.';
+      ? `Atmospheric reading updated for ${weather.location.name}.`
+      : 'Search for a city to start the atmospheric reading.';
 
   function toggleTemperatureUnit(): void {
     setTemperatureUnit((unit) => unit === 'celsius' ? 'fahrenheit' : 'celsius');
@@ -24,9 +24,9 @@ function App() {
       <div className="workbench-shadow" aria-hidden="true" />
       <div className="weather-shell">
         <header className="weather-header">
-          <div className="brand-lockup" aria-label="Atmosfera, previsão do tempo"><span className="brand-mark" aria-hidden="true"><i /><i /><i /></span><span>atmosfera</span></div>
-          <h1>Clima, com precisão suficiente para decidir.</h1>
-          <p className="weather-description">Consulte as condições atuais de qualquer cidade em uma leitura operacional.</p>
+          <div className="brand-lockup" aria-label="Atmosphere, weather forecast"><span className="brand-mark" aria-hidden="true"><i /><i /><i /></span><span>atmosphere</span></div>
+          <h1>Weather, precise enough to decide.</h1>
+          <p className="weather-description">Check current conditions for any city in an operational reading.</p>
         </header>
         <WeatherSearch isLoading={isLoading} onSubmit={searchWeather} />
         <p className="signal-status" aria-live="polite"><span aria-hidden="true" />{statusMessage}</p>

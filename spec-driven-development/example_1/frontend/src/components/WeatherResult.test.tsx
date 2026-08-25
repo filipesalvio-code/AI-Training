@@ -14,6 +14,6 @@ describe('WeatherResult', () => {
     expect(screen.getByText('12.4 km/h')).toBeVisible()
     expect(screen.getByRole('link', { name: 'Open-Meteo' })).toHaveAttribute('href', 'https://open-meteo.com/')
     expect(screen.getByRole('link', { name: 'CC BY 4.0' })).toHaveAttribute('href', 'https://creativecommons.org/licenses/by/4.0/')
-    expect(within(screen.getByRole('region')).getByText(/Dados por/)).toBeVisible()
+    expect(within(screen.getByRole('region')).getByText(/Data by/)).toBeVisible()
   })
 })

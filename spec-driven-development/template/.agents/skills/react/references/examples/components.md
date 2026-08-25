@@ -1,6 +1,6 @@
-# Exemplos de componentes e props
+# Component and props examples
 
-## Exemplo de componente pequeno:
+## Small component example:
 
 ```tsx
 type StatusCardProps = {
@@ -12,25 +12,25 @@ export function StatusCard({ status }: StatusCardProps) {
   const color = status === 'online' ? 'text-green-700' : 'text-red-700'
 
   return (
-    <section aria-label="Status da API" className="rounded-lg border p-4">
+    <section aria-label="API status" className="rounded-lg border p-4">
       <p className={color}>{label}</p>
     </section>
   )
 }
 ```
 
-## Exemplo de props explícitas
+## Explicit props example
 
-Evite encaminhar props com o spread operator, pois isso esconde a API do componente e pode repassar atributos inesperados:
+Avoid forwarding props with the spread operator, because that hides the component API and can pass unexpected attributes:
 
 ```tsx
-// Evite
+// Avoid
 function Button(props: ButtonProps) {
   return <button {...props} />
 }
 ```
 
-Declare e utilize as propriedades explicitamente:
+Declare and use properties explicitly:
 
 ```tsx
 type ButtonProps = {

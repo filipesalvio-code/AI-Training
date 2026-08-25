@@ -3,7 +3,7 @@ import { searchWeather } from './weather-service';
 
 const result = {
   location: { city: 'Lisboa', administrativeArea: null, country: 'Portugal' },
-  current: { temperature: 20, apparentTemperature: 19, condition: 'Céu limpo', relativeHumidity: 50, windSpeed: 5 },
+  current: { temperature: 20, apparentTemperature: 19, condition: 'Clear sky', relativeHumidity: 50, windSpeed: 5 },
   units: { temperature: '°C', apparentTemperature: '°C', relativeHumidity: '%', windSpeed: 'km/h' },
   source: { name: 'Open-Meteo', url: 'https://open-meteo.com/', license: 'CC BY 4.0', licenseUrl: 'https://creativecommons.org/licenses/by/4.0/' },
 };

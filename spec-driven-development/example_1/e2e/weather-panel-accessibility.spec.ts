@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test'
 import { mkdir, writeFile } from 'node:fs/promises'
 
-const evidenceDirectory = '../tasks/prd-painel-de-clima/evidences'
+const evidenceDirectory = '../tasks/prd-weather-panel/evidences'
 
 test.beforeAll(async () => {
   await mkdir(evidenceDirectory, { recursive: true })

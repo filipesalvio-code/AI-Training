@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const evidenceDir = '../tasks/prd-painel-de-clima/evidences';
+const evidenceDir = '../tasks/prd-weather-panel/evidences';
 
 async function submit(page: import('@playwright/test').Page, city: string): Promise<void> {
   await page.getByRole('textbox', { name: 'Nome da cidade' }).fill(city);

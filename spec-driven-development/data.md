@@ -1,8 +1,8 @@
-qual é o tamanho ideal da tarefa para execução?
-devo limpar a janela de contexto entre a execução das tasks?
-de quanto em quanto tempo?
+What is the ideal task size for execution?
+Should I clear the context window between task runs?
+How often?
 
-rodando cada tarefa isoladamente em uma janela de contexto:
+Running each task in isolation in a context window:
 
 task 1: 107k 1M
 task 2: 126k 3M
@@ -13,19 +13,19 @@ task 5: 153k 6M
 total: 650k
 cache: 16M
 
-rodando todas ao mesmo tempo, em sequência:
+running all at once, in sequence:
 
 total: 240k
 cache: 10M
 
-vantagens e desvantagens em não limpar a janela de contexto entre as tasks:
+pros and cons of not clearing the context window between tasks:
 
-+ vantagens:
-* reuso de cache
-* evitar leitura repetitiva
++ pros:
+* cache reuse
+* avoid repeated reading
 
-- desvantagens
-* contexto maior
-* compactação
-* tempo de inferência
-* mistura de skills
+- cons
+* larger context
+* compaction
+* inference time
+* skill mixing

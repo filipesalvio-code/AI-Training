@@ -1,130 +1,131 @@
-# LLM Wiki em Open Knowledge Format
+# LLM Wiki in Open Knowledge Format
 
-Este diretório combina o padrão LLM Wiki descrito por Andrej Karpathy com a
-especificação Open Knowledge Format (OKF) v0.2:
+This directory combines the LLM Wiki pattern described by Andrej Karpathy with
+the Open Knowledge Format (OKF) v0.2 specification:
 
 - https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
 - https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md
 
-## Ideia central
+## Core idea
 
-Mantenha uma wiki persistente em Markdown entre o usuário e suas fontes. Em vez
-de reconstruir o conhecimento a partir dos documentos brutos a cada pergunta,
-leia as fontes, extraia o que importa e integre esse conteúdo à wiki existente.
+Keep a persistent Markdown wiki between the user and their sources. Instead of
+rebuilding knowledge from raw documents for every question, read the sources,
+extract what matters, and integrate that content into the existing wiki.
 
-A wiki deve acumular valor: novas fontes e novas perguntas podem atualizar
-páginas, conexões, comparações e sínteses já existentes.
+The wiki should accumulate value: new sources and new questions can update
+existing pages, connections, comparisons, and syntheses.
 
-O usuário seleciona fontes, explora o conteúdo e faz perguntas. O agente mantém
-a wiki: resume, organiza, cria relações, atualiza páginas e cuida da
-consistência.
+The user selects sources, explores content, and asks questions. The agent
+maintains the wiki: summarizes, organizes, creates relationships, updates
+pages, and ensures consistency.
 
-## Arquitetura
+## Architecture
 
 ### `raw/`
 
-Coleção curada de documentos-fonte, como artigos, papers, imagens e arquivos de
-dados.
+Curated collection of source documents, such as articles, papers, images, and
+data files.
 
-- É a fonte de verdade.
-- O agente pode ler seus arquivos, mas nunca deve modificá-los.
-- Não faz parte do bundle OKF e, por isso, seus arquivos não precisam seguir o
-  formato de documentos de conceito.
+- It is the source of truth.
+- The agent may read its files, but must never modify them.
+- It is not part of the OKF bundle, so its files do not need to follow the
+  concept document format.
 
 ### `wiki/`
 
-Bundle de conhecimento OKF v0.2 e diretório de arquivos Markdown gerados e
-mantidos pelo agente. Pode conter resumos, páginas de entidades, páginas de
-conceitos, comparações, panoramas e sínteses.
+OKF v0.2 knowledge bundle and directory of Markdown files generated and
+maintained by the agent. It may contain summaries, entity pages, concept pages,
+comparisons, overviews, and syntheses.
 
-- O agente cria e atualiza as páginas.
-- O agente mantém referências cruzadas e consistência entre elas.
-- O usuário e qualquer consumidor compatível com OKF consultam o resultado.
-- A raiz do bundle é `wiki/`; links iniciados por `/` são relativos a ela.
+- The agent creates and updates pages.
+- The agent maintains cross-references and consistency across them.
+- The user and any OKF-compatible consumer query the result.
+- The bundle root is `wiki/`; links starting with `/` are relative to it.
 
 ### `AGENTS.md`
 
-Schema operacional usado pelo Codex. Define a estrutura, as convenções e os
-fluxos seguidos pelo agente. Pode evoluir com o uso, em colaboração com o
-usuário. Não faz parte do bundle OKF.
+Operational schema used by Codex. It defines the structure, conventions, and
+flows followed by the agent. It may evolve through use, in collaboration with
+the user. It is not part of the OKF bundle.
 
-## Documentos de conceito OKF
+## OKF concept documents
 
-Todo arquivo `.md` dentro de `wiki/`, exceto os nomes reservados `index.md` e
-`log.md`, representa exatamente um conceito. O caminho sem a extensão `.md` é
-o identificador estável desse conceito. Prefira nomes de arquivo descritivos em
-`kebab-case` e não altere caminhos sem atualizar os links de entrada.
+Every `.md` file inside `wiki/`, except the reserved names `index.md` and
+`log.md`, represents exactly one concept. The path without the `.md` extension
+is that concept’s stable identifier. Prefer descriptive filenames in
+`kebab-case` and do not change paths without updating inbound links.
 
-Cada documento de conceito deve ser UTF-8 e começar com frontmatter YAML:
+Each concept document must be UTF-8 and start with YAML frontmatter:
 
 ```markdown
 ---
 type: Concept
-title: Nome legível do conceito
-description: Resumo do conceito em uma frase.
-resource: https://example.com/recurso-canonico
-tags: [tema, contexto]
+title: Human-readable concept name
+description: One-sentence summary of the concept.
+resource: https://example.com/canonical-resource
+tags: [topic, context]
 generated:
-  by: human:usuario
+  by: human:user
   at: 2026-07-23T12:00:00-03:00
 sources:
-  - id: fonte-principal
-    resource: https://example.com/fonte
-    title: Fonte principal
+  - id: primary-source
+    resource: https://example.com/source
+    title: Primary source
 ---
 
-# Visão geral
+# Overview
 
-Conteúdo estruturado e conectado a [outro conceito](/conceitos/outro.md),
-conforme a [fonte principal][^fonte-principal].
+Structured content connected to [another concept](/concepts/other.md),
+according to the [primary source][^primary-source].
 
-[^fonte-principal]: Fonte principal
+[^primary-source]: Primary source
 
 ```
 
-Regras do frontmatter:
+Frontmatter rules:
 
-- `type` é obrigatório, deve ser uma string curta, não vazia e autoexplicativa.
-- `title`, `description`, `resource` e `tags` são recomendados quando seus
-  valores forem conhecidos.
-- `generated` é recomendado para registrar como o conteúdo atual foi produzido
-  e quando ocorreu sua última alteração significativa.
-- `verified`, `status` e `stale_after` são opcionais e devem ser usados quando
-  houver confirmação, necessidade de ciclo de vida ou política de atualização.
-- `sources` é recomendado quando o conceito deriva de fontes identificáveis.
-- `description` deve conter uma única frase útil para índices e busca.
-- `resource` identifica o recurso canônico descrito pela página; omita-o em
-  conceitos abstratos sem recurso correspondente.
-- `tags` deve ser uma lista YAML de strings curtas.
-- `generated.by` deve seguir a convenção de atores: `<producer>/<version>` para
-  agentes e ferramentas, `human:<id>` para pessoas e `process:<id>` para
-  processos automatizados.
-- `generated.at` e `verified[].at` devem usar data e hora ISO 8601.
-- `verified` é uma lista de eventos de verificação, cada um com `by` e `at`.
-  Um único evento também pode ser escrito como um mapeamento sem lista.
-- `status` aceita `draft`, `stable` ou `deprecated`; quando ausente, o
-  conceito é considerado `stable`.
-- `stale_after` é uma data absoluta no formato `YYYY-MM-DD`; o conceito fica
-  obsoleto quando a data atual for igual ou posterior a ela.
-- Campos adicionais são permitidos quando o domínio justificar. Preserve
-  campos desconhecidos ao editar uma página.
-- Não invente metadados ausentes apenas para preencher o frontmatter.
+- `type` is required; it must be a short, non-empty, self-explanatory string.
+- `title`, `description`, `resource`, and `tags` are recommended when their
+  values are known.
+- `generated` is recommended to record how the current content was produced and
+  when its last significant change occurred.
+- `verified`, `status`, and `stale_after` are optional and should be used when
+  confirmation, lifecycle needs, or refresh policy is required.
+- `sources` is recommended when the concept derives from identifiable sources.
+- `description` must contain a single sentence useful for indexes and search.
+- `resource` identifies the canonical resource described by the page; omit it
+  for abstract concepts with no corresponding resource.
+- `tags` must be a YAML list of short strings.
+- `generated.by` must follow the actor convention: `<producer>/<version>` for
+  agents and tools, `human:<id>` for people, and `process:<id>` for automated
+  processes.
+- `generated.at` and `verified[].at` must use ISO 8601 date-time.
+- `verified` is a list of verification events, each with `by` and `at`.
+  A single event can also be written as a mapping without a list.
+- `status` accepts `draft`, `stable`, or `deprecated`; when absent, the concept
+  is considered `stable`.
+- `stale_after` is an absolute date in `YYYY-MM-DD` format; the concept becomes
+  stale when the current date is equal to or later than it.
+- Additional fields are allowed when justified by the domain. Preserve unknown
+  fields when editing a page.
+- Do not invent missing metadata just to fill frontmatter.
 
-Não existe uma taxonomia universal de tipos. Use poucos valores consistentes e
-autoexplicativos, como `Source Summary`, `Entity`, `Concept`, `Comparison`,
-`Synthesis`, `Playbook`, `Attested Computation` ou tipos específicos do domínio.
+There is no universal type taxonomy. Use a small set of consistent,
+self-explanatory values, such as `Source Summary`, `Entity`, `Concept`,
+`Comparison`, `Synthesis`, `Playbook`, `Attested Computation`, or
+domain-specific types.
 
-### Proveniência e confiança
+### Provenance and trust
 
-Quando um conceito for derivado de material externo ou de outro conceito, use
-`sources` no frontmatter:
+When a concept is derived from external material or another concept, use
+`sources` in frontmatter:
 
 ~~~yaml
 sources:
-  - id: fonte-principal
-    resource: https://example.com/fonte
-    title: Fonte principal
-    author: human:autor
+  - id: primary-source
+    resource: https://example.com/source
+    title: Primary source
+    author: human:author
     usage_count: 42
     last_modified: 2026-07-23
 usage_window:
@@ -132,56 +133,56 @@ usage_window:
   to: 2026-07-31
 ~~~
 
-Cada entrada de `sources` deve ter `resource`. `id`, `title`, `author`,
-`usage_count` e `last_modified` são opcionais. `usage_window` é irmão de
-`sources` e contextualiza os valores de `usage_count`; uma fonte pode
-sobrescrevê-lo localmente.
+Each `sources` entry must include `resource`. `id`, `title`, `author`,
+`usage_count`, and `last_modified` are optional. `usage_window` is a sibling of
+`sources` and contextualizes `usage_count` values; a source may override it
+locally.
 
-Para atribuir uma afirmação específica a uma fonte, use uma nota de rodapé
-com o mesmo identificador de `sources[].id`:
+To attribute a specific claim to a source, use a footnote with the same
+identifier as `sources[].id`:
 
 ```markdown
-O processamento ocorre diariamente.[^fonte-principal]
+Processing occurs daily.[^primary-source]
 
-[^fonte-principal]: Fonte principal
+[^primary-source]: Primary source
 ```
 
-Não use uma lista genérica `# Citations` como convenção primária. Ela pode ser
-interpretada como legado de OKF v0.1, mas novos documentos devem preferir
-`sources` e notas de rodapé por afirmação.
+Do not use a generic `# Citations` list as the primary convention. It may be
+interpreted as OKF v0.1 legacy, but new documents should prefer `sources` and
+per-claim footnotes.
 
-## Corpo, links e citações
+## Body, links, and citations
 
-- Use Markdown estrutural: títulos, listas, tabelas e blocos de código.
-- Prefira links absolutos relativos ao bundle, como
-  `[Conceito](/conceitos/conceito.md)`. Links relativos também são válidos.
-- Explique a relação no texto ao redor do link; o link, sozinho, não tipa a
-  relação.
-- Links quebrados são tolerados pelo OKF, mas devem ser reportados no `LINT` e
-  corrigidos quando não representarem conhecimento ainda pendente.
-- Afirmações vindas de material externo devem apontar para uma entrada em
-  `sources`; quando a atribuição for por afirmação, use uma nota de rodapé
-  cujo rótulo corresponda a `sources[].id`.
-- Ao citar um arquivo local de `raw/`, use um link Markdown relativo ao arquivo.
-  Ao citar uma fonte web, prefira a URL canônica.
-- `# Schema`, `# Examples` e `# Computation` têm significado convencional no
-  OKF e devem ser usados quando forem adequados ao conceito.
+- Use structural Markdown: headings, lists, tables, and code blocks.
+- Prefer absolute bundle-relative links, such as
+  `[Concept](/concepts/concept.md)`. Relative links are also valid.
+- Explain the relationship in the surrounding text; the link alone does not
+  type the relationship.
+- Broken links are tolerated by OKF, but should be reported in `LINT` and
+  fixed when they do not represent knowledge that is still pending.
+- Claims derived from external material must point to an entry in `sources`;
+  when attribution is per claim, use a footnote label that matches
+  `sources[].id`.
+- When citing a local `raw/` file, use a Markdown link relative to the file.
+  When citing a web source, prefer the canonical URL.
+- `# Schema`, `# Examples`, and `# Computation` have conventional meaning in
+  OKF and should be used when appropriate to the concept.
 
-## Computações atestadas
+## Attested computations
 
-Quando um conceito precisar declarar uma forma sancionada de calcular um valor,
-use `type: Attested Computation`. O frontmatter pode incluir `runtime`,
-`parameters`, `computation`, `executor` e `attester`; o corpo deve usar a seção
-`# Computation` para registrar a definição executável. O OKF descreve a
-computação e como verificá-la, mas não executa o código nem define seu pacote ou
-ambiente de execução.
+When a concept needs to declare a sanctioned way to compute a value, use
+`type: Attested Computation`. Frontmatter may include `runtime`, `parameters`,
+`computation`, `executor`, and `attester`; the body should use the
+`# Computation` section to record the executable definition. OKF describes the
+computation and how to verify it, but does not execute code or define its
+package or runtime environment.
 
-Exemplo mínimo:
+Minimal example:
 
 ~~~yaml
 ---
 type: Attested Computation
-title: Receita anual
+title: Annual revenue
 runtime: bigquery
 parameters:
   - name: year
@@ -193,7 +194,7 @@ executor:
 attester:
   resource: /attesters/sql-equality.py
 generated:
-  by: human:usuario
+  by: human:user
   at: 2026-08-03T12:00:00-03:00
 ---
 
@@ -206,129 +207,128 @@ WHERE fiscal_year = @year
 ```
 ~~~
 
-## Operações
+## Operations
 
 ### INGEST
 
-Ao processar uma nova fonte adicionada a `raw/`:
+When processing a new source added to `raw/`:
 
-1. Leia a fonte sem modificá-la.
-2. Discuta com o usuário os principais pontos extraídos.
-3. Crie ou atualize os documentos de conceito afetados, incluindo um resumo da
-   fonte quando ele tiver valor próprio.
-4. Preencha o frontmatter OKF de todo documento criado e atualize
-   `generated.at` apenas nas alterações significativas. Preserve `generated.by`
-   quando a origem do conteúdo não mudar.
-5. Adicione links entre os conceitos relacionados e citações às fontes.
-6. Atualize `wiki/index.md` e os índices de subdiretórios afetados, se existirem.
-7. Atualize outras páginas de entidades, conceitos e sínteses afetadas.
-8. Registre a operação em `wiki/log.md`.
+1. Read the source without modifying it.
+2. Discuss the main extracted points with the user.
+3. Create or update affected concept documents, including a source summary when
+   it has standalone value.
+4. Fill OKF frontmatter for every created document and update `generated.at`
+   only for significant changes. Preserve `generated.by` when content origin
+   does not change.
+5. Add links between related concepts and citations to sources.
+6. Update `wiki/index.md` and affected subdirectory indexes, if present.
+7. Update other affected entity, concept, and synthesis pages.
+8. Record the operation in `wiki/log.md`.
 
-Uma fonte pode afetar muitas páginas. O fluxo pode processar uma fonte por vez
-com acompanhamento do usuário ou várias fontes em lote, conforme a preferência
-registrada neste schema.
+A source may affect many pages. The flow can process one source at a time with
+user follow-up, or multiple sources in batch, according to the preference
+recorded in this schema.
 
 ### QUERY
 
-Ao receber uma pergunta sobre a wiki:
+When receiving a question about the wiki:
 
-1. Leia `wiki/index.md` para localizar as páginas relevantes.
-2. Navegue pelos índices de subdiretórios e links antes de fazer uma busca mais
-   ampla.
-3. Pesquise e leia os documentos de conceito relevantes.
-4. Sintetize uma resposta com citações.
-5. Produza o formato adequado à pergunta, que pode ser uma página Markdown,
-   tabela comparativa, apresentação, gráfico ou canvas.
-6. Quando uma resposta, comparação, análise ou conexão tiver valor durável,
-   incorpore-a à wiki como um documento de conceito OKF e atualize índice e log.
+1. Read `wiki/index.md` to locate relevant pages.
+2. Navigate subdirectory indexes and links before running a broader search.
+3. Search and read relevant concept documents.
+4. Synthesize an answer with citations.
+5. Produce the format appropriate to the question, which may be a Markdown
+   page, comparison table, presentation, chart, or canvas.
+6. When an answer, comparison, analysis, or connection has durable value,
+   incorporate it into the wiki as an OKF concept document and update index and
+   log.
 
-Consultas úteis também devem contribuir para o acúmulo de conhecimento, em vez
-de permanecer apenas no histórico da conversa.
+Useful queries should also contribute to knowledge accumulation, rather than
+remaining only in conversation history.
 
 ### LINT
 
-Periodicamente, faça uma revisão de saúde e conformidade da wiki. Verifique:
+Periodically perform a health and compliance review of the wiki. Check:
 
-- se todo documento de conceito tem frontmatter YAML parseável e `type` não
-  vazio;
-- se `index.md` e `log.md` são usados somente com seus significados reservados;
-- se `generated.at` e `verified[].at` são ISO 8601 e os metadados conhecidos
-  estão consistentes;
-- se `generated`, `verified`, `status`, `stale_after` e `sources` seguem suas
-  convenções quando presentes;
-- se atores usam os prefixos `human:`, `process:` ou `<producer>/<version>`;
-- se notas de rodapé de atribuição resolvem para um `sources[].id`;
-- contradições entre páginas;
-- afirmações antigas superadas por fontes mais recentes;
-- páginas órfãs, sem links de entrada;
-- links internos quebrados ou relações sem contexto;
-- conceitos importantes mencionados, mas sem página própria;
-- referências cruzadas e citações ausentes;
-- entradas ausentes ou desatualizadas nos índices;
-- lacunas que poderiam ser preenchidas por novas fontes ou pesquisa na web.
+- whether every concept document has parseable YAML frontmatter and a non-empty
+  `type`;
+- whether `index.md` and `log.md` are used only with their reserved meanings;
+- whether `generated.at` and `verified[].at` are ISO 8601 and known metadata is
+  consistent;
+- whether `generated`, `verified`, `status`, `stale_after`, and `sources`
+  follow their conventions when present;
+- whether actors use the `human:`, `process:`, or `<producer>/<version>`
+  prefixes;
+- whether attribution footnotes resolve to a `sources[].id`;
+- contradictions between pages;
+- outdated claims superseded by newer sources;
+- orphan pages with no inbound links;
+- broken internal links or relationships without context;
+- important concepts that are mentioned but lack their own page;
+- missing cross-references and citations;
+- missing or outdated entries in indexes;
+- gaps that could be filled by new sources or web research.
 
-Reporte também perguntas que merecem investigação e fontes que seria útil
-adicionar. Um link quebrado não torna o bundle inválido segundo o OKF, mas ainda
-pode indicar um problema de manutenção.
+Also report questions that deserve investigation and sources that would be
+useful to add. A broken link does not make the bundle invalid under OKF, but it
+may still indicate a maintenance problem.
 
-## Índices e log
+## Indexes and log
 
 ### `wiki/index.md`
 
-Índice raiz do bundle e ponto de entrada para descoberta progressiva. É o único
-`index.md` que pode ter frontmatter, exclusivamente para declarar
+Root bundle index and entry point for progressive discovery. It is the only
+`index.md` that may have frontmatter, exclusively to declare
 `okf_version: "0.2"`.
 
-Organize as entradas por categorias que emergirem do conteúdo. Cada entrada
-deve usar um link relativo e, quando disponível, a `description` do conceito:
+Organize entries by categories that emerge from the content. Each entry should
+use a relative link and, when available, the concept’s `description`:
 
 ```markdown
-# Conceitos
+# Concepts
 
-- [Nome](conceitos/nome.md) - Resumo do conceito em uma frase.
+- [Name](concepts/name.md) - One-sentence concept summary.
 ```
 
-Um `index.md` também pode existir em subdiretórios. Nesses casos, não use
-frontmatter, liste conteúdos com links relativos e inclua os subdiretórios
-relevantes. Atualize os índices a cada ingestão que afetar seu escopo.
+An `index.md` may also exist in subdirectories. In those cases, do not use
+frontmatter; list contents with relative links and include relevant
+subdirectories. Update indexes after each ingestion that affects their scope.
 
 ### `wiki/log.md`
 
-Histórico de mudanças do bundle, agrupado por data e com as datas mais recentes
-primeiro. Entradas antigas são imutáveis; novas entradas devem ser inseridas no
-grupo da data correspondente, sem reescrever o histórico.
+Bundle change history, grouped by date with most recent dates first. Older
+entries are immutable; new entries must be inserted under the corresponding date
+group, without rewriting history.
 
-Use datas ISO 8601 e um tipo de operação em destaque:
+Use ISO 8601 dates and a highlighted operation type:
 
 ```markdown
-# Log de atualizações
+# Update log
 
 ## 2026-07-23
 
-- **Ingestão**: Adicionado [nome do conceito](/conceitos/nome.md).
-- **Consulta**: Incorporada uma comparação durável à wiki.
-- **Lint**: Corrigidos links e metadados inconsistentes.
+- **INGEST**: Added [concept name](/concepts/name.md).
+- **QUERY**: Incorporated a durable comparison into the wiki.
+- **LINT**: Fixed links and inconsistent metadata.
 ```
 
-Registre consultas apenas quando produzirem uma alteração durável ou uma
-decisão relevante para a manutenção da wiki.
+Record queries only when they produce a durable change or a decision relevant to
+wiki maintenance.
 
-## Conformidade e evolução
+## Compliance and evolution
 
-O bundle está conforme com OKF v0.2 quando:
+The bundle is compliant with OKF v0.2 when:
 
-1. cada `.md` não reservado sob `wiki/` tem frontmatter YAML parseável;
-2. cada frontmatter contém `type` não vazio;
-3. cada `index.md` e `log.md` segue sua estrutura reservada.
+1. every non-reserved `.md` under `wiki/` has parseable YAML frontmatter;
+2. every frontmatter contains a non-empty `type`;
+3. every `index.md` and `log.md` follows its reserved structure.
 
-Famílias opcionais ausentes, tipos desconhecidos, campos adicionais, links
-quebrados e índices ausentes em subdiretórios não invalidam o bundle. Um
-conceito sem `verified` é consumível, mas deve ser tratado como não verificado;
-um consumidor não deve rejeitá-lo por isso. Não acrescente complexidade antes
-que ela seja necessária: o OKF padroniza o intercâmbio, não prescreve taxonomia,
-banco, motor de busca, SDK ou plataforma.
+Missing optional families, unknown types, additional fields, broken links, and
+missing subdirectory indexes do not invalidate the bundle. A concept without
+`verified` is consumable, but must be treated as unverified; a consumer should
+not reject it for that reason. Do not add complexity before it is needed: OKF
+standardizes exchange, not taxonomy, database, search engine, SDK, or platform.
 
-Se a especificação-alvo mudar, atualize primeiro `okf_version` no índice raiz e
-depois este schema operacional. Em escala moderada, os índices podem ser
-suficientes; se a wiki crescer, uma ferramenta de busca local pode ser
-adicionada.
+If the target specification changes, first update `okf_version` in the root
+index and then this operational schema. At moderate scale, indexes may be
+enough; if the wiki grows, a local search tool can be added.

@@ -1,12 +1,12 @@
-# Regras de JavaScript e TypeScript
+# JavaScript and TypeScript rules
 
-Estas regras se aplicam a todo código JavaScript e TypeScript do frontend e do backend. Em caso de conflito, siga a regra mais específica do contexto, desde que ela não reduza a segurança ou a clareza do código.
+These rules apply to frontend JavaScript and TypeScript. The backend is Python/FastAPI; do not apply Node-specific patterns there. If a rule conflicts with a more specific project rule, follow the more specific one as long as it does not reduce safety or clarity.
 
-## Preferir `const`
+## Prefer `const`
 
-Use `const` por padrão. Use `let` somente quando a variável precisar receber um novo valor. Nunca use `var`, pois ele possui escopo de função e pode permitir reatribuições difíceis de rastrear.
+Use `const` by default. Use `let` only when the variable must be reassigned. Never use `var`, because it has function scope and allows harder-to-track reassignments.
 
-Evite:
+Avoid:
 
 ```ts
 var total = 0;
@@ -14,7 +14,7 @@ let name = 'Ana';
 name = 'Bia';
 ```
 
-Prefira:
+Prefer:
 
 ```ts
 const total = 0;
@@ -22,7 +22,7 @@ let name = 'Ana';
 name = 'Bia';
 ```
 
-Mesmo objetos e arrays declarados com `const` podem ter seu conteúdo alterado. Para evitar mutações acidentais, prefira criar novos valores com `map`, `filter` e spread:
+Even objects and arrays declared with `const` can have their contents mutated. To avoid accidental mutation, prefer creating new values with `map`, `filter`, and spread:
 
 ```ts
 type User = {
@@ -37,11 +37,11 @@ function activateUser(user: User): User {
 }
 ```
 
-## Comparações explícitas
+## Explicit comparisons
 
-Use sempre `===` e `!==`. Nunca use `==` ou `!=`, pois a conversão implícita de tipos pode produzir resultados inesperados.
+Always use `===` and `!==`. Never use `==` or `!=`, because implicit type coercion can produce unexpected results.
 
-Evite:
+Avoid:
 
 ```ts
 if (userId == 0 || status != 'active') {
@@ -49,7 +49,7 @@ if (userId == 0 || status != 'active') {
 }
 ```
 
-Prefira:
+Prefer:
 
 ```ts
 if (userId === 0 || status !== 'active') {
@@ -57,18 +57,18 @@ if (userId === 0 || status !== 'active') {
 }
 ```
 
-Para valores opcionais, avalie explicitamente a condição necessária. Use `??` quando a intenção for tratar somente `null` e `undefined`, e use `||` somente quando valores falsy, como string vazia ou zero, também forem inválidos:
+For optional values, evaluate the needed condition explicitly. Use `??` when the intent is to treat only `null` and `undefined`, and use `||` only when other falsy values such as empty string or zero are also invalid:
 
 ```ts
-const displayName = user.name ?? 'Usuário sem nome';
+const displayName = user.name ?? 'Unnamed user';
 const pageSize = configuredPageSize || DEFAULT_PAGE_SIZE;
 ```
 
-## Tipagem obrigatória e proibição de `any`
+## Required typing and no `any`
 
-Nunca use `any`. Prefira tipos explícitos, `unknown` para valores realmente desconhecidos e refinamento de tipo antes do uso.
+Never use `any`. Prefer explicit types, `unknown` for truly unknown values, and type narrowing before use.
 
-Evite:
+Avoid:
 
 ```ts
 function parseResponse(response: any): any {
@@ -76,7 +76,7 @@ function parseResponse(response: any): any {
 }
 ```
 
-Prefira:
+Prefer:
 
 ```ts
 type ApiResponse<T> = {
@@ -88,7 +88,7 @@ function parseResponse<T>(response: ApiResponse<T>): T {
 }
 ```
 
-Ao lidar com entrada externa, valide `unknown` antes de acessar propriedades:
+When dealing with external input, validate `unknown` before accessing properties:
 
 ```ts
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -104,7 +104,7 @@ function getMessage(value: unknown): string | undefined {
 }
 ```
 
-Faça a tipagem dos parâmetros e dos retornos que envolvam objetos. Prefira `type` ou `interface` com nomes de domínio em vez de objetos anônimos repetidos:
+Type parameters and returns that involve objects. Prefer `type` or `interface` with domain names instead of repeated anonymous objects:
 
 ```ts
 type CreateProductInput = {
@@ -121,7 +121,7 @@ function createProduct(input: CreateProductInput): Product {
 }
 ```
 
-Tipar retornos primitivos também é recomendado quando isso torna o contrato mais claro. Sempre tipar retornos assíncronos com `Promise<T>`:
+Typing primitive returns is also recommended when it clarifies the contract. Always type async returns with `Promise<T>`:
 
 ```ts
 async function loadProduct(id: string): Promise<Product> {
@@ -131,7 +131,7 @@ async function loadProduct(id: string): Promise<Product> {
 
 ## Arrow functions
 
-Prefira arrow functions em callbacks, como os usados por `map`, `filter`, `reduce`, `sort` e `Promise.then`:
+Prefer arrow functions in callbacks such as those used by `map`, `filter`, `reduce`, `sort`, and `Promise.then`:
 
 ```ts
 const activeNames = users
@@ -139,7 +139,7 @@ const activeNames = users
   .map((user: User) => user.name);
 ```
 
-Não substitua funções principais nomeadas por arrow functions apenas por preferência estilística. Funções principais de módulos, serviços e handlers devem continuar declaradas com `function` quando isso melhorar sua identificação e stack trace:
+Do not replace named top-level functions with arrow functions for style alone. Main module, service, and handler functions should stay declared with `function` when that improves identification and stack traces:
 
 ```ts
 function listActiveUsers(users: User[]): string[] {
@@ -147,23 +147,23 @@ function listActiveUsers(users: User[]): string[] {
 }
 ```
 
-Evite callbacks aninhados. Extraia a lógica para funções nomeadas ou use `async/await`, conforme as regras de Node.js.
+Avoid nested callbacks. Extract logic into named functions or use `async/await`.
 
-## Ternários simples
+## Simple ternaries
 
-Use ternário somente para uma decisão curta e direta. Nunca aninhe ternários e não use ternários como operadores de atribuição condicional ou para executar efeitos colaterais.
+Use a ternary only for a short, direct decision. Never nest ternaries, and do not use ternaries as conditional assignment operators or to run side effects.
 
-Evite:
+Avoid:
 
 ```ts
-const label = isAdmin ? (isActive ? 'Administrador ativo' : 'Administrador inativo') : 'Usuário';
+const label = isAdmin ? (isActive ? 'Active admin' : 'Inactive admin') : 'User';
 isReady ? startProcess() : stopProcess();
 ```
 
-Prefira:
+Prefer:
 
 ```ts
-const label = isAdmin ? 'Administrador' : 'Usuário';
+const label = isAdmin ? 'Admin' : 'User';
 
 if (isReady) {
   startProcess();
@@ -172,23 +172,23 @@ if (isReady) {
 }
 ```
 
-Quando houver mais de uma condição, use `if`, cláusulas de guarda ou extraia uma função com nome expressivo:
+When there is more than one condition, use `if`, guard clauses, or extract a named function:
 
 ```ts
 function getAccessLabel(user: User): string {
   if (!user.active) {
-    return 'Inativo';
+    return 'Inactive';
   }
 
-  return user.isAdmin ? 'Administrador' : 'Usuário';
+  return user.isAdmin ? 'Admin' : 'User';
 }
 ```
 
-## Imutabilidade e operações de coleção
+## Immutability and collection operations
 
-Não altere parâmetros, estado ou coleções compartilhadas diretamente. Retorne novos objetos e arrays. Use `map` para transformar, `filter` para selecionar, `find` para buscar um elemento e `reduce` somente quando a redução representar claramente a intenção.
+Do not mutate parameters, state, or shared collections directly. Return new objects and arrays. Use `map` to transform, `filter` to select, `find` to locate one element, and `reduce` only when the reduction clearly expresses intent.
 
-Evite:
+Avoid:
 
 ```ts
 function addTag(tags: string[], tag: string): string[] {
@@ -197,7 +197,7 @@ function addTag(tags: string[], tag: string): string[] {
 }
 ```
 
-Prefira:
+Prefer:
 
 ```ts
 function addTag(tags: string[], tag: string): string[] {
@@ -205,7 +205,7 @@ function addTag(tags: string[], tag: string): string[] {
 }
 ```
 
-Não mutile objetos recebidos como argumentos. Quando a ordenação for necessária, copie a coleção antes de usar `sort`:
+Do not mutate objects received as arguments. When sorting is required, copy the collection before calling `sort`:
 
 ```ts
 function sortByName(users: User[]): User[] {
@@ -213,41 +213,41 @@ function sortByName(users: User[]): User[] {
 }
 ```
 
-## Tratamento de erros
+## Error handling
 
-Lance instâncias de `Error` com mensagens úteis. Não capture um erro apenas para ignorá-lo e não converta automaticamente todo valor capturado em `Error` sem preservar o contexto:
+Throw `Error` instances with useful messages. Do not catch an error only to ignore it, and do not automatically convert every caught value into an `Error` without preserving context:
 
 ```ts
 function getErrorMessage(error: unknown): string {
-  return error instanceof Error ? error.message : 'Erro desconhecido';
+  return error instanceof Error ? error.message : 'Unknown error';
 }
 
 async function loadData(): Promise<Data> {
   try {
     return await dataRepository.load();
   } catch (error: unknown) {
-    throw new Error(`Falha ao carregar dados: ${getErrorMessage(error)}`, { cause: error });
+    throw new Error(`Failed to load data: ${getErrorMessage(error)}`, { cause: error });
   }
 }
 ```
 
-Use `unknown` no parâmetro de `catch` quando essa opção estiver disponível. Trate o erro na camada que tiver contexto suficiente para decidir a resposta ou a recuperação.
+Use `unknown` in the `catch` parameter when available. Handle the error in the layer that has enough context to decide the response or recovery.
 
-## Imports, módulos e nomes
+## Imports, modules, and names
 
-Use módulos ES com `import` e `export`. Remova imports não utilizados e evite exportar símbolos que não façam parte do contrato do módulo.
+Use ES modules with `import` and `export`. Remove unused imports and avoid exporting symbols that are not part of the module contract.
 
-Prefira nomes completos e expressivos. Use `is`, `has` e `can` para funções booleanas, como `isValidEmail`, `hasPermission` e `canPublish`. Evite abreviações que não sejam universalmente compreendidas.
+Prefer complete, expressive names. Use `is`, `has`, and `can` for boolean functions, such as `isValidEmail`, `hasPermission`, and `canPublish`. Avoid abbreviations that are not universally understood.
 
-Mantenha funções curtas, com uma única responsabilidade, e extraia constantes para números, strings e expressões regulares que representem regras de negócio. Respeite também os limites de tamanho definidos em `code-standards.md`.
+Keep functions short, with a single responsibility, and extract constants for numbers, strings, and regular expressions that represent business rules. Also respect the size limits in `code-standards.md`.
 
-## Validação obrigatória
+## Required validation
 
-Ao concluir qualquer tarefa que altere código JavaScript ou TypeScript, execute o linter do aplicativo afetado. Neste repositório, use:
+When finishing any task that changes JavaScript or TypeScript, run the linter for the affected app. In this repository:
 
 ```bash
 cd frontend
 npm run lint
 ```
 
-O backend ainda não possui script de lint. Quando um linter for configurado nele, execute o comando correspondente ao final de cada alteração. O linter não substitui `typecheck`, build ou testes; execute também as validações exigidas pelo aplicativo e pela natureza da mudança.
+The linter does not replace `typecheck`, build, or tests; also run the validations required by the app and by the nature of the change.

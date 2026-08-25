@@ -2,46 +2,46 @@
 okf_version: "0.2"
 ---
 
-# Conceitos
+# Concepts
 
-## Fontes
+## Sources
 
-- [Empresa, produto e posicionamento da NexoERP](fontes/01-empresa-produto-e-posicionamento.md) - Resumo da fonte-base sobre a empresa, o produto, o problema resolvido e as regras de comunicação.
-- [Perfil de cliente ideal da NexoERP](fontes/02-perfil-de-cliente-ideal.md) - Resumo da fonte-base sobre ICP, segmentos prioritários, sinais de intenção e critérios de qualificação.
-- [Personas e jornada de compra](fontes/03-personas-e-jornada-de-compra.md) - Resumo da fonte-base sobre papéis de compra, objeções, conteúdos e etapas de adoção.
-- [Concorrentes e alternativas percebidas](fontes/04-concorrentes-e-alternativas.md) - Resumo da fonte-base sobre planilhas, concorrentes fictícios, ferramentas isoladas e BPO financeiro.
-- [Branding e identidade da NexoERP](fontes/05-branding-e-identidade-da-marca.md) - Resumo da fonte-base sobre essência, personalidade, arquétipo, vocabulário e identidade da marca.
-- [Tom de voz e guia de redação](fontes/06-tom-de-voz-e-guia-de-redacao.md) - Resumo da fonte-base sobre princípios de escrita, formalidade, anúncios, CTAs e respostas públicas.
-- [Design system para campanhas](fontes/07-design-system-para-campanhas.md) - Resumo da fonte-base sobre cores, tipografia, logo, componentes, acessibilidade e formatos de mídia.
-- [Exemplos de anúncios aprovados](fontes/08-exemplos-de-anuncios-aprovados.md) - Resumo da fonte-base sobre anúncios aprovados, ofertas, canais e variações proibidas.
-- [Briefings de campanhas e canais](fontes/09-briefings-de-campanha-e-canais.md) - Resumo da fonte-base sobre objetivos, públicos, ofertas, canais e checklist de lançamento.
-- [Aprendizados, métricas e regras de publicação](fontes/10-aprendizados-metricas-e-regras-de-publicacao.md) - Resumo da fonte-base sobre testes, métricas, evidências, privacidade e incidentes.
+- [NexoERP company, product, and positioning](sources/01-empresa-produto-e-posicionamento.md) - Source summary of the company, product, problem solved, and communication rules.
+- [NexoERP ideal customer profile](sources/02-perfil-de-cliente-ideal.md) - Source summary of ICP, priority segments, intent signals, and qualification criteria.
+- [Personas and buying journey](sources/03-personas-e-jornada-de-compra.md) - Source summary of buying roles, objections, content, and adoption stages.
+- [Competitors and perceived alternatives](sources/04-concorrentes-e-alternativas.md) - Source summary of spreadsheets, fictional competitors, point tools, and financial BPO.
+- [NexoERP branding and brand identity](sources/05-branding-e-identidade-da-marca.md) - Source summary of essence, personality, archetype, vocabulary, and brand identity.
+- [Tone of voice and writing guide](sources/06-tom-de-voz-e-guia-de-redacao.md) - Source summary of writing principles, formality, ads, CTAs, and public replies.
+- [Campaign design system](sources/07-design-system-para-campanhas.md) - Source summary of colors, typography, logo, components, accessibility, and media formats.
+- [Approved ad examples](sources/08-exemplos-de-anuncios-aprovados.md) - Source summary of approved ads, offers, channels, and forbidden variations.
+- [Campaign and channel briefs](sources/09-briefings-de-campanha-e-canais.md) - Source summary of goals, audiences, offers, channels, and launch checklist.
+- [Learnings, metrics, and publishing rules](sources/10-aprendizados-metricas-e-regras-de-publicacao.md) - Source summary of tests, metrics, evidence, privacy, and incidents.
 
-## Entidades
+## Entities
 
-- [NexoERP](entidades/nexoerp.md) - Empresa brasileira fictícia de software de gestão financeira em nuvem para pequenas e médias empresas em crescimento.
+- [NexoERP](entidades/nexoerp.md) - Fictional Brazilian cloud financial management software company for growing small and mid-sized businesses.
 
-## Conceitos
+## Concepts
 
-- [Posicionamento da NexoERP](conceitos/posicionamento-nexoerp.md) - Proposta de valor que combina rotina financeira conectada, visão de caixa e implantação adequada a equipes pequenas.
-- [Perfil de cliente ideal da NexoERP](conceitos/perfil-de-cliente-ideal.md) - Perfil de empresas e situações em que a solução financeira da NexoERP tem maior probabilidade de encaixe.
+- [NexoERP positioning](concepts/posicionamento-nexoerp.md) - Value proposition combining connected financial routines, cash visibility, and rollout suited to small teams.
+- [NexoERP ideal customer profile](concepts/perfil-de-cliente-ideal.md) - Profile of companies and situations where NexoERP's financial solution is most likely to fit.
 
-## Jornada e mercado
+## Journey and market
 
-- [Personas e jornada de compra](conceitos/personas-e-jornada-de-compra.md) - Arquétipos dos participantes da compra e conteúdos adequados a descoberta, consideração, decisão, adoção e expansão.
-- [Concorrentes e alternativas percebidas](conceitos/concorrentes-e-alternativas.md) - Comparação responsável entre a NexoERP, planilhas, ferramentas isoladas, concorrentes fictícios e BPO financeiro.
+- [Personas and buying journey](concepts/personas-e-jornada-de-compra.md) - Archetypes of buying participants and content for discovery, consideration, decision, adoption, and expansion.
+- [Competitors and perceived alternatives](concepts/concorrentes-e-alternativas.md) - Responsible comparison among NexoERP, spreadsheets, point tools, fictional competitors, and financial BPO.
 
-## Marca e comunicação
+## Brand and communication
 
-- [Identidade da marca NexoERP](conceitos/identidade-da-marca-nexoerp.md) - Essência, personalidade, arquétipo, pilares de mensagem e regras de uso da marca.
-- [Tom de voz e guia de redação da NexoERP](conceitos/tom-de-voz-e-guia-de-redacao.md) - Playbook para escrever com clareza, precisão, humanidade e tranquilidade.
+- [NexoERP brand identity](concepts/identidade-da-marca-nexoerp.md) - Essence, personality, archetype, message pillars, and brand usage rules.
+- [NexoERP tone of voice and writing guide](concepts/tom-de-voz-e-guia-de-redacao.md) - Playbook for writing with clarity, precision, humanity, and calm.
 
-## Campanhas e operação
+## Campaigns and operations
 
-- [Abordagem de geração de leads para a diretoria](conceitos/abordagem-geracao-leads-diretoria.md) - Plano de três frentes para gerar leads qualificados conectando intenção, conteúdo prático e parceiros.
-- [Design system para campanhas](conceitos/design-system-campanhas.md) - Regras visuais, componentes, acessibilidade e formatos para peças de mídia.
-- [Anúncios aprovados da NexoERP](conceitos/anuncios-aprovados-nexoerp.md) - Exemplos de mensagens aprovadas por canal, etapa e público, com limites de uso.
-- [Briefings de campanhas e canais](conceitos/briefings-campanhas-e-canais.md) - Playbook de campanhas, papel dos canais, checklist de lançamento e convenção de nomes.
-- [Estrutura de anúncio para pequenas empresas](conceitos/estrutura-anuncio-pequenas-empresas.md) - Modelo de anúncio B2B para reconhecer uma dor financeira, apresentar o NexoERP e conduzir a uma próxima ação clara.
-- [Variações de anúncios Instagram para pequenas empresas](conceitos/variacoes-anuncios-instagram-pequenas-empresas.md) - Cinco conceitos de anúncio da NexoERP para Instagram, cada um adaptado aos formatos Story e Post com copy, CTA e hashtags.
-- [Aprendizados, métricas e regras de publicação](conceitos/aprendizados-metricas-publicacao.md) - Evidências de testes e regras para mensuração, alegações, privacidade, promoções e incidentes.
+- [Lead generation approach for leadership](concepts/abordagem-geracao-leads-diretoria.md) - Three-front plan to generate qualified leads by connecting intent, practical content, and partners.
+- [Campaign design system](concepts/design-system-campanhas.md) - Visual rules, components, accessibility, and formats for media assets.
+- [Approved NexoERP ads](concepts/anuncios-aprovados-nexoerp.md) - Examples of approved messages by channel, stage, and audience, with usage limits.
+- [Campaign and channel briefs](concepts/briefings-campanhas-e-canais.md) - Campaign playbook, channel roles, launch checklist, and naming convention.
+- [Ad structure for small businesses](concepts/estrutura-anuncio-pequenas-empresas.md) - B2B ad model to recognize a financial pain, present NexoERP, and lead to a clear next action.
+- [Instagram ad variations for small businesses](concepts/variacoes-anuncios-instagram-pequenas-empresas.md) - Five NexoERP Instagram ad concepts, each adapted to Story and Post with copy, CTA, and hashtags.
+- [Learnings, metrics, and publishing rules](concepts/aprendizados-metricas-publicacao.md) - Test evidence and rules for measurement, claims, privacy, promotions, and incidents.

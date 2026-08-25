@@ -1,83 +1,83 @@
-# Quando a planilha deixa de dar conta do financeiro
+# When the spreadsheet can no longer handle finances
 
-**Meta description:** Descubra os sinais de que a rotina financeira cresceu além das planilhas e como criar um processo compartilhado, com mais clareza e menos retrabalho.
+**Meta description:** Discover the signs that your financial routine has outgrown spreadsheets and how to create a shared process with more clarity and less rework.
 
-**Público principal:** gerentes financeiras, coordenadores administrativos e proprietários de empresas em crescimento.
+**Main audience:** financial managers, administrative coordinators, and owners of growing businesses.
 
-## A planilha não estava errada. A operação mudou.
+## The spreadsheet wasn't wrong. The operation changed.
 
-Muitas empresas começam controlando o financeiro em planilhas. É uma escolha prática: o formato é conhecido, flexível e parece suficiente para os primeiros meses ou anos da operação.
+Many companies start by managing finances in spreadsheets. It's a practical choice: the format is familiar, flexible, and seems sufficient for the first months or years of operation.
 
-O problema aparece quando o negócio cresce. Entram novas contas bancárias, mais pessoas passam a fazer lançamentos, o volume de cobranças aumenta e a empresa abre uma filial ou cria novos centros de custo. A planilha continua existindo, mas deixa de representar um processo compartilhado.
+The problem arises when the business grows. New bank accounts come in, more people start making entries, the volume of collections increases, and the company opens a branch or creates new cost centers. The spreadsheet still exists, but it no longer represents a shared process.
 
-Nesse momento, a dificuldade não é apenas “organização”. É saber qual arquivo está atualizado, quem alterou uma informação, quais pagamentos já foram aprovados e se o saldo apresentado corresponde à realidade.
+At this point, the difficulty is not just "organization." It's knowing which file is updated, who changed information, which payments have been approved, and whether the presented balance corresponds to reality.
 
-## Cinco sinais de que a rotina cresceu além da planilha
+## Five signs that the routine has outgrown the spreadsheet
 
-### 1. Uma única pessoa sabe como tudo funciona
+### 1. Only one person knows how everything works
 
-Se o processo depende do arquivo e do método de uma pessoa específica, férias, afastamentos ou desligamentos criam um risco desnecessário. A equipe pode até ter acesso à planilha, mas não necessariamente conhece as regras, exceções e correções feitas ao longo do caminho.
+If the process depends on the file and method of a specific person, vacations, absences, or departures create unnecessary risk. The team may have access to the spreadsheet, but they do not necessarily know the rules, exceptions, and corrections made along the way.
 
-### 2. Existem várias versões do mesmo controle
+### 2. There are multiple versions of the same control
 
-Uma planilha fica com o financeiro, outra com a diretoria e uma terceira é atualizada para a reunião. Quando os números divergem, o time gasta tempo comparando versões em vez de investigar o que precisa ser decidido.
+One spreadsheet is with finance, another with management, and a third is updated for meetings. When the numbers diverge, the team spends time comparing versions instead of investigating what needs to be decided.
 
-### 3. O fechamento demora mais do que deveria
+### 3. The closing takes longer than it should
 
-O mês termina, mas a conferência continua por vários dias. É preciso procurar extratos, mensagens, comprovantes e lançamentos que ficaram sem classificação. Quanto maior o intervalo entre o fato e a informação confiável, mais difícil é agir antes do próximo compromisso.
+The month ends, but the reconciliation continues for several days. It is necessary to search for statements, messages, receipts, and entries that have not been classified. The longer the interval between the event and reliable information, the harder it is to act before the next commitment.
 
-### 4. A aprovação acontece por mensagens soltas
+### 4. Approval happens through scattered messages
 
-Pedidos de pagamento chegam por e-mail, aplicativo de mensagens ou conversa verbal. Depois, alguém tenta reconstruir o que foi aprovado, por quem e em qual condição. Esse modelo aumenta a chance de duplicidade e dificulta a auditoria da rotina.
+Payment requests come via email, messaging apps, or verbal conversations. Later, someone tries to reconstruct what was approved, by whom, and under what conditions. This model increases the chance of duplication and makes auditing the routine difficult.
 
-### 5. O gestor pede uma resposta e recebe um arquivo
+### 5. The manager asks for an answer and receives a file
 
-Quando o proprietário pergunta “quanto podemos investir este mês?”, a resposta não deveria depender de uma nova consolidação manual. O time precisa conectar compromissos, recebimentos e saldo para explicar o cenário com clareza.
+When the owner asks, "How much can we invest this month?", the answer should not depend on a new manual consolidation. The team needs to connect commitments, receipts, and balances to explain the scenario clearly.
 
-## O que muda quando existe um processo compartilhado
+## What changes when there is a shared process
 
-Migrar da planilha não significa abandonar o histórico nem transformar a empresa em uma corporação burocrática. Significa criar uma base comum para a equipe trabalhar.
+Migrating from spreadsheets does not mean abandoning history or turning the company into a bureaucratic corporation. It means creating a common foundation for the team to work.
 
-Um processo financeiro compartilhado ajuda a:
+A shared financial process helps to:
 
-- reunir contas, bancos, cobranças e relatórios no mesmo fluxo;
-- registrar alterações e responsabilidades;
-- definir permissões e regras de aprovação;
-- comparar valores previstos e realizados;
-- encontrar pendências antes do fechamento;
-- reduzir a dependência de arquivos locais e controles paralelos.
+- gather accounts, banks, collections, and reports in the same flow;
+- record changes and responsibilities;
+- define permissions and approval rules;
+- compare forecasted and actual values;
+- find pending items before closing;
+- reduce dependence on local files and parallel controls.
 
-O ganho mais importante é operacional: a informação deixa de ficar presa a uma pessoa, uma caixa de e-mail ou uma versão específica de uma planilha.
+The most important gain is operational: information is no longer trapped with one person, one email box, or a specific version of a spreadsheet.
 
-## Como começar sem transformar a mudança em um projeto interminável
+## How to start without turning the change into an endless project
 
-Antes de escolher uma ferramenta, faça um diagnóstico simples da rotina:
+Before choosing a tool, conduct a simple diagnosis of the routine:
 
-1. Liste as contas bancárias e os controles usados hoje.
-2. Identifique quem lança, confere, aprova e consulta cada informação.
-3. Separe as tarefas recorrentes das exceções.
-4. Meça quanto tempo leva o fechamento financeiro.
-5. Registre quais dados precisam ser preservados na migração.
+1. List the bank accounts and controls currently used.
+2. Identify who enters, checks, approves, and consults each piece of information.
+3. Separate recurring tasks from exceptions.
+4. Measure how long the financial closing takes.
+5. Record which data needs to be preserved during migration.
 
-Esse levantamento ajuda a distinguir o que é necessidade real do que é apenas hábito. Também permite começar pelo essencial: contas a pagar, contas a receber, conciliação e visão de caixa. Controles adicionais podem ser incorporados conforme a equipe ganha segurança.
+This survey helps distinguish what is a real need from what is merely a habit. It also allows starting with the essentials: accounts payable, accounts receivable, reconciliation, and cash flow visibility. Additional controls can be incorporated as the team gains confidence.
 
-## Onde o NexoERP pode ajudar
+## Where NexoERP can help
 
-O NexoERP foi pensado para empresas que já ultrapassaram o controle apenas em planilhas, mas ainda precisam de uma implantação adequada a equipes pequenas. Ele conecta rotina financeira, bancos e visão de caixa, com histórico, permissões, aprovações e expansão por módulos.
+NexoERP is designed for companies that have already surpassed spreadsheet-only control but still need an implementation suitable for small teams. It connects financial routines, banks, and cash flow, with history, permissions, approvals, and expansion through modules.
 
-Isso não elimina a participação da equipe nem promete uma migração sem esforço. A implantação funciona melhor quando os cadastros são revisados, os papéis ficam claros e a operação começa por um escopo possível de acompanhar.
+This does not eliminate team participation nor promise a migration without effort. Implementation works best when records are reviewed, roles are clarified, and the operation begins with a manageable scope.
 
-## O próximo passo
+## The next step
 
-Se a empresa está crescendo, o melhor momento para revisar o processo é antes de uma nova filial, de um aumento forte nas cobranças ou de uma dependência ainda maior de uma única pessoa.
+If the company is growing, the best time to review the process is before a new branch, a significant increase in collections, or an even greater dependence on a single person.
 
-Faça um diagnóstico da maturidade financeira e veja quais controles precisam ser compartilhados primeiro. Depois, conheça como o NexoERP pode apoiar essa evolução com mais clareza sobre a rotina e o caixa.
+Conduct a financial maturity diagnosis and see which controls need to be shared first. Then, learn how NexoERP can support this evolution with more clarity about the routine and cash flow.
 
-**CTA:** Faça o diagnóstico financeiro.
+**CTA:** Conduct the financial diagnosis.
 
-### Base editorial
+### Editorial base
 
-- [Perfil de cliente ideal da NexoERP](../../conceitos/perfil-de-cliente-ideal.md)
-- [Personas e jornada de compra](../../conceitos/personas-e-jornada-de-compra.md)
-- [Posicionamento da NexoERP](../../conceitos/posicionamento-nexoerp.md)
-- [Briefings de campanhas e canais](../../conceitos/briefings-campanhas-e-canais.md)
+- [Ideal customer profile of NexoERP](../../concepts/ideal-customer-profile.md)
+- [Personas and buying journey](../../concepts/personas-and-buying-journey.md)
+- [Positioning of NexoERP](../../concepts/positioning-nexoerp.md)
+- [Campaign briefings and channels](../../concepts/campaigns-and-channels-briefings.md)

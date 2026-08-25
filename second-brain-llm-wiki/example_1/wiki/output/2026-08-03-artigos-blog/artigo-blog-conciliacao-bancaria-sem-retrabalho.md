@@ -1,93 +1,93 @@
-# Conciliação bancária sem retrabalho: como encontrar pendências antes do fechamento
+# Bank reconciliation without rework: how to find discrepancies before closing
 
-**Meta description:** Entenda por que a conciliação bancária consome tanto tempo e organize uma rotina para reduzir digitação, duplicidades e correções de última hora.
+**Meta description:** Understand why bank reconciliation takes so much time and organize a routine to reduce data entry, duplications, and last-minute corrections.
 
-**Público principal:** analistas financeiros, gerentes financeiras e equipes que fazem contas a pagar, contas a receber e fechamento.
+**Main audience:** financial analysts, financial managers, and teams handling accounts payable, accounts receivable, and closing.
 
-## A conciliação não deveria ser uma caça ao erro no fim do mês
+## Reconciliation shouldn't be a hunt for errors at the end of the month
 
-Para muitas equipes, conciliar significa abrir o extrato, comparar linha por linha com uma planilha e procurar diferenças até que os números pareçam coincidir. O processo funciona enquanto o volume é pequeno. Com o crescimento, ele vira uma sequência de tarefas manuais, mensagens urgentes e correções difíceis de rastrear.
+For many teams, reconciling means opening the statement, comparing line by line with a spreadsheet, and looking for differences until the numbers seem to match. The process works while the volume is small. As it grows, it turns into a sequence of manual tasks, urgent messages, and hard-to-track corrections.
 
-O analista financeiro termina o dia digitando movimentações, conferindo baixas e respondendo a pedidos de comprovante. No fim do mês, ainda precisa investigar lançamentos sem categoria, transferências não identificadas e cobranças que parecem duplicadas.
+The financial analyst ends the day entering transactions, checking off payments, and responding to requests for proof. By the end of the month, they still need to investigate uncategorized entries, unidentified transfers, and charges that seem duplicated.
 
-O problema não é a conferência em si. Conferir faz parte de uma rotina confiável. A dor está em deixar para descobrir todas as pendências depois que elas já se acumularam.
+The problem isn't the checking itself. Checking is part of a reliable routine. The pain lies in waiting to discover all discrepancies after they have already accumulated.
 
-## Por que a rotina fica pesada
+## Why the routine becomes burdensome
 
-### Dados chegam de lugares diferentes
+### Data comes from different places
 
-Extratos, arquivos OFX, boletos, comprovantes e solicitações internas podem ter formatos e horários diferentes. Quando cada fonte precisa ser tratada separadamente, a equipe passa mais tempo preparando os dados do que analisando as exceções.
+Statements, OFX files, invoices, receipts, and internal requests can have different formats and timings. When each source needs to be handled separately, the team spends more time preparing the data than analyzing exceptions.
 
-### A mesma informação é digitada mais de uma vez
+### The same information is entered multiple times
 
-Uma movimentação é registrada no banco, depois na planilha, depois no controle de contas a pagar e, em alguns casos, novamente em um relatório. Cada repetição aumenta a chance de erro e torna a atualização mais lenta.
+A transaction is recorded in the bank, then in the spreadsheet, then in the accounts payable control, and in some cases, again in a report. Each repetition increases the chance of error and slows down updates.
 
-### A classificação não é consistente
+### Classification is inconsistent
 
-Se pessoas diferentes usam categorias diferentes para a mesma despesa, os relatórios perdem qualidade. A divergência pode parecer pequena em um lançamento, mas fica relevante quando a diretoria tenta comparar períodos ou centros de custo.
+If different people use different categories for the same expense, reports lose quality. The divergence may seem small in one entry, but it becomes significant when management tries to compare periods or cost centers.
 
-### As correções não deixam um histórico claro
+### Corrections do not leave a clear history
 
-Um número foi alterado, mas por quê? O comprovante foi substituído? A baixa foi desfeita? Sem histórico e responsabilidade definidos, a equipe precisa confiar na memória ou procurar a resposta em mensagens antigas.
+A number was changed, but why? Was the receipt replaced? Was the payment undone? Without a defined history and accountability, the team needs to rely on memory or search for answers in old messages.
 
-## O que uma boa rotina de conciliação precisa responder
+## What a good reconciliation routine needs to answer
 
-Uma conciliação útil não serve apenas para “bater o saldo”. Ela deve ajudar a responder:
+A useful reconciliation does not just serve to "balance the accounts." It should help answer:
 
-- quais movimentações já foram identificadas;
-- quais lançamentos ainda estão pendentes;
-- quais títulos foram baixados corretamente;
-- onde existem diferenças entre o previsto e o realizado;
-- quem precisa revisar ou aprovar uma exceção;
-- quais informações estão prontas para o fechamento.
+- which transactions have already been identified;
+- which entries are still pending;
+- which titles have been correctly cleared;
+- where there are differences between what was expected and what was realized;
+- who needs to review or approve an exception;
+- which information is ready for closing.
 
-Essa visão muda o papel do analista. Em vez de procurar manualmente cada correspondência, ele pode concentrar seu tempo nas exceções que exigem análise.
+This perspective changes the role of the analyst. Instead of manually searching for each match, they can focus their time on exceptions that require analysis.
 
-## Um fluxo mais previsível em cinco etapas
+## A more predictable flow in five steps
 
-### 1. Centralize as contas e os movimentos
+### 1. Centralize accounts and transactions
 
-Comece reunindo as contas bancárias usadas pela empresa e definindo uma rotina para importar ou registrar as movimentações. O objetivo é reduzir fontes paralelas e deixar claro onde a informação deve ser consultada.
+Start by gathering the bank accounts used by the company and defining a routine for importing or recording transactions. The goal is to reduce parallel sources and clarify where information should be consulted.
 
-### 2. Padronize categorias e responsáveis
+### 2. Standardize categories and responsibilities
 
-Defina categorias compreensíveis, centros de custo quando forem necessários e o papel de cada pessoa. A padronização deve ajudar o trabalho, não criar uma lista impossível de manter.
+Define understandable categories, cost centers when necessary, and the role of each person. Standardization should aid the work, not create an impossible-to-maintain list.
 
-### 3. Relacione movimento, título e documento
+### 3. Link transaction, title, and document
 
-Sempre que possível, conecte a movimentação ao lançamento financeiro e ao documento correspondente. Isso reduz dúvidas nas revisões e facilita a busca quando alguém precisa entender uma diferença.
+Whenever possible, connect the transaction to the financial entry and the corresponding document. This reduces doubts during reviews and facilitates the search when someone needs to understand a discrepancy.
 
-### 4. Separe rotina de exceção
+### 4. Separate routine from exceptions
 
-O que pode seguir um procedimento regular deve ser tratado como rotina. Valores inesperados, duplicidades, classificações duvidosas e divergências devem formar uma fila de exceções para investigação.
+What can follow a regular procedure should be treated as routine. Unexpected amounts, duplications, questionable classifications, and discrepancies should form a queue of exceptions for investigation.
 
-### 5. Feche por etapas
+### 5. Close in stages
 
-Não espere o último dia do mês para descobrir tudo. Revisões frequentes tornam o fechamento mais previsível e permitem corrigir cadastros ou processos enquanto o contexto ainda está disponível.
+Do not wait until the last day of the month to discover everything. Frequent reviews make closing more predictable and allow for corrections to records or processes while the context is still available.
 
-## Como o NexoERP se encaixa nesse processo
+## How NexoERP fits into this process
 
-O NexoERP conecta a rotina financeira aos bancos e à visão de caixa, com conciliação, histórico, permissões e regras de aprovação. Para o analista, isso pode significar menos digitação repetida e uma forma mais clara de localizar pendências. Para a gerente financeira, significa acompanhar a qualidade do processo e chegar ao fechamento com menos surpresas.
+NexoERP connects the financial routine to banks and cash flow, with reconciliation, history, permissions, and approval rules. For the analyst, this can mean less repeated data entry and a clearer way to locate discrepancies. For the financial manager, it means monitoring the quality of the process and reaching closing with fewer surprises.
 
-O sistema não elimina a necessidade de revisão humana, porque movimentações incomuns e decisões de classificação continuam exigindo contexto. A proposta é dar estrutura para que a equipe use seu tempo nas exceções, não na repetição de tarefas que poderiam estar conectadas.
+The system does not eliminate the need for human review, as unusual transactions and classification decisions still require context. The proposal is to provide structure so that the team can use their time on exceptions, not on repeating tasks that could be connected.
 
-## Um diagnóstico rápido da sua equipe
+## A quick diagnosis of your team
 
-Responda com “sim” ou “não”:
+Answer with "yes" or "no":
 
-- O extrato de cada conta é consultado em um lugar definido?
-- A equipe consegue identificar lançamentos pendentes sem abrir várias fontes?
-- As categorias são usadas de maneira consistente?
-- Existe histórico das correções e aprovações?
-- O fechamento começa antes do último dia do mês?
+- Is the statement for each account consulted in a defined place?
+- Can the team identify pending entries without opening multiple sources?
+- Are categories used consistently?
+- Is there a history of corrections and approvals?
+- Does closing begin before the last day of the month?
 
-Se várias respostas forem “não”, a oportunidade pode estar menos em trabalhar mais rápido e mais em organizar o fluxo. Uma rotina clara reduz a quantidade de urgências e melhora a confiança nos relatórios.
+If several answers are "no," the opportunity may lie less in working faster and more in organizing the flow. A clear routine reduces the number of urgencies and improves confidence in reports.
 
-**CTA:** Assista a uma demonstração de conciliação e veja como organizar as pendências da sua equipe.
+**CTA:** Watch a reconciliation demonstration and see how to organize your team's discrepancies.
 
-### Base editorial
+### Editorial base
 
-- [Personas e jornada de compra](../../conceitos/personas-e-jornada-de-compra.md)
-- [Posicionamento da NexoERP](../../conceitos/posicionamento-nexoerp.md)
-- [Concorrentes e alternativas percebidas](../../conceitos/concorrentes-e-alternativas.md)
-- [Aprendizados, métricas e regras de publicação](../../conceitos/aprendizados-metricas-publicacao.md)
+- [Personas and buying journey](../../concepts/personas-e-jornada-de-compra.md)
+- [NexoERP positioning](../../concepts/posicionamento-nexoerp.md)
+- [Competitors and perceived alternatives](../../concepts/concorrentes-e-alternativas.md)
+- [Learnings, metrics, and publishing rules](../../concepts/aprendizados-metricas-publicacao.md)

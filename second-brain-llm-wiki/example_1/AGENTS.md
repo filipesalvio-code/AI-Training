@@ -1,166 +1,169 @@
-# LLM Wiki em Open Knowledge Format
+# LLM Wiki in Open Knowledge Format
 
-Este diretório combina o padrão LLM Wiki descrito por Andrej Karpathy com a
-especificação Open Knowledge Format (OKF) v0.2:
+This directory combines the LLM Wiki standard described by Andrej Karpathy with
+the Open Knowledge Format (OKF) v0.2 specification:
 
 - https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
 - https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md
 
-## Ideia central
+## Core idea
 
-Mantenha uma wiki persistente em Markdown entre o usuário e suas fontes. Em vez
-de reconstruir o conhecimento a partir dos documentos brutos a cada pergunta,
-leia as fontes, extraia o que importa e integre esse conteúdo à wiki existente.
+Maintain a persistent Markdown wiki between the user and their sources. Instead
+of rebuilding knowledge from raw documents for every question, read the
+sources, extract what matters, and integrate that content into the existing
+wiki.
 
-A wiki deve acumular valor: novas fontes e novas perguntas podem atualizar
-páginas, conexões, comparações e sínteses já existentes.
+The wiki should accumulate value: new sources and new questions can update
+existing pages, connections, comparisons, and syntheses.
 
-O usuário seleciona fontes, explora o conteúdo e faz perguntas. O agente mantém
-a wiki: resume, organiza, cria relações, atualiza páginas e cuida da
-consistência.
+The user selects sources, explores content, and asks questions. The agent
+maintains the wiki: summarizes, organizes, creates relationships, updates
+pages, and preserves consistency.
 
-## Arquitetura
+## Architecture
 
 ### `raw/`
 
-Coleção curada de documentos-fonte, como artigos, papers, imagens e arquivos de
-dados.
+Curated collection of source documents, such as articles, papers, images, and
+data files.
 
-- É a fonte de verdade.
-- O agente pode ler seus arquivos, mas nunca deve modificá-los.
-- Não faz parte do bundle OKF e, por isso, seus arquivos não precisam seguir o
-  formato de documentos de conceito.
+- It is the source of truth.
+- The agent may read its files, but must never modify them.
+- It is not part of the OKF bundle and, therefore, its files do not need to
+  follow the concept document format.
 
 ### `wiki/`
 
-Bundle de conhecimento OKF v0.2 e diretório de arquivos Markdown gerados e
-mantidos pelo agente. Pode conter resumos, páginas de entidades, páginas de
-conceitos, comparações, panoramas e sínteses.
+OKF v0.2 knowledge bundle and directory of Markdown files generated and
+maintained by the agent. It may contain summaries, entity pages, concept pages,
+comparisons, overviews, and syntheses.
 
-- O agente cria e atualiza as páginas.
-- O agente mantém referências cruzadas e consistência entre elas.
-- O usuário e qualquer consumidor compatível com OKF consultam o resultado.
-- A raiz do bundle é `wiki/`; links iniciados por `/` são relativos a ela.
+- The agent creates and updates pages.
+- The agent maintains cross-references and consistency between them.
+- The user and any OKF-compatible consumer query the result.
+- The bundle root is `wiki/`; links that start with `/` are relative to it.
 
 ### `wiki/output/`
 
-Área exclusiva para artefatos gerados como resultado de consultas ou operações
-da wiki. Use-a para imagens, landing pages, HTML, CSS, JavaScript, gráficos,
-apresentações, canvases, PDFs, planilhas, exports e outros arquivos que não
-sejam documentos de conceito indexados pelo OKF.
+Exclusive area for artifacts generated as a result of wiki queries or
+operations. Use it for images, landing pages, HTML, CSS, JavaScript, charts,
+presentations, canvases, PDFs, spreadsheets, exports, and other files that are
+not concept documents indexed by OKF.
 
-- Todo artefato gerado deve ficar dentro de uma pasta própria de operação em
-  `wiki/output/`, com o formato `YYYY-MM-DD-<slug>/`. O prefixo deve ser a data
-  ISO 8601 da operação (`YYYY-MM-DD`) e `<slug>` deve ser descritivo em
-  `kebab-case`, por exemplo `wiki/output/2026-08-03-landing-page-nexoerp/`.
-- Nunca crie artefatos diretamente na raiz de `wiki/output/`; a única exceção
-  é o eventual `wiki/output/index.md`. Arquivos auxiliares que pertencem ao
-  mesmo resultado, como HTML e CSS, devem permanecer juntos na mesma pasta.
-- Não misture resultados de operações distintas na mesma pasta. Se uma nova
-  operação produzir uma variação, use uma nova pasta com a data da operação e
-  um slug adequado.
-- Arquivos em `wiki/output/` não representam conceitos, não precisam de
-  frontmatter YAML e não entram no `wiki/index.md` como páginas da wiki.
-- Um `wiki/output/index.md` pode existir apenas como inventário operacional dos
-  artefatos, sem frontmatter de conceito. Ele deve apontar para os arquivos nas
-  pastas datadas, não para caminhos antigos ou arquivos soltos. Não é um índice
-  OKF e não deve ser usado para transformar os arquivos listados em conceitos.
-- Quando um artefato tiver valor durável, registre a operação em `wiki/log.md`
-  e, se necessário, crie separadamente um documento de conceito que explique
-  o conhecimento. O artefato continua em sua pasta datada dentro de
-  `wiki/output/`.
-- Não confunda `wiki/output/` com `raw/`: output contém derivados gerados pelo
-  agente; raw contém fontes preservadas e nunca modificadas.
+- Every generated artifact must be placed inside its own operation folder in
+  `wiki/output/`, using the format `YYYY-MM-DD-<slug>/`. The prefix must be the
+  operation date in ISO 8601 format (`YYYY-MM-DD`) and `<slug>` must be
+  descriptive in `kebab-case`, for example
+  `wiki/output/2026-08-03-landing-page-nexoerp/`.
+- Never create artifacts directly in the root of `wiki/output/`; the only
+  exception is a possible `wiki/output/index.md`. Auxiliary files that belong
+  to the same result, such as HTML and CSS, must remain together in the same
+  folder.
+- Do not mix results from different operations in the same folder. If a new
+  operation produces a variation, use a new folder with the operation date and
+  an appropriate slug.
+- Files in `wiki/output/` do not represent concepts, do not need YAML
+  frontmatter, and do not go into `wiki/index.md` as wiki pages.
+- A `wiki/output/index.md` may exist only as an operational inventory of
+  artifacts, without concept frontmatter. It must point to files in dated
+  folders, not to old paths or loose files. It is not an OKF index and must not
+  be used to turn listed files into concepts.
+- When an artifact has durable value, record the operation in `wiki/log.md`
+  and, if necessary, separately create a concept document that explains the
+  knowledge. The artifact remains in its dated folder inside `wiki/output/`.
+- Do not confuse `wiki/output/` with `raw/`: output contains agent-generated
+  derivatives; raw contains preserved sources and is never modified.
 
 ### `AGENTS.md`
 
-Schema operacional usado pelo Codex. Define a estrutura, as convenções e os
-fluxos seguidos pelo agente. Pode evoluir com o uso, em colaboração com o
-usuário. Não faz parte do bundle OKF.
+Operational schema used by Codex. It defines the structure, conventions, and
+flows followed by the agent. It may evolve through use, in collaboration with
+the user. It is not part of the OKF bundle.
 
-## Documentos de conceito OKF
+## OKF concept documents
 
-Todo arquivo `.md` dentro de `wiki/`, exceto os nomes reservados `index.md` e
-`log.md` e todo o conteúdo de `wiki/output/`, representa exatamente um
-conceito. O caminho sem a extensão `.md` é o identificador estável desse
-conceito. Prefira nomes de arquivo descritivos em `kebab-case` e não altere
-caminhos sem atualizar os links de entrada.
+Every `.md` file inside `wiki/`, except the reserved names `index.md` and
+`log.md` and all content under `wiki/output/`, represents exactly one concept.
+The path without the `.md` extension is that concept’s stable identifier.
+Prefer descriptive filenames in `kebab-case` and do not change paths without
+updating inbound links.
 
-O LINT considera como conjunto de conceitos os arquivos Markdown fora de
-`wiki/output/`. O conteúdo de `wiki/output/`, inclusive seu eventual
-`index.md`, fica fora da validação de frontmatter, órfãos, entradas de índice e
-conformidade de documentos OKF.
+LINT treats as the concept set all Markdown files outside `wiki/output/`.
+Content in `wiki/output/`, including its possible `index.md`, is outside
+validation for frontmatter, orphans, index entries, and OKF document
+conformance.
 
-Cada documento de conceito deve ser UTF-8 e começar com frontmatter YAML:
+Each concept document must be UTF-8 and begin with YAML frontmatter:
 
 ```markdown
 ---
 type: Concept
-title: Nome legível do conceito
-description: Resumo do conceito em uma frase.
-resource: https://example.com/recurso-canonico
-tags: [tema, contexto]
+title: Human-readable concept name
+description: One-sentence concept summary.
+resource: https://example.com/canonical-resource
+tags: [topic, context]
 generated:
-  by: human:usuario
+  by: human:user
   at: 2026-07-23T12:00:00-03:00
 sources:
-  - id: fonte-principal
-    resource: https://example.com/fonte
-    title: Fonte principal
+  - id: main-source
+    resource: https://example.com/source
+    title: Main source
 ---
 
-# Visão geral
+# Overview
 
-Conteúdo estruturado e conectado a [outro conceito](/conceitos/outro.md),
-conforme a [fonte principal][^fonte-principal].
+Structured content connected to [another concept](/concepts/other.md),
+according to the [main source][^main-source].
 
-[^fonte-principal]: Fonte principal
+[^main-source]: Main source
 
 ```
 
-Regras do frontmatter:
+Frontmatter rules:
 
-- `type` é obrigatório, deve ser uma string curta, não vazia e autoexplicativa.
-- `title`, `description`, `resource` e `tags` são recomendados quando seus
-  valores forem conhecidos.
-- `generated` é recomendado para registrar como o conteúdo atual foi produzido
-  e quando ocorreu sua última alteração significativa.
-- `verified`, `status` e `stale_after` são opcionais e devem ser usados quando
-  houver confirmação, necessidade de ciclo de vida ou política de atualização.
-- `sources` é recomendado quando o conceito deriva de fontes identificáveis.
-- `description` deve conter uma única frase útil para índices e busca.
-- `resource` identifica o recurso canônico descrito pela página; omita-o em
-  conceitos abstratos sem recurso correspondente.
-- `tags` deve ser uma lista YAML de strings curtas.
-- `generated.by` deve seguir a convenção de atores: `<producer>/<version>` para
-  agentes e ferramentas, `human:<id>` para pessoas e `process:<id>` para
-  processos automatizados.
-- `generated.at` e `verified[].at` devem usar data e hora ISO 8601.
-- `verified` é uma lista de eventos de verificação, cada um com `by` e `at`.
-  Um único evento também pode ser escrito como um mapeamento sem lista.
-- `status` aceita `draft`, `stable` ou `deprecated`; quando ausente, o
-  conceito é considerado `stable`.
-- `stale_after` é uma data absoluta no formato `YYYY-MM-DD`; o conceito fica
-  obsoleto quando a data atual for igual ou posterior a ela.
-- Campos adicionais são permitidos quando o domínio justificar. Preserve
-  campos desconhecidos ao editar uma página.
-- Não invente metadados ausentes apenas para preencher o frontmatter.
+- `type` is required and must be a short, non-empty, self-explanatory string.
+- `title`, `description`, `resource`, and `tags` are recommended when their
+  values are known.
+- `generated` is recommended to record how the current content was produced and
+  when its last significant change occurred.
+- `verified`, `status`, and `stale_after` are optional and should be used when
+  confirmation, lifecycle needs, or update policy exists.
+- `sources` is recommended when the concept derives from identifiable sources.
+- `description` must contain a single sentence useful for indexes and search.
+- `resource` identifies the canonical resource described by the page; omit it
+  for abstract concepts without a corresponding resource.
+- `tags` must be a YAML list of short strings.
+- `generated.by` must follow the actor convention: `<producer>/<version>` for
+  agents and tools, `human:<id>` for people, and `process:<id>` for automated
+  processes.
+- `generated.at` and `verified[].at` must use ISO 8601 date and time.
+- `verified` is a list of verification events, each with `by` and `at`.
+  A single event may also be written as a mapping without a list.
+- `status` accepts `draft`, `stable`, or `deprecated`; when absent, the concept
+  is considered `stable`.
+- `stale_after` is an absolute date in `YYYY-MM-DD` format; the concept becomes
+  stale when the current date is equal to or later than it.
+- Additional fields are allowed when justified by the domain. Preserve unknown
+  fields when editing a page.
+- Do not invent missing metadata just to fill frontmatter.
 
-Não existe uma taxonomia universal de tipos. Use poucos valores consistentes e
-autoexplicativos, como `Source Summary`, `Entity`, `Concept`, `Comparison`,
-`Synthesis`, `Playbook`, `Attested Computation` ou tipos específicos do domínio.
+There is no universal type taxonomy. Use a small set of consistent and
+self-explanatory values, such as `Source Summary`, `Entity`, `Concept`,
+`Comparison`, `Synthesis`, `Playbook`, `Attested Computation`, or
+domain-specific types.
 
-### Proveniência e confiança
+### Provenance and trust
 
-Quando um conceito for derivado de material externo ou de outro conceito, use
-`sources` no frontmatter:
+When a concept is derived from external material or another concept, use
+`sources` in frontmatter:
 
 ~~~yaml
 sources:
-  - id: fonte-principal
-    resource: https://example.com/fonte
-    title: Fonte principal
-    author: human:autor
+  - id: main-source
+    resource: https://example.com/source
+    title: Main source
+    author: human:author
     usage_count: 42
     last_modified: 2026-07-23
 usage_window:
@@ -168,56 +171,56 @@ usage_window:
   to: 2026-07-31
 ~~~
 
-Cada entrada de `sources` deve ter `resource`. `id`, `title`, `author`,
-`usage_count` e `last_modified` são opcionais. `usage_window` é irmão de
-`sources` e contextualiza os valores de `usage_count`; uma fonte pode
-sobrescrevê-lo localmente.
+Each `sources` entry must have `resource`. `id`, `title`, `author`,
+`usage_count`, and `last_modified` are optional. `usage_window` is a sibling of
+`sources` and contextualizes `usage_count` values; a source may override it
+locally.
 
-Para atribuir uma afirmação específica a uma fonte, use uma nota de rodapé
-com o mesmo identificador de `sources[].id`:
+To attribute a specific claim to a source, use a footnote with the same
+identifier as `sources[].id`:
 
 ```markdown
-O processamento ocorre diariamente.[^fonte-principal]
+Processing happens daily.[^main-source]
 
-[^fonte-principal]: Fonte principal
+[^main-source]: Main source
 ```
 
-Não use uma lista genérica `# Citations` como convenção primária. Ela pode ser
-interpretada como legado de OKF v0.1, mas novos documentos devem preferir
-`sources` e notas de rodapé por afirmação.
+Do not use a generic `# Citations` list as the primary convention. It may be
+interpreted as OKF v0.1 legacy, but new documents should prefer `sources` and
+per-claim footnotes.
 
-## Corpo, links e citações
+## Body, links, and citations
 
-- Use Markdown estrutural: títulos, listas, tabelas e blocos de código.
-- Prefira links absolutos relativos ao bundle, como
-  `[Conceito](/conceitos/conceito.md)`. Links relativos também são válidos.
-- Explique a relação no texto ao redor do link; o link, sozinho, não tipa a
-  relação.
-- Links quebrados são tolerados pelo OKF, mas devem ser reportados no `LINT` e
-  corrigidos quando não representarem conhecimento ainda pendente.
-- Afirmações vindas de material externo devem apontar para uma entrada em
-  `sources`; quando a atribuição for por afirmação, use uma nota de rodapé
-  cujo rótulo corresponda a `sources[].id`.
-- Ao citar um arquivo local de `raw/`, use um link Markdown relativo ao arquivo.
-  Ao citar uma fonte web, prefira a URL canônica.
-- `# Schema`, `# Examples` e `# Computation` têm significado convencional no
-  OKF e devem ser usados quando forem adequados ao conceito.
+- Use structural Markdown: headings, lists, tables, and code blocks.
+- Prefer bundle-relative absolute links, such as
+  `[Concept](/concepts/concept.md)`. Relative links are also valid.
+- Explain the relationship in the surrounding text; the link alone does not
+  type the relationship.
+- Broken links are tolerated by OKF, but should be reported in `LINT` and fixed
+  when they do not represent still-pending knowledge.
+- Claims derived from external material should point to an entry in `sources`;
+  when attribution is per-claim, use a footnote whose label matches
+  `sources[].id`.
+- When citing a local file in `raw/`, use a Markdown link relative to that
+  file. When citing a web source, prefer the canonical URL.
+- `# Schema`, `# Examples`, and `# Computation` have conventional meaning in
+  OKF and should be used when appropriate for the concept.
 
-## Computações atestadas
+## Attested computations
 
-Quando um conceito precisar declarar uma forma sancionada de calcular um valor,
-use `type: Attested Computation`. O frontmatter pode incluir `runtime`,
-`parameters`, `computation`, `executor` e `attester`; o corpo deve usar a seção
-`# Computation` para registrar a definição executável. O OKF descreve a
-computação e como verificá-la, mas não executa o código nem define seu pacote ou
-ambiente de execução.
+When a concept needs to declare a sanctioned way to compute a value, use
+`type: Attested Computation`. Frontmatter may include `runtime`, `parameters`,
+`computation`, `executor`, and `attester`; the body should use the
+`# Computation` section to record the executable definition. OKF describes the
+computation and how to verify it, but does not execute code or define its
+package or runtime environment.
 
-Exemplo mínimo:
+Minimal example:
 
 ~~~yaml
 ---
 type: Attested Computation
-title: Receita anual
+title: Annual revenue
 runtime: bigquery
 parameters:
   - name: year
@@ -229,7 +232,7 @@ executor:
 attester:
   resource: /attesters/sql-equality.py
 generated:
-  by: human:usuario
+  by: human:user
   at: 2026-08-03T12:00:00-03:00
 ---
 
@@ -242,157 +245,158 @@ WHERE fiscal_year = @year
 ```
 ~~~
 
-## Operações
+
+[continued in next message — translate this part only, do not summarize]
+
+## Operations
 
 ### INGEST
 
-Ao processar uma nova fonte adicionada a `raw/`:
+When processing a new source added to `raw/`:
 
-1. Leia a fonte sem modificá-la.
-2. Discuta com o usuário os principais pontos extraídos.
-3. Crie ou atualize os documentos de conceito afetados, incluindo um resumo da
-   fonte quando ele tiver valor próprio.
-4. Preencha o frontmatter OKF de todo documento criado e atualize
-   `generated.at` apenas nas alterações significativas. Preserve `generated.by`
-   quando a origem do conteúdo não mudar.
-5. Adicione links entre os conceitos relacionados e citações às fontes.
-6. Atualize `wiki/index.md` e os índices de subdiretórios afetados, se existirem.
-7. Atualize outras páginas de entidades, conceitos e sínteses afetadas.
-8. Se a operação produzir imagens, páginas HTML/CSS, gráficos ou qualquer
-   outro artefato, salve-o em uma pasta nova no formato
-   `wiki/output/YYYY-MM-DD-<slug>/`. Mantenha nessa pasta todos os arquivos
-   auxiliares do resultado. Não crie esses arquivos diretamente em
-   `wiki/output/`, em `wiki/`, em `wiki/conceitos/` ou na raiz do projeto.
-9. Registre a operação em `wiki/log.md`.
+1. Read the source without modifying it.
+2. Discuss with the user the main points extracted.
+3. Create or update the affected concept documents, including a source summary
+   when it has standalone value.
+4. Fill in OKF frontmatter for every created document and update
+   `generated.at` only on significant changes. Preserve `generated.by`
+   when the content origin does not change.
+5. Add links between related concepts and citations to sources.
+6. Update `wiki/index.md` and the affected subdirectory indexes, if they exist.
+7. Update other affected entity, concept, and synthesis pages.
+8. If the operation produces images, HTML/CSS pages, charts, or any other
+   artifact, save it in a new folder using the format
+   `wiki/output/YYYY-MM-DD-<slug>/`. Keep all auxiliary output files in that
+   folder. Do not create these files directly in `wiki/output/`, in `wiki/`,
+   in `wiki/concepts/`, or at the project root.
+9. Record the operation in `wiki/log.md`.
 
-Uma fonte pode afetar muitas páginas. O fluxo pode processar uma fonte por vez
-com acompanhamento do usuário ou várias fontes em lote, conforme a preferência
-registrada neste schema.
+A source may affect many pages. The flow can process one source at a time with
+user follow-up, or multiple sources in batch, according to the preference
+recorded in this schema.
 
 ### QUERY
 
-Ao receber uma pergunta sobre a wiki:
+When receiving a question about the wiki:
 
-1. Leia `wiki/index.md` para localizar as páginas relevantes.
-2. Navegue pelos índices de subdiretórios e links antes de fazer uma busca mais
-   ampla.
-3. Pesquise e leia os documentos de conceito relevantes.
-4. Sintetize uma resposta com citações.
-5. Produza o formato adequado à pergunta. Se o resultado for um artefato —
-   como uma imagem, landing page, HTML/CSS, apresentação, gráfico ou canvas —
-   salve-o em uma pasta nova no formato `wiki/output/YYYY-MM-DD-<slug>/`;
-   não o trate como documento de conceito.
-6. Quando uma resposta, comparação, análise ou conexão tiver valor durável,
-   incorpore o conhecimento à wiki como um documento de conceito OKF e atualize
-   o índice e o log. Se houver um artefato associado, mantenha-o em sua pasta
-   datada dentro de `wiki/output/` e registre o caminho completo no log ou no
-   documento de conceito quando isso ajudar na descoberta.
+1. Read `wiki/index.md` to locate relevant pages.
+2. Navigate subdirectory indexes and links before doing a broader search.
+3. Search and read the relevant concept documents.
+4. Synthesize an answer with citations.
+5. Produce the format appropriate to the question. If the result is an artifact
+   — such as an image, landing page, HTML/CSS, presentation, chart, or canvas —
+   save it in a new folder using the format `wiki/output/YYYY-MM-DD-<slug>/`;
+   do not treat it as a concept document.
+6. When an answer, comparison, analysis, or connection has lasting value,
+   incorporate the knowledge into the wiki as an OKF concept document and
+   update the index and log. If there is an associated artifact, keep it in its
+   dated folder within `wiki/output/` and record the full path in the log or in
+   the concept document when that helps discovery.
 
-Consultas úteis também devem contribuir para o acúmulo de conhecimento, em vez
-de permanecer apenas no histórico da conversa.
+Useful queries should also contribute to knowledge accumulation, rather than
+remaining only in conversation history.
 
 ### LINT
 
-Periodicamente, faça uma revisão de saúde e conformidade da wiki. Verifique:
+Periodically, perform a health and compliance review of the wiki. Check:
 
-- se todo documento de conceito fora de `wiki/output/` tem frontmatter YAML
-  parseável e `type` não vazio;
-- se `index.md` e `log.md` são usados somente com seus significados reservados;
-- se `generated.at` e `verified[].at` são ISO 8601 e os metadados conhecidos
-  estão consistentes;
-- se `generated`, `verified`, `status`, `stale_after` e `sources` seguem suas
-  convenções quando presentes;
-- se atores usam os prefixos `human:`, `process:` ou `<producer>/<version>`;
-- se notas de rodapé de atribuição resolvem para um `sources[].id`;
-- contradições entre páginas;
-- afirmações antigas superadas por fontes mais recentes;
-- páginas órfãs, sem links de entrada;
-- links internos quebrados ou relações sem contexto;
-- conceitos importantes mencionados, mas sem página própria;
-- referências cruzadas e citações ausentes;
-- entradas ausentes ou desatualizadas nos índices;
-- se existem artefatos gerados fora de `wiki/output/` — por exemplo, imagens,
-  HTML, CSS, JavaScript, gráficos, PDFs, apresentações, canvases, planilhas ou
-  exports — e reportá-los como não conformes, movendo-os para uma pasta datada
-  em `wiki/output/`;
-- se existem artefatos diretamente na raiz de `wiki/output/` além do eventual
-  `index.md`, ou pastas que não seguem `YYYY-MM-DD-<slug>/`;
-- se arquivos dentro de `wiki/output/` estão sendo incorretamente tratados
-  como conceitos, exigindo frontmatter ou entrada no `wiki/index.md`;
-- se o inventário `wiki/output/index.md` aponta para os artefatos nas pastas
-  datadas e se os links relativos entre um artefato e seus arquivos auxiliares
-  dentro da mesma pasta resolvem, quando esses links existirem;
-- lacunas que poderiam ser preenchidas por novas fontes ou pesquisa na web.
+- whether every concept document outside `wiki/output/` has parseable YAML
+  frontmatter and a non-empty `type`;
+- whether `index.md` and `log.md` are used only with their reserved meanings;
+- whether `generated.at` and `verified[].at` are ISO 8601 and known metadata is
+  consistent;
+- whether `generated`, `verified`, `status`, `stale_after`, and `sources`
+  follow their conventions when present;
+- whether actors use the prefixes `human:`, `process:`, or `<producer>/<version>`;
+- whether attribution footnotes resolve to a `sources[].id`;
+- contradictions between pages;
+- older claims superseded by newer sources;
+- orphan pages with no incoming links;
+- broken internal links or relationships without context;
+- important concepts that are mentioned but have no dedicated page;
+- missing cross-references and citations;
+- missing or outdated entries in indexes;
+- whether generated artifacts exist outside `wiki/output/` — for example,
+  images, HTML, CSS, JavaScript, charts, PDFs, presentations, canvases,
+  spreadsheets, or exports — and report them as non-compliant, moving them to a
+  dated folder in `wiki/output/`;
+- whether artifacts exist directly in the root of `wiki/output/` beyond the
+  optional `index.md`, or folders that do not follow `YYYY-MM-DD-<slug>/`;
+- whether files inside `wiki/output/` are being incorrectly treated as
+  concepts, requiring frontmatter or an entry in `wiki/index.md`;
+- whether the `wiki/output/index.md` inventory points to artifacts in dated
+  folders and whether relative links between an artifact and its auxiliary files
+  within the same folder resolve, when such links exist;
+- gaps that could be filled by new sources or web research.
 
-Reporte também perguntas que merecem investigação e fontes que seria útil
-adicionar. Um link quebrado não torna o bundle inválido segundo o OKF, mas ainda
-pode indicar um problema de manutenção.
+Also report questions that deserve investigation and sources that would be
+useful to add. A broken link does not make the bundle invalid under OKF, but it
+may still indicate a maintenance issue.
 
-## Índices e log
+## Indexes and log
 
 ### `wiki/index.md`
 
-Índice raiz do bundle e ponto de entrada para descoberta progressiva. É o único
-`index.md` que pode ter frontmatter, exclusivamente para declarar
+Root bundle index and entry point for progressive discovery. It is the only
+`index.md` that may have frontmatter, exclusively to declare
 `okf_version: "0.2"`.
 
-Organize as entradas por categorias que emergirem do conteúdo. Cada entrada
-deve usar um link relativo e, quando disponível, a `description` do conceito:
+Organize entries by categories that emerge from the content. Each entry should
+use a relative link and, when available, the concept’s `description`:
 
 ```markdown
-# Conceitos
+# Concepts
 
-- [Nome](conceitos/nome.md) - Resumo do conceito em uma frase.
+- [Name](concepts/name.md) - One-sentence summary of the concept.
 ```
 
-Um `index.md` também pode existir em subdiretórios. Nesses casos, não use
-frontmatter, liste conteúdos com links relativos e inclua os subdiretórios
-relevantes. Atualize os índices a cada ingestão que afetar seu escopo. A
-exceção é `wiki/output/index.md`, que é apenas um inventário de artefatos e não
-deve ser incluído no `wiki/index.md` como conteúdo conceitual; seus links devem
-apontar para as pastas `YYYY-MM-DD-<slug>/` correspondentes.
+An `index.md` may also exist in subdirectories. In those cases, do not use
+frontmatter, list content with relative links, and include relevant
+subdirectories. Update indexes on every ingestion that affects their scope. The
+exception is `wiki/output/index.md`, which is only an artifact inventory and
+should not be included in `wiki/index.md` as conceptual content; its links
+should point to the corresponding `YYYY-MM-DD-<slug>/` folders.
 
 ### `wiki/log.md`
 
-Histórico de mudanças do bundle, agrupado por data e com as datas mais recentes
-primeiro. Entradas antigas são imutáveis; novas entradas devem ser inseridas no
-grupo da data correspondente, sem reescrever o histórico.
+Bundle change history, grouped by date with the most recent dates first. Old
+entries are immutable; new entries must be inserted into the corresponding date
+group, without rewriting history.
 
-Use datas ISO 8601 e um tipo de operação em destaque:
+Use ISO 8601 dates and a highlighted operation type:
 
 ```markdown
-# Log de atualizações
+# Update log
 
 ## 2026-07-23
 
-- **Ingestão**: Adicionado [nome do conceito](/conceitos/nome.md).
-- **Consulta**: Incorporada uma comparação durável à wiki.
-- **Lint**: Corrigidos links e metadados inconsistentes.
+- **Ingestion**: Added [concept name](/concepts/name.md).
+- **Query**: Incorporated a durable comparison into the wiki.
+- **Lint**: Fixed links and inconsistent metadata.
 ```
 
-Registre consultas apenas quando produzirem uma alteração durável ou uma
-decisão relevante para a manutenção da wiki.
+Record queries only when they produce a durable change or a decision relevant
+to wiki maintenance.
 
-## Conformidade e evolução
+## Compliance and evolution
 
-O bundle está conforme com OKF v0.2 quando:
+The bundle is compliant with OKF v0.2 when:
 
-1. cada `.md` não reservado fora de `wiki/output/` tem frontmatter YAML
-   parseável;
-2. cada frontmatter contém `type` não vazio;
-3. cada `index.md` e `log.md` do bundle segue sua estrutura reservada;
-4. artefatos gerados estão em pastas `wiki/output/YYYY-MM-DD-<slug>/`, com no
-   máximo o inventário operacional `wiki/output/index.md` diretamente na raiz,
-   e não são exigidos como conceitos ou entradas do índice OKF.
+1. each non-reserved `.md` outside `wiki/output/` has parseable YAML
+   frontmatter;
+2. each frontmatter contains a non-empty `type`;
+3. each `index.md` and `log.md` in the bundle follows its reserved structure;
+4. generated artifacts are in `wiki/output/YYYY-MM-DD-<slug>/` folders, with at
+   most the operational inventory `wiki/output/index.md` directly in the root,
+   and are not required as concepts or OKF index entries.
 
-Famílias opcionais ausentes, tipos desconhecidos, campos adicionais, links
-quebrados e índices ausentes em subdiretórios não invalidam o bundle. Um
-conceito sem `verified` é consumível, mas deve ser tratado como não verificado;
-um consumidor não deve rejeitá-lo por isso. Não acrescente complexidade antes
-que ela seja necessária: o OKF padroniza o intercâmbio, não prescreve taxonomia,
-banco, motor de busca, SDK ou plataforma.
+Missing optional families, unknown types, additional fields, broken links, and
+missing indexes in subdirectories do not invalidate the bundle. A concept
+without `verified` is consumable, but must be treated as unverified; a consumer
+must not reject it for that reason. Do not add complexity before it is needed:
+OKF standardizes exchange, not taxonomy, database, search engine, SDK, or
+platform.
 
-Se a especificação-alvo mudar, atualize primeiro `okf_version` no índice raiz e
-depois este schema operacional. Em escala moderada, os índices podem ser
-suficientes; se a wiki crescer, uma ferramenta de busca local pode ser
-adicionada.
+If the target specification changes, first update `okf_version` in the root
+index and then this operational schema. At moderate scale, indexes may be
+sufficient; if the wiki grows, a local search tool can be added.

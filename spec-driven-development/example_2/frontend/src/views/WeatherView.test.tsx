@@ -6,7 +6,7 @@ import { WeatherView } from './WeatherView';
 
 const weather = {
   location: { city: 'Lisboa', administrativeArea: null, country: 'Portugal' },
-  current: { temperature: 20, apparentTemperature: 19, condition: 'Céu limpo', relativeHumidity: 50, windSpeed: 5 },
+  current: { temperature: 20, apparentTemperature: 19, condition: 'Clear sky', relativeHumidity: 50, windSpeed: 5 },
   units: { temperature: '°C', apparentTemperature: '°C', relativeHumidity: '%', windSpeed: 'km/h' },
   source: { name: 'Open-Meteo', url: 'https://open-meteo.com/', license: 'CC BY 4.0', licenseUrl: 'https://creativecommons.org/licenses/by/4.0/' },
 };
@@ -19,13 +19,13 @@ describe('WeatherView', () => {
     let resolve: (response: Response) => void = () => undefined;
     vi.stubGlobal('fetch', vi.fn(() => new Promise<Response>((done) => { resolve = done; })));
     render(<WeatherView />);
-    const input = screen.getByRole('textbox', { name: /Nome da cidade/ });
-    await user.click(screen.getByRole('button', { name: 'Consultar clima' }));
+    const input = screen.getByRole('textbox', { name: /City name/ });
+    await user.click(screen.getByRole('button', { name: 'Check weather' }));
     expect(input).toHaveAttribute('aria-invalid', 'true');
-    expect(screen.getByRole('alert')).toHaveTextContent('pelo menos dois caracteres');
+    expect(screen.getByRole('alert')).toHaveTextContent('at least two characters');
     await user.type(input, 'Lisboa');
-    await user.click(screen.getByRole('button', { name: 'Consultar clima' }));
-    expect(screen.getByRole('status')).toHaveTextContent('Consultando');
+    await user.click(screen.getByRole('button', { name: 'Check weather' }));
+    expect(screen.getByRole('status')).toHaveTextContent('Fetching');
     expect(screen.getByRole('main')).toHaveAttribute('aria-busy', 'true');
     await actResolve(resolve, weather);
     await waitFor(() => expect(screen.getByRole('heading', { name: 'Lisboa' })).toBeVisible());
@@ -37,10 +37,10 @@ describe('WeatherView', () => {
       .mockResolvedValueOnce(new Response(JSON.stringify(weather), { status: 200 }));
     vi.stubGlobal('fetch', fetchMock);
     render(<WeatherView />);
-    const input = screen.getByRole('textbox', { name: 'Nome da cidade' });
+    const input = screen.getByRole('textbox', { name: 'City name' });
     fireEvent.change(input, { target: { value: 'Atlantis' } });
     fireEvent.submit(input.closest('form')!);
-    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent('Cidade não encontrada'));
+    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent('City not found'));
     fireEvent.change(input, { target: { value: 'Lisboa' } });
     fireEvent.submit(input.closest('form')!);
     await waitFor(() => expect(screen.getByRole('heading', { name: 'Lisboa' })).toBeVisible());
@@ -50,7 +50,7 @@ describe('WeatherView', () => {
   it('keeps responses active under React StrictMode', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(weather), { status: 200 })));
     render(<StrictMode><WeatherView /></StrictMode>);
-    const input = screen.getByRole('textbox', { name: /Nome da cidade/ });
+    const input = screen.getByRole('textbox', { name: /City name/ });
     fireEvent.change(input, { target: { value: 'Lisboa' } });
     fireEvent.submit(input.closest('form')!);
     await waitFor(() => expect(screen.getByRole('heading', { name: 'Lisboa' })).toBeVisible());

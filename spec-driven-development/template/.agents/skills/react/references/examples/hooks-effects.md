@@ -1,21 +1,21 @@
-# Exemplos de hooks, efeitos e memoização
+# Hooks, effects, and memoization examples
 
-## Evite um efeito desnecessário:
+## Avoid an unnecessary effect:
 
 ```tsx
-// Evite: o valor pode ser calculado durante a renderização
+// Avoid: the value can be computed during render
 useEffect(() => {
   setFullName(`${firstName} ${lastName}`)
 }, [firstName, lastName])
 ```
 
-Prefira:
+Prefer:
 
 ```tsx
 const fullName = `${firstName} ${lastName}`
 ```
 
-## Memoização
+## Memoization
 
 ```tsx
 const filteredUsers = useMemo(

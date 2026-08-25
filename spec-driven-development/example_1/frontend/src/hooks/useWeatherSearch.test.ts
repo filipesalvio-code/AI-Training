@@ -22,7 +22,7 @@ describe('useWeatherSearch', () => {
     expect(result.current.state).toEqual({
       status: 'error',
       result: null,
-      error: { code: 'INVALID_CITY', message: 'Informe uma cidade com pelo menos dois caracteres.' },
+      error: { code: 'INVALID_CITY', message: 'Enter a city with at least two characters.' },
     })
   })
 
@@ -44,7 +44,7 @@ describe('useWeatherSearch', () => {
 
   it('shows not found and allows a new attempt', async () => {
     const { service, search } = createService()
-    search.mockRejectedValueOnce(new WeatherApiError({ code: 'CITY_NOT_FOUND', message: 'Cidade não encontrada.' }))
+    search.mockRejectedValueOnce(new WeatherApiError({ code: 'CITY_NOT_FOUND', message: 'City not found.' }))
       .mockResolvedValueOnce(createWeatherResponse())
     const { result } = renderHook(() => useWeatherSearch(service))
 
@@ -67,7 +67,7 @@ describe('useWeatherSearch', () => {
     expect(result.current.state).toEqual({
       status: 'error',
       result: null,
-      error: { code: 'WEATHER_SERVICE_UNAVAILABLE', message: 'Não foi possível consultar o clima agora. Tente novamente em instantes.' },
+      error: { code: 'WEATHER_SERVICE_UNAVAILABLE', message: 'We could not check the weather right now. Try again shortly.' },
     })
   })
 

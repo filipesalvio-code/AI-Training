@@ -1,15 +1,15 @@
-# Regras para React
+# React rules
 
-Estas regras se aplicam ao código do frontend React deste projeto.
+These rules apply to the React frontend in this project.
 
-## Componentes pequenos e reutilizáveis
+## Small, reusable components
 
-- Crie componentes com uma única responsabilidade.
-- Não crie componentes com mais de 30 linhas. Extraia partes da interface, regras de negócio ou estados para componentes e hooks menores.
-- Prefira nomes que expressem o papel do componente, como `StatusCard`, `HealthMessage` e `LoadingIndicator`.
-- Reutilize componentes para comportamentos e estruturas visuais comuns, evitando duplicação.
+- Create components with a single responsibility.
+- Do not create components longer than 30 lines. Extract UI pieces, business rules, or state into smaller components and hooks.
+- Prefer names that express the component's role, such as `StatusCard`, `HealthMessage`, and `LoadingIndicator`.
+- Reuse components for common behaviors and visual structures to avoid duplication.
 
-Exemplo de componente pequeno:
+Example of a small component:
 
 ```tsx
 type StatusCardProps = {
@@ -21,25 +21,25 @@ export function StatusCard({ status }: StatusCardProps) {
   const color = status === 'online' ? 'text-green-700' : 'text-red-700'
 
   return (
-    <section aria-label="Status da API" className="rounded-lg border p-4">
+    <section aria-label="API status" className="rounded-lg border p-4">
       <p className={color}>{label}</p>
     </section>
   )
 }
 ```
 
-## Props explícitas
+## Explicit props
 
-Evite encaminhar props com o spread operator, pois isso esconde a API do componente e pode repassar atributos inesperados:
+Avoid forwarding props with the spread operator, because that hides the component API and can pass unexpected attributes:
 
 ```tsx
-// Evite
+// Avoid
 function Button(props: ButtonProps) {
   return <button {...props} />
 }
 ```
 
-Declare e utilize as propriedades explicitamente:
+Declare and use properties explicitly:
 
 ```tsx
 type ButtonProps = {
@@ -63,31 +63,31 @@ function Button({ label, onClick, disabled = false }: ButtonProps) {
 }
 ```
 
-## Hooks e efeitos
+## Hooks and effects
 
-- Prefira componentes funcionais.
-- Crie hooks customizados com o prefixo `use`, como `useApiHealth` ou `useUsers`.
-- Use `useEffect` somente para sincronizar o React com sistemas externos, como requisições, assinaturas, timers ou APIs do navegador.
-- Não use `useEffect` para calcular valores derivados, responder a eventos de clique ou manter estados que podem ser obtidos diretamente de props e estado existente.
+- Prefer function components.
+- Create custom hooks with the `use` prefix, such as `useApiHealth` or `useUsers`.
+- Use `useEffect` only to synchronize React with external systems, such as requests, subscriptions, timers, or browser APIs.
+- Do not use `useEffect` to compute derived values, respond to click events, or keep state that can be derived from props and existing state.
 
-Evite um efeito desnecessário:
+Avoid an unnecessary effect:
 
 ```tsx
-// Evite: o valor pode ser calculado durante a renderização
+// Avoid: the value can be computed during render
 useEffect(() => {
   setFullName(`${firstName} ${lastName}`)
 }, [firstName, lastName])
 ```
 
-Prefira:
+Prefer:
 
 ```tsx
 const fullName = `${firstName} ${lastName}`
 ```
 
-## Memoização
+## Memoization
 
-Use `useMemo` para evitar cálculos realmente pesados entre re-renders. As dependências devem representar todos os valores usados no cálculo. Não use `useMemo` para operações simples, pois isso aumenta a complexidade sem benefício relevante.
+Use `useMemo` to avoid truly expensive calculations across re-renders. Dependencies must include every value used in the calculation. Do not use `useMemo` for simple operations, because that adds complexity without meaningful benefit.
 
 ```tsx
 const filteredUsers = useMemo(
@@ -96,26 +96,26 @@ const filteredUsers = useMemo(
 )
 ```
 
-## Acesso ao backend
+## Backend access
 
-- Separe o acesso ao backend do código visual do componente.
-- Coloque chamadas HTTP e transformação de respostas em módulos próprios, como `src/lib/api/health.ts`.
-- Encapsule carregamento, sucesso e erro em hooks customizados.
-- O componente deve consumir o estado do hook e cuidar apenas da apresentação e das interações.
+- Keep backend access out of visual component code.
+- Put HTTP calls and response mapping in dedicated modules, such as `src/lib/api/health.ts`.
+- Encapsulate loading, success, and error in custom hooks.
+- The component should consume the hook state and handle only presentation and interactions.
 
-Exemplo de módulo de acesso à API:
+Example API access module:
 
 ```ts
 export type Health = { status: string }
 
 export async function fetchHealth(): Promise<Health> {
   const response = await fetch('http://localhost:3000/health')
-  if (!response.ok) throw new Error('Não foi possível consultar a API')
+  if (!response.ok) throw new Error('Could not query the API')
   return response.json() as Promise<Health>
 }
 ```
 
-Exemplo de hook que contém a lógica de integração:
+Example hook that holds integration logic:
 
 ```tsx
 export function useApiHealth() {
@@ -132,36 +132,36 @@ export function useApiHealth() {
 }
 ```
 
-## Acessibilidade
+## Accessibility
 
-- Sempre forneça propriedades de acessibilidade `aria-*` adequadas ao elemento e ao estado apresentado.
-- Prefira elementos semânticos (`button`, `nav`, `main`, `section`, `form`) e complemente-os com `aria-label`, `aria-live`, `aria-busy`, `aria-expanded` ou `aria-pressed` quando aplicável.
-- Controles interativos devem indicar seu estado e ter um nome acessível.
-- Mensagens assíncronas, de carregamento ou erro devem ser anunciadas quando necessário.
+- Always provide `aria-*` properties appropriate to the element and presented state.
+- Prefer semantic elements (`button`, `nav`, `main`, `section`, `form`) and complement them with `aria-label`, `aria-live`, `aria-busy`, `aria-expanded`, or `aria-pressed` when applicable.
+- Interactive controls must indicate their state and have an accessible name.
+- Async, loading, or error messages should be announced when needed.
 
 ```tsx
 function LoadingMessage() {
   return (
     <p role="status" aria-live="polite" aria-busy="true">
-      Consultando a API...
+      Querying the API...
     </p>
   )
 }
 ```
 
-## Estilização
+## Styling
 
-- Utilize Tailwind CSS para estilizar os componentes.
-- Prefira classes utilitárias diretamente no JSX e variantes condicionais claras.
-- Evite CSS inline e folhas de estilo específicas quando as classes Tailwind atenderem ao caso.
-- Mantenha classes relacionadas ao componente próximas de sua estrutura e garanta estados de foco, hover, disabled e responsividade.
+- Use Tailwind CSS to style components.
+- Prefer utility classes directly in JSX with clear conditional variants.
+- Avoid inline CSS and one-off stylesheets when Tailwind classes cover the case.
+- Keep classes close to the component structure and ensure focus, hover, disabled, and responsive states.
 
 ```tsx
 <button
   type="button"
-  aria-label="Atualizar status"
+  aria-label="Refresh status"
   className="rounded-md bg-slate-900 px-4 py-2 text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
 >
-  Atualizar
+  Refresh
 </button>
 ```

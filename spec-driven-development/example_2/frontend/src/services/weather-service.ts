@@ -2,10 +2,10 @@ import type { ApiError, ApiErrorCode } from '../types/api-error';
 import type { WeatherResponse } from '../types/weather-response';
 
 const PUBLIC_MESSAGES: Record<ApiErrorCode, string> = {
-  INVALID_CITY: 'Informe uma cidade com pelo menos dois caracteres.',
-  CITY_NOT_FOUND: 'Cidade não encontrada. Verifique o nome e tente novamente.',
-  WEATHER_SERVICE_UNAVAILABLE: 'Não foi possível consultar o clima agora. Tente novamente em instantes.',
-  INTERNAL_ERROR: 'Ocorreu um erro inesperado. Tente novamente.',
+  INVALID_CITY: 'Enter a city with at least two characters.',
+  CITY_NOT_FOUND: 'City not found. Check the name and try again.',
+  WEATHER_SERVICE_UNAVAILABLE: 'We could not check the weather right now. Try again shortly.',
+  INTERNAL_ERROR: 'An unexpected error occurred. Try again.',
 };
 
 export class WeatherServiceError extends Error {
